@@ -1,0 +1,260 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+   
+  <div class="container">
+      <a class="navbar-brand" href="#"><b>Virtual-Assistant</b></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+      </button>
+           
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          
+      
+      <ul class="navbar-nav mr-auto" align="rigth">
+          <br>
+          <a class="btn btn-outline-info d-lg-inline-block mb-3 mb-md-0 ml-md-3" href="control.html">Centro de Control</a>
+          <br>
+          <a class="btn btn-outline-info d-lg-inline-block mb-3 mb-md-0 ml-md-3" href="proyectos.html">Proyectos</a>
+          <br>
+          <a class="btn btn-outline-info d-lg-inline-block mb-3 mb-md-0 ml-md-3" href="usuarios.html">Usuarios</a>
+          <br>
+         
+          
+           
+      </ul>
+  </div>    
+           
+
+
+<header id="home-section">
+      <div class="dark-overlay">
+          <div class="home-inner">
+              <div class="container">
+                  <div class="row">
+                      <!--Aqui se pone el nombre de usuario que puede ser residente, gerente o proyectista-->
+                      <div class="col-lg-12">
+                      Bienvenido Usuario. 
+                      </div>
+                      <br><br><br><br><br>
+
+                      <div class="col-lg-6">
+                              <i class="fas fa-exclamation-triangle fa-8x"></i>
+                              <button type="button" class="btn btn-dark">
+                                 Alertas <span class="badge badge-light">21</span>
+                              </button>
+                              <br><br><br>
+                              
+                              <div class="table-responsive">
+                                  <table class="table table-bordered table-striped">
+                                      <thead>
+                                          <tr>
+                                              <th>Proyecto</th>
+                                              <th>Residente</th>
+                                              <th>Alertas</th>
+                                              <th>Acciones</th>
+                                          </tr>
+                                      </thead>
+                                      <tbody id="">
+                                          <tr>
+                                              <td>Proyecto 1</td>
+                                              <td>
+                                                  Residente 7
+                                              </td>
+                                              <td>7</td>
+                                              <td><button class="btn btn-lg btn-dark" type="submit" data-toggle="modal" data-target="#alertas" ><i class="fas fa-arrow-alt-circle-right fa-1x"></i></button></td>
+                                          </tr>
+                                          <tr>
+                                              <td>Proyecto 2</td>
+                                              <td>
+                                                  Residente 7
+                                              </td>
+                                              <td>7</td>
+                                              <td><button class="btn btn-lg btn-dark" type="submit" data-toggle="modal" data-target="#alertas"><i class="fas fa-arrow-alt-circle-right fa-1x"></i></button></td>
+                                          </tr>
+                                          <tr>
+                                              <td>Proyecto 3</td>
+                                              <td>
+                                                  Residente 4
+                                              </td>
+                                              <td>7</td>
+                                              <td><button class="btn btn-lg btn-dark" type="submit" data-toggle="modal" data-target="#alertas"><i class="fas fa-arrow-alt-circle-right fa-1x"></i></button></td>
+                                          </tr>
+                                                      
+                                      </tbody>
+                                  </table>
+                              </div>
+                      </div>
+                      
+                      <div class="col-lg-6">
+                              <i class="far fa-comments fa-8x"></i>
+                              <button type="button" class="btn btn-dark">
+                                 Mensajes <span class="badge badge-light">35</span>
+                              </button>
+                              <br><br><br>
+                              
+                              <div class="table-responsive">
+                                  <table class="table table-bordered table-striped">
+                                      <thead>
+                                          <tr>
+                                              <th>Proyecto</th>
+                                              <th>Residente</th>
+                                              <th>Mensajes</th>
+                                              <th>Acciones</th>
+                                          </tr>
+                                      </thead>
+                                      <tbody id="">
+                                          <tr>
+                                              <td>Proyecto 1</td>
+                                              <td>
+                                                  Residente 7
+                                              </td>
+                                              <td>10</td>
+                                              <td><button class="btn btn-lg btn-dark" type="submit" data-toggle="modal" data-target="#mensajes"><i class="fas fa-arrow-alt-circle-right fa-1x"></i></button></td>
+                                          </tr>
+                                          <tr>
+                                              <td>Proyecto 2</td>
+                                              <td>
+                                                  Residente 7
+                                              </td>
+                                              <td>20</td>
+                                              <td><button class="btn btn-lg btn-dark" type="submit" data-toggle="modal" data-target="#mensajes"><i class="fas fa-arrow-alt-circle-right fa-1x"></i></button></td>
+                                          </tr>
+                                          <tr>
+                                              <td>Proyecto 3</td>
+                                              <td>
+                                                  Residente 4
+                                              </td>
+                                              <td>15</td>
+                                              <td><button class="btn btn-lg btn-dark" type="submit" data-toggle="modal" data-target="#mensajes"><i class="fas fa-arrow-alt-circle-right fa-1x"></i></button></td>
+                                          </tr>
+                                                      
+                                      </tbody>
+                                  </table>
+                              </div>
+                      </div>
+                      
+              
+                  </div>
+              </div> 
+          </div>
+      </div>
+      <!--Desplegable de las alertas-->
+      <div class="modal fade" id="alertas" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                            
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                      </div>
+                          <div class="modal-body" >
+                                  <div class="container">
+                                      <div class="row">
+                                          <div class="col-lg-12">
+                                              <div class="card text-center" style="background-color: #303136;">
+                                                <div class="card-body">
+                                                  <!--Aqui va el contenido-->
+                                                  Nombre de Proyecto
+                                                  <br><br>
+                                                  <div class="container">
+                                                      <div class="row">   
+
+                                                         <div class="table-responsive">
+                                                                  <table class="table table-bordered table-striped">
+                                                                          <thead>
+                                                                            <tr>
+                                                                              <th>Actividad</th>
+                                                                              <th>Hito</th>
+                                                                              <th>Acciones</th>
+                                                                            </tr>
+                                                                          </thead>
+                                                                          <tbody id="alertas">
+                                                                            <tr>
+                                                                              <td> Alerta 1</td>
+                                                                              <td> Descripcion de la alerta 1</td>
+                                                                              <td>
+                                                                                  <form action="gantt.html">
+                                                                                      <button class="btn btn-lg btn-dark" type="submit" >Ver</button>
+                                                                                  </form>
+                                                                              </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                              <td> Alerta 2</td>
+                                                                              <td> Descripcion de la alerta 2</td>
+                                                                              <td>
+                                                                                  <form action="gantt.html">
+                                                                                      <button class="btn btn-lg btn-dark" type="submit" >Ver</button>
+                                                                                  </form>
+                                                                              </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                              <td> Alerta 3</td>
+                                                                              <td> Descripcion de la alerta 3</td>
+                                                                              <td>
+                                                                                  <form action="gantt.html">
+                                                                                      <button class="btn btn-lg btn-dark" type="submit" >Ver</button>
+                                                                                  </form>
+                                                                              </td>
+                                                                            </tr>
+                                                                            
+                                                                          </tbody>
+                                                                  </table>
+                                                          </div> 
+                                                      </div>
+
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>   
+                                  </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+      </div>
+      <!--Desplegable de los mensajes-->
+      <div class="modal fade" id="mensajes" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                            
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                      </div>
+                          <div class="modal-body" >
+                                  <div class="container">
+                                      <div class="row">
+                                          <div class="col-lg-12">
+                                              <div class="card text-center" style="background-color: #303136;">
+                                                <div class="card-body">
+                                                  Nombre del Proyecto 
+                                                  <br><br><br>
+                                                  <!--Aqui va el contenido-->
+                                                  <div class="container">
+                                                      
+                                                      <ul class="list-unstyled">
+
+                                                          <li>Residente 1: Mensaje 1</li>
+                                                          <li>Residente 1: Mensaje 2</li>
+                                                          <li>Residente 1: Mensaje 3</li>
+                                                          <li>Residente 1: Mensaje 4</li>
+                                                          <li>Residente 1: Mensaje 5</li>
+                                                          <li>Residente 1: Mensaje 6</li>
+                                                          <li>Residente 1: Mensaje 7</li>
+                                                          <li>Residente 1: Mensaje 8</li>
+
+                                                      </ul>
+
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>   
+                                  </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+      </div>
+
+</header>
