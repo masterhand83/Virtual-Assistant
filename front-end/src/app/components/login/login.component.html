@@ -19,7 +19,8 @@
                     <div class="card-body">
                       <h3>Iniciar Sesion</h3>
                       <p>Ingresa tu correo y contraseña. </p>
-                      <form action="control.component.html">
+                      <router-outlet></router-outlet>
+                      <form action="/control">
                         <div class="form-group">
                           <input type="email" class="form-control form-control-lg" placeholder="Correo">
                         </div>
@@ -31,6 +32,7 @@
                         </div>
                         <input type="submit" value="Iniciar Sesion" class="btn btn-outline-light btn-block">
                       </form>
+                      <router-outlet></router-outlet>
                     </div>
                   </div>
                 </div>
