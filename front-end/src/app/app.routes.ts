@@ -6,7 +6,7 @@ import {ControlComponent} from '../app/components/control/control.component';
 
 const routes: Routes=[  
     {path: 'control', component: ControlComponent},
-   
+    {path: '',component:LoginComponent}
 ];
 
 @NgModule({

@@ -5,8 +5,16 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { ControlComponent } from './components/control/control.component';
 //Rutas
-import {AppRoutingModule} from '../app/app.routes';
-
+import { Route, RouterModule, Router } from "@angular/router";
+import { AppRoutingModule } from "./app.routes";
+const routes: Route[] = [
+  {
+  path: 'control', component: ControlComponent
+  },
+  {
+    path: '', component: LoginComponent
+  }
+]
 
 @NgModule({
   declarations: [
