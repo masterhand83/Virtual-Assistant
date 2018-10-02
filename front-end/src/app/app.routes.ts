@@ -3,10 +3,19 @@ import {RouterModule,Routes} from '@angular/router';
 
 import {LoginComponent} from '../app/components/login/login.component';
 import {ControlComponent} from '../app/components/control/control.component';
+import {ProjectsComponent} from '../app/components/projects/projects.component';
+import {UsersComponent} from '../app/components/users/users.component';
+import {AdmUsersComponent} from '../app/components/adm-users/adm-users.component';
+import{GanttComponent} from '../app/components/gantt/gantt.component';
 
 const routes: Routes=[  
     {path: 'control', component: ControlComponent},
-    {path: '',component:LoginComponent}
+    {path: '',component:LoginComponent},
+    {path: 'projects',component:ProjectsComponent},
+    {path: 'users',component:UsersComponent},
+    {path: 'adm-users',component:AdmUsersComponent},
+    {path: 'gantt',component:GanttComponent},
+
 ];
 
 @NgModule({

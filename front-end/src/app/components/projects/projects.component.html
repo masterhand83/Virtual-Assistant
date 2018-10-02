@@ -1,0 +1,294 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+   
+  <div class="container">
+      <a class="navbar-brand" href="#"><b>Virtual-Assistant</b></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+      </button>
+           
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          
+      
+      <ul class="navbar-nav mr-auto" align="rigth">
+          <br>
+          <a class="btn btn-outline-info d-lg-inline-block mb-3 mb-md-0 ml-md-3" href="/control">Centro de Control</a>
+          <br>
+          <a class="btn btn-outline-info d-lg-inline-block mb-3 mb-md-0 ml-md-3" href="/projects">Proyectos</a>
+          <br>
+          <a class="btn btn-outline-info d-lg-inline-block mb-3 mb-md-0 ml-md-3" href="/users">Usuarios</a>
+          <br>
+        
+      </ul>
+      </div>
+    </div>       
+</nav>
+
+<header id="home-section">
+  <div class="dark-overlay">
+      <div class="home-inner">
+
+          <div class="container">
+              <div class="row">
+                  <div class="container">
+                          <h2>Proyectos</h2>
+                          <p>Buscar proyectos por nombre o encargado. </p>  
+                          <div class="row">
+                              <div class="col-lg-10">
+                                  <input class="form-control" id="myInput" type="text" placeholder="Buscar"> 
+                              </div>
+                              <div class="col-lg-2">
+                                  <button type="button" class="btn btn-dark btn-circle" data-toggle="modal" data-target="#crearproyecto"> <i class="fas fa-plus fa-2x"></i></button>
+                              </div>
+                          </div>
+                          
+                          
+                          
+
+                          <br>
+                          <div class="table-responsive">
+                                  <table class="table table-bordered table-striped">
+                                          <thead>
+                                            <tr>
+                                              <th>Nombre</th>
+                                              <th>Residente encargado</th>
+                                              <th>Progreso</th>
+                                              <th>Acciones</th>
+                                            </tr>
+                                          </thead>
+                                          <tbody id="myTable">
+                                            <tr>
+                                              <td>Proyecto 1</td>
+                                              <td>Residente 1</td>
+                                              <td>
+                                                  <div class="progress">
+                                                      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                                                          aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width:75%">
+                                                          75%
+                                                      </div>
+                                                  </div>
+                                              </td>
+                                              <td><button class="btn btn-lg btn-dark" type="submit" data-toggle="modal" data-target="#verp">Ver Proyecto</button></td>
+                                            </tr>
+                                            <tr>
+                                              <td>Proyecto 2</td>
+                                              <td>Residente 2</td>
+                                              <td>
+                                                  <div class="progress">
+                                                      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                                                          aria-valuenow="44" aria-valuemin="0" aria-valuemax="100" style="width:44%">
+                                                          44%
+                                                      </div>
+                                                  </div>
+                                              </td>
+                                              <td><button class="btn btn-lg btn-dark" type="submit" data-toggle="modal" data-target="#verp">Ver Proyecto</button></td>
+                                            </tr>
+                                            <tr>
+                                              <td>Proyecto 3</td>
+                                              <td>Residente 3</td>
+                                              <td>
+                                                  <div class="progress">
+                                                      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                                                          aria-valuenow="52" aria-valuemin="0" aria-valuemax="100" style="width:52%">
+                                                          52%
+                                                      </div>
+                                                  </div>
+                                              </td>
+                                              <td><button class="btn btn-lg btn-dark" type="submit" data-toggle="modal" data-target="#verp">Ver Proyecto</button></td>
+                                            </tr>
+                                            
+                                          </tbody>
+                                        </table>
+                          </div>   
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</header>
+<!--Desplegable de crear proyecto-->
+<div class="modal fade" id="crearproyecto" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" >
+              <div class="container">
+                      <div class="row">
+                        <div class="col-lg-12">
+                          <div class="card text-center" style="background-color: #303136;" >
+                            <div class="card-body">
+                              <h3>Asignar Proyecto</h3>
+                              <p>Ingresa los datos y asigna un nuevo proyecto. </p>
+                              <form action="/projects">
+                                <div class="form-group">
+                                  <input type="text" class="form-control form-control-lg" placeholder="Nombre del Proyecto">
+                                </div>
+                                <div class="form-group">
+                                  <input type="text" class="form-control form-control-lg" placeholder="Descripcion">
+                                </div>
+                                <div class="form-group">
+                                  <input type="email" class="form-control form-control-lg" placeholder="Correo del Residente">
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" class="form-control form-control-lg" placeholder="Correo del Proyectista">
+                                </div>
+                                
+                                
+    
+                                <input type="submit" value="Asignar Proyecto" class="btn btn-outline-light btn-block">
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                       
+                      </div>
+              </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+<!--Desplegable de Informacion general-->
+<div class="modal fade" id="verp" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" >
+              <div class="container">
+                      <div class="row">
+                        <div class="col-lg-12">
+                          <div class="card text-center" style="background-color: #303136;" >
+                            <div class="card-body">
+                              <h3>Informacion General</h3>
+                              <br>
+                              <div class="row">
+                                  <div class="col-lg-12">
+                                      <form action="/projects">
+                                          <div class="row">
+                                              <div class="col-lg-4">
+                                                  Nombre de tienda
+                                              </div>
+                                              <div class="col-lg-8">
+                                                  <div class="form-group">
+                                                      <input type="text" class="form-control form-control-lg" placeholder="Nombre de tienda">
+                                                  </div>
+                                              </div>
+                                              <br>
+                                              <div class="col-lg-4">
+                                                      Numero de Tienda
+                                              </div>
+                                              <div class="col-lg-8">
+                                                  <div class="form-group">
+                                                      <input type="text" class="form-control form-control-lg" placeholder="Numero de Tienda">
+                                                  </div>
+                                              </div>
+                                             
+                                              <br><br>
+
+                                              <div class="col-lg-4">
+                                                      Metraje
+                                              </div>
+                                              <div class="col-lg-8">
+                                                  <div class="form-group">
+                                                      <input type="text" class="form-control form-control-lg" placeholder="Metraje">
+                                                  </div>
+                                              </div>
+                                             
+                                              <br><br>
+
+                                              <div class="col-lg-4">
+                                                  Ubicacion
+                                              </div>
+                                              <div class="col-lg-8">
+                                                  <div class="form-group">
+                                                      <input type="text" class="form-control form-control-lg" placeholder="Ubicacion">
+                                                  </div>
+                                              </div>
+                                             
+                                              <br><br>
+
+                                              <div class="col-lg-4">
+                                                  Recepcion Local
+                                              </div>
+                                              <div class="col-lg-8">
+                                                  <div class="form-group">
+                                                      <input type="date" class="form-control form-control-lg">
+                                                  </div>
+                                              </div>
+                                          
+                                             
+                                              <br><br>
+
+                                              <div class="col-lg-4">
+                                                  Pedido de Muebles
+                                              </div>
+                                              <div class="col-lg-8">
+                                                  <div class="form-group">
+                                                      <input type="date" class="form-control form-control-lg" >
+                                                  </div>
+                                              </div>
+                                             
+                                              <br><br>
+
+                                              <div class="col-lg-4">
+                                                  Fecha de apertura
+                                              </div>
+                                              <div class="col-lg-8">
+                                                  <div class="form-group">
+                                                      <input type="date" class="form-control form-control-lg" >
+                                                  </div>
+                                              </div>
+                                                 
+                                              <br><br>
+                                                  
+                                              <div class="col-lg-12">
+                                                  <button class="btn btn-block btn-dark" type="submit">Actualizar Informacion General</button>
+                                              </div>
+                                          </div>
+                                              
+                                      </form>
+                                      <br><br>
+                                  </div>
+                                  
+                                  
+                                  
+                                  <div class="col-lg-12">
+                                      <app-pdf></app-pdf>
+                                  </div>
+                                  <br><br>
+                                  <div class="col-lg-12">
+                                      <form action="/gantt">
+                                          <button class="btn btn-block btn-dark" type="submit">Ver Proceso</button>
+                                      </form>
+                                      
+                                  </div>
+
+
+                              </div>
+                              
+                              
+                            </div>
+                          </div>
+                        </div>
+                       
+                      </div>
+              </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
