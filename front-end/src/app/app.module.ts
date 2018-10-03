@@ -14,7 +14,7 @@ import { AdmUsersComponent } from './components/adm-users/adm-users.component';
 import { GanttComponent } from './components/gantt/gantt.component';
 import { PdfComponent } from './components/pdf/pdf.component';
 //¿?
-
+import { FormsModule } from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -32,8 +32,14 @@ import { PdfComponent } from './components/pdf/pdf.component';
   ],
   imports: [
     BrowserModule,
+<<<<<<< HEAD
 
     HttpClientModule
+=======
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule
+>>>>>>> 19e1b7a7156c58efa4a005d9c79a6cbecff24804
   ],
   providers: [],
   bootstrap: [AppComponent]
