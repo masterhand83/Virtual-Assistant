@@ -13,14 +13,8 @@ import { UsersComponent } from './components/users/users.component';
 import { AdmUsersComponent } from './components/adm-users/adm-users.component';
 import { GanttComponent } from './components/gantt/gantt.component';
 import { PdfComponent } from './components/pdf/pdf.component';
-const routes: Route[] = [
-  {
-  path: 'control', component: ControlComponent
-  },
-  {
-    path: '', component: LoginComponent
-  }
-]
+//¿?
+
 
 @NgModule({
   declarations: [
@@ -33,7 +27,8 @@ const routes: Route[] = [
     UsersComponent,
     AdmUsersComponent,
     GanttComponent,
-    PdfComponent
+    PdfComponent,
+    AppRoutingModule
   ],
   imports: [
     BrowserModule,
