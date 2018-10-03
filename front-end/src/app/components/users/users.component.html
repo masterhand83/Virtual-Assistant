@@ -50,33 +50,31 @@
                                             <div class="card-body">
                                               <h3>Registrar Usuarios</h3>
                                               <p>Ingresa los datos y crea un nuevo usuario. </p>
-                                              <form #userForm="ngForm"(ngSubmit)="addUser(userForm)">
+                                              <form #userForm="ngForm" (ngSubmit)="addUser(userForm)">
                                                <div class="form-group">
-                                                  <input type="text" class="form-control form-control-lg" placeholder="Nombre" name="name" #name="ngModel" >
+                                                  <input type="text" class="form-control form-control-lg" placeholder="Nombre"  name="name">
                                                 </div>                      
                                                 <div class="form-group">
-                                                  <input type="email" class="form-control form-control-lg" placeholder="Correo Electronico" name="email" #email="ngModel">
+                                                  <input type="email" class="form-control form-control-lg" placeholder="Correo Electronico"  name="email" >
                                                 </div>
                                                 <div class="form-group">
-                                                    <input type="email" class="form-control form-control-lg" placeholder="Numero de Movil" name="mobile" #mobile="ngModel" >
+                                                    <input type="email" class="form-control form-control-lg" placeholder="Numero de Movil"  name="mobile">
                                                 </div>
                                                 <div class="form-group">
-                                                    <input type="password" class="form-control form-control-lg" placeholder="Contraseña" name="password" #password="ngModel">
+                                                    <input type="password" class="form-control form-control-lg" placeholder="Contraseña"  name="password">
                                                 </div>
-                                                <div class="form-group">
-                                                    <input type="password" class="form-control form-control-lg" placeholder="Confirmar Contraseña">
-                                                </div>
+                                              
                                                 <div class="form-group">
                                                         <label for="sel1">Selecciona el tipo de usuario:</label>
-                                                        <select class="form-control" name="typeUser" #typeUser="ngModel">
+                                                        <select class="form-control"name="userType">
                                                           <option value=1>Gerente</option>
                                                           <option value=2>Residente</option>
                                                           <option value=3>Proyectista</option>
                                                         </select>
                                                 </div>
                                                 
-                    
-                                                <input type="submit" value="Registrar Usuario" class="btn btn-outline-light btn-block">
+                                                <button class="btn btn-outline-light btn-block" > Registrar Usuario</button>
+                                                <button class="btn btn-outline-light btn-block" (click)="resetForm(userForm)"> Limpiar </button>
                                               </form>
                                             </div>
                                           </div>
