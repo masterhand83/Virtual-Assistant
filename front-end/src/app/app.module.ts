@@ -27,8 +27,7 @@ import { FormsModule } from "@angular/forms";
     UsersComponent,
     AdmUsersComponent,
     GanttComponent,
-    PdfComponent,
-    AppRoutingModule
+    PdfComponent
   ],
   imports: [
     BrowserModule,
