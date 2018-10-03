@@ -16,6 +16,7 @@ import { PdfComponent } from './components/pdf/pdf.component';
 //¿?
 import { FormsModule } from "@angular/forms";
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,14 +33,11 @@ import { FormsModule } from "@angular/forms";
   ],
   imports: [
     BrowserModule,
-<<<<<<< HEAD
-
-    HttpClientModule
-=======
+    HttpClientModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
->>>>>>> 19e1b7a7156c58efa4a005d9c79a6cbecff24804
+    FormsModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
