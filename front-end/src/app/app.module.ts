@@ -32,17 +32,11 @@ import { FormsModule } from "@angular/forms";
   ],
   imports: [
     BrowserModule,
-<<<<<<< HEAD
-    AppRoutingModule,
-    HttpClientModule,
-    FormsModule
-=======
     HttpClientModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
     
->>>>>>> 1c551f48d5586cbb0030a18002b48d2eb9c7193e
   ],
   providers: [],
   bootstrap: [AppComponent]
