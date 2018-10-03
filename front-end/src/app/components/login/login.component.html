@@ -18,14 +18,14 @@
                 <div class="card-body">
                   <h3>Iniciar Sesion</h3>
                   <p>Ingresa tu correo y contraseña.  </p>
-                  <form #loginForm="ngForm" name="Formula">
+                  <form #loginForm="ngForm" name="Formula" (submit)="login(loginForm)" >
                     <div class="form-group">
-                      <input type="email" class="form-control form-control-lg" placeholder="Correo" required
+                      <input #mail type="email" class="form-control form-control-lg" placeholder="Correo" required
                       [(ngModel)]="email" name="email">
                     </div>
                     
                     <div class="form-group">
-                      <input type="password" class="form-control form-control-lg" placeholder="contraseña" required
+                      <input #pass type="password" class="form-control form-control-lg" placeholder="contraseña" required
                       (keyup)="checkPasses()" [(ngModel)]="contra" name="contra"> 
                     </div>
                     <div class="form-group">
