@@ -15,12 +15,13 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
   checkPasses(){
-    console.log('proceso')
     if (this.contra != this.recontra || (this.contra.length <= 0&&this.recontra.length<=0)) {
       this.boton = true;
     }else{
       this.boton = false;
     }
-    console.log('desactivado',this.boton);
+  }
+  login(){
+    
   }
 }
