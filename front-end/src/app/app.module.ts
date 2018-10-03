@@ -28,11 +28,11 @@ import { PdfComponent } from './components/pdf/pdf.component';
     AdmUsersComponent,
     GanttComponent,
     PdfComponent,
-    AppRoutingModule
+   
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+
     HttpClientModule
   ],
   providers: [],
