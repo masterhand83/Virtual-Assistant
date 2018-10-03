@@ -50,28 +50,28 @@
                                             <div class="card-body">
                                               <h3>Registrar Usuarios</h3>
                                               <p>Ingresa los datos y crea un nuevo usuario. </p>
-                                              <form action="usuarios.html">
+                                              <form #userForm="ngForm"(ngSubmit)="addUser(userForm)">
                                                <div class="form-group">
-                                                  <input type="text" class="form-control form-control-lg" placeholder="Nombre">
+                                                  <input type="text" class="form-control form-control-lg" placeholder="Nombre" name="name" #name="ngModel" >
                                                 </div>                      
                                                 <div class="form-group">
-                                                  <input type="email" class="form-control form-control-lg" placeholder="Correo Electronico">
+                                                  <input type="email" class="form-control form-control-lg" placeholder="Correo Electronico" name="email" #email="ngModel">
                                                 </div>
                                                 <div class="form-group">
-                                                    <input type="email" class="form-control form-control-lg" placeholder="Numero de Movil">
+                                                    <input type="email" class="form-control form-control-lg" placeholder="Numero de Movil" name="mobile" #mobile="ngModel" >
                                                 </div>
                                                 <div class="form-group">
-                                                    <input type="password" class="form-control form-control-lg" placeholder="Contraseña">
+                                                    <input type="password" class="form-control form-control-lg" placeholder="Contraseña" name="password" #password="ngModel">
                                                 </div>
                                                 <div class="form-group">
                                                     <input type="password" class="form-control form-control-lg" placeholder="Confirmar Contraseña">
                                                 </div>
                                                 <div class="form-group">
                                                         <label for="sel1">Selecciona el tipo de usuario:</label>
-                                                        <select class="form-control" id="sel1">
-                                                          <option>Gerente</option>
-                                                          <option>Residente</option>
-                                                          <option>Proyectista</option>
+                                                        <select class="form-control" name="typeUser" #typeUser="ngModel">
+                                                          <option value=1>Gerente</option>
+                                                          <option value=2>Residente</option>
+                                                          <option value=3>Proyectista</option>
                                                         </select>
                                                 </div>
                                                 
