@@ -12,12 +12,17 @@ import {User} from '../../models/User';
 export class UsersComponent implements OnInit {
 
   constructor(private userService: UsersService) { }
-
+  name:string;
+  email:string;
+  mobile:string;
+  password:string;
+  userType:string;
   ngOnInit() {
   }
 
   addUser(form: NgForm){
     
+
     this.userService.postUser(form.value)
     .subscribe(res=>{
       console.log(res);
