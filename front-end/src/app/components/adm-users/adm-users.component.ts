@@ -3,7 +3,7 @@ import {UsersService} from '../../services/users.service';
 import {User} from '../../models/User';
 import {NgForm} from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-
+declare var M: any;
 @Component({
   selector: 'app-adm-users',
   templateUrl: './adm-users.component.html',
@@ -24,6 +24,19 @@ export class AdmUsersComponent implements OnInit {
       this.userService.user=res as User[];
       console.log(res);
     });
+
+  }
+
+  deleteUser(_id:string){
+    if(confirm('¿Estas seguro de eliminarlo?')){
+      this.userService.deleteUser(_id)
+      .subscribe(res=>{
+        this.getUsers();
+        alert("Eliminado Satisfactoriamente");
+      });
+    }
+
+    
 
   }
 

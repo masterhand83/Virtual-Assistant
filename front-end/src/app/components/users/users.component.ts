@@ -3,7 +3,7 @@ import {NgForm} from '@angular/forms';
 import {UsersService} from '../../services/users.service';
 import {User} from '../../models/User';
 import { getDefaultService } from '../../../../node_modules/@types/selenium-webdriver/chrome';
-
+declare var M: any;
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
@@ -29,6 +29,8 @@ export class UsersComponent implements OnInit {
     .subscribe(res=>{
       console.log(res);   
       form.reset();
+      alert("Usuario guardado exitosamente");
+      
     });
 
   }
