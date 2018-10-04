@@ -1,0 +1,27 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+   
+  <div class="container">
+      <a class="navbar-brand" href="#"><b>Virtual-Assistant</b></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+      </button>
+           
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          
+      
+      <ul class="navbar-nav mr-auto" align="rigth">
+          <br>
+          <a class="btn btn-outline-info d-lg-inline-block mb-3 mb-md-0 ml-md-3" [routerLink]="['/control']" >Centro de Control</a>
+          <br>
+          <a class="btn btn-outline-info d-lg-inline-block mb-3 mb-md-0 ml-md-3"  [routerLink]="['/projects']">Proyectos</a>
+          <br>
+          <a class="btn btn-outline-info d-lg-inline-block mb-3 mb-md-0 ml-md-3" [routerLink]="['/users']">Usuarios</a>
+          <br>
+        
+      </ul>
+      </div>
+    </div>       
+</nav>
+
+<router-outlet>
+</router-outlet>

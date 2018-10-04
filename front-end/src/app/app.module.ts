@@ -15,6 +15,7 @@ import { GanttComponent } from './components/gantt/gantt.component';
 import { PdfComponent } from './components/pdf/pdf.component';
 //¿?
 import { FormsModule } from "@angular/forms";
+import { HomeComponent } from './components/home/home.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { FormsModule } from "@angular/forms";
     UsersComponent,
     AdmUsersComponent,
     GanttComponent,
-    PdfComponent,  
+    PdfComponent,
+    HomeComponent,  
   ],
   imports: [
     BrowserModule,

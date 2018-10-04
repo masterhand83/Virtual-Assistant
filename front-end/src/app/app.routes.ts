@@ -7,6 +7,7 @@ import {ProjectsComponent} from '../app/components/projects/projects.component';
 import {UsersComponent} from '../app/components/users/users.component';
 import {AdmUsersComponent} from '../app/components/adm-users/adm-users.component';
 import{GanttComponent} from '../app/components/gantt/gantt.component';
+import { HomeComponent } from './components/home/home.component';
 
 const routes: Routes=[  
     {path: 'control', component: ControlComponent},
@@ -15,6 +16,7 @@ const routes: Routes=[
     {path: 'users',component:UsersComponent},
     {path: 'adm-users',component:AdmUsersComponent},
     {path: 'gantt',component:GanttComponent},
+    {path:'home',component:HomeComponent}
 
 ];
 
