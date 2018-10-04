@@ -20,15 +20,25 @@ export class LoginComponent implements OnInit {
     if (localStorage.getItem('UserID') != null) {
       this.router.navigate(['control']);
     }
+    this.checkPasses();
   }
+  //---------------------------------
   checkPasses() {
-    if (this.contra != this.recontra || (this.contra.length <= 0 && this.recontra.length <= 0)
-      || (this.email.length <= 0) || (this.email === '')) {
+    console.log('CHECKPASSES()')
+    console.log(this.contra,"==?",this.recontra);
+    if ((this.contra.length <= 0 && this.recontra.length <= 0)||(this.email.length <= 0) || (this.email === '')) {
+      console.log('vacio');
       this.boton = true;
-    } else {
+    }
+    else if(this.contra !== this.recontra){
+      console.log('incorrecto');
+      this.boton = true;
+    }else{
+      console.log('correcto',this.contra,"==",this.recontra)
       this.boton = false;
     }
   }
+  //------------------
   login(form: NgForm) {
     console.log(form.value);
     this.userManager.loginUser(form.value.email, form.value.contra)
@@ -38,8 +48,8 @@ export class LoginComponent implements OnInit {
         if (power.length > 0) {
           console.log('USUARIO EXISTENTE');
           console.log(res[0]);
-          localStorage.setItem('UserID',res[0]._id);
-          console.log('cookie',localStorage.getItem('UserID'));
+          localStorage.setItem('UserID', res[0]._id);
+          console.log('cookie', localStorage.getItem('UserID'));
           this.router.navigate(['control']);
         } else {
           console.log('USUARIO NO EXISTENTE');
