@@ -73,15 +73,15 @@
                               <div class="form-group">
                                 <label for="sel1">Selecciona el tipo de usuario:</label>
                                 <select class="form-control" name="userType" #TipoUsuario [(ngModel)]="userType">
-                                  <option value=1>Gerente</option>
-                                  <option value=2>Residente</option>
-                                  <option value=3>Proyectista</option>
+                                  <option value="1">Gerente</option>
+                                  <option value="2">Residente</option>
+                                  <option value="3">Proyectista</option>
                                 </select>
                               </div>
                               
                               <input type="submit" class="btn btn-outline-light btn-block" value="Registrar Usuario">
-                              <button class="btn btn-outline-light btn-block" (click)="resetForm(userForm)"> Limpiar
-                              </button>
+                              <input type="button" class="btn btn-outline-light btn-block" (click)="resetForm(userForm)" value="Limpiar"> 
+                              
                             </form>
                           </div>
                         </div>

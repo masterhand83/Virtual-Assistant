@@ -7,6 +7,7 @@ import { User } from "../models/User";
 })
 export class UsersService {
   readonly URL_API = 'http://localhost:3000/api/users/user';
+  user: User[];
   constructor(private http: HttpClient) {
       
   }
@@ -19,4 +20,9 @@ export class UsersService {
   postUser(User: User){
     return this.http.post(this.URL_API,User);
   }
+
+  getUser(){
+    return this.http.get(this.URL_API);
+  }
+
 }

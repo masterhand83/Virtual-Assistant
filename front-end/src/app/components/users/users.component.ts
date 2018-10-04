@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {UsersService} from '../../services/users.service';
 import {User} from '../../models/User';
+import { getDefaultService } from '../../../../node_modules/@types/selenium-webdriver/chrome';
 
 @Component({
   selector: 'app-users',
@@ -18,6 +19,7 @@ export class UsersComponent implements OnInit {
   password:string;
   userType:string;
   ngOnInit() {
+    
   }
 
   addUser(form: NgForm){
@@ -25,14 +27,15 @@ export class UsersComponent implements OnInit {
 
     this.userService.postUser(form.value)
     .subscribe(res=>{
-      console.log(res);
+      console.log(res);   
+      form.reset();
     });
 
   }
 
   resetForm(form?: NgForm){
     if(form){
-      form.reset();    
+      form.reset();
     }
   }
  

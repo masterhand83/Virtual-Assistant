@@ -46,30 +46,14 @@
                                             </tr>
                                           </thead>
                                           <tbody id="myTable">
-                                            <tr>
-                                              <td>Residente 1</td>
-                                              <td>res1@gmail.com</td>
-                                              <td>4</td>
+                                            <tr *ngFor="let user of userService.user">
+                                              <td>{{user.name}}</td>
+                                              <td>{{user.email}}</td>
+                                              <td>{{user.projects.length}}</td>
                                               <td><button class="btn btn-lg btn-dark" type="submit" data-toggle="modal" data-target="#acciones"><i class="fas fa-archive fa-1x"></i></button>
                                                   <button class="btn btn-lg btn-dark"><i class="fas fa-trash"></i></button></td>
                                             </tr>
-                                            <tr>
-                                                <td>Residente 2</td>
-                                                <td>res2@hotmail.com</td>
-                                                <td>6</td>
-                                                <td><button class="btn btn-lg btn-dark" type="submit" data-toggle="modal" data-target="#acciones"><i class="fas fa-archive fa-1x"></i></button>
-                                                  <button class="btn btn-lg btn-dark"><i class="fas fa-trash"></i></button>  </td>
-                                            </tr>
-                                            <tr>
-                                              
-                                            </tr>
-                                            <tr>
-                                                <td>Residente 3</td>
-                                                <td>res2@outlook.com</td>
-                                                <td>7</td>
-                                                <td><button class="btn btn-lg btn-dark" type="submit" data-toggle="modal" data-target="#acciones" ><i class="fas fa-archive fa-1x"></i></button>
-                                              <button class="btn btn-lg btn-dark"><i class="fas fa-trash"></i></button></td>
-                                            </tr>
+                                            
                                           </tbody>
                                         </table>
                           </div>   
