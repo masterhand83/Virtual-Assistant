@@ -3,6 +3,7 @@ import {UsersService} from '../../services/users.service';
 import {User} from '../../models/User';
 import {NgForm} from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { SessionService } from '../../services/session.service';
 declare var M: any;
 
 
@@ -14,7 +15,7 @@ declare var M: any;
 })
 export class AdmUsersComponent implements OnInit {
   
-  constructor(private userService: UsersService) { 
+  constructor(private userService: UsersService,private sess:SessionService) { 
     
   }
   name2:string;
@@ -22,9 +23,12 @@ export class AdmUsersComponent implements OnInit {
 
 
   ngOnInit() {
+    this.sess.validateSession();
     this.getUsers();
   }
-
+  loggout(){
+    this.sess.deleteSession();
+  }
   getUsers(){
     this.userService.getUser()
     .subscribe(res=>{

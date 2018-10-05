@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SessionService } from '../../services/session.service';
 
 @Component({
   selector: 'app-projects',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProjectsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private sess:SessionService) { }
 
   ngOnInit() {
+    this.sess.validateSession();
+  }
+  loggout(){
+    this.sess.deleteSession();
   }
 
 }
