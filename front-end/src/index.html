@@ -31,17 +31,7 @@
 
     <script src="/assets/js/jquery.js"></script>
     <script src="/assets/js/bootstrap.min.js"></script>
-    <!--Esta es para el buscador en tiempo real-->
-    <script>
-        $(document).ready(function () {
-            $("#myInput").on("keyup", function () {
-                var value = $(this).val().toLowerCase();
-                $("#myTable tr").filter(function () {
-                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-                });
-            });
-        });
-    </script>
+   
 
 
     <!--Estas son para el gantt-->
@@ -109,6 +99,18 @@
         function openR() {
             alert("Hola Hijos de puta");
         }
+    </script>
+
+     <!--Esta es para el buscador en tiempo real-->
+     <script>
+            $(document).ready(function(){
+              $("#myInput").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function() {
+                  $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+              });
+            });
     </script>
 
 
