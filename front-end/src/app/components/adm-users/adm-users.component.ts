@@ -4,6 +4,8 @@ import {User} from '../../models/User';
 import {NgForm} from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 declare var M: any;
+
+
 @Component({
   selector: 'app-adm-users',
   templateUrl: './adm-users.component.html',
@@ -12,7 +14,12 @@ declare var M: any;
 })
 export class AdmUsersComponent implements OnInit {
   
-  constructor(private userService: UsersService) { }
+  constructor(private userService: UsersService) { 
+    
+  }
+  name2:string;
+  id2:string;
+
 
   ngOnInit() {
     this.getUsers();
@@ -24,6 +31,7 @@ export class AdmUsersComponent implements OnInit {
       this.userService.user=res as User[];
       console.log(res);
     });
+    
 
   }
 
@@ -36,8 +44,25 @@ export class AdmUsersComponent implements OnInit {
       });
     }
 
-    
+  }
 
+  updateUser(form: NgForm){
+   
+    console.log(form.value);
+    this.userService.putUser(form.value._id,form.value.email,form.value.mobile,form.value.password)
+    .subscribe(res=>{
+      console.log(res);
+      this.getUsers();
+      alert("Actualizado Satisfactoriamente");
+    });
+
+  }
+
+  prueba(name2:string,id2:string){
+   
+    this.id2=id2;
+    this.name2=name2;
+    
   }
 
 }
