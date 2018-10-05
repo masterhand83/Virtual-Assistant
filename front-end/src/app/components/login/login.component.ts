@@ -3,6 +3,7 @@ import { User } from './user';
 import { NgForm } from '@angular/forms';
 import { UsersService } from '../../services/users.service';
 import { Router } from '@angular/router';
+import { SessionService } from '../../services/session.service';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,7 @@ export class LoginComponent implements OnInit {
   contra: string = '';
   recontra: string = '';
   boton: boolean = true;
-  constructor(private userManager: UsersService, private router: Router) { }
+  constructor(private userManager: UsersService, private router: Router, private sess: SessionService) { }
   ngOnInit() {
     if (localStorage.getItem('UserID') != null) {
       this.router.navigate(['control']);
@@ -46,10 +47,7 @@ export class LoginComponent implements OnInit {
         let power: any = [];
         power = res;
         if (power.length > 0) {
-          console.log('USUARIO EXISTENTE');
-          console.log(res[0]);
-          localStorage.setItem('UserID', res[0]._id);
-          console.log('cookie', localStorage.getItem('UserID'));
+          this.sess.createSession(res[0]);
           this.router.navigate(['control']);
         } else {
           console.log('USUARIO NO EXISTENTE');

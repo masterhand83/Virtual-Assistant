@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { SessionService } from '../../services/session.service';
 
 @Component({
   selector: 'app-control',
@@ -8,15 +9,12 @@ import { Router } from '@angular/router';
 })
 export class ControlComponent implements OnInit {
 
-  constructor(private router:Router) { }
+  constructor(private router:Router,private sess:SessionService) { }
 
   ngOnInit() {
-    if (localStorage.getItem('UserID') == null) {
-      this.router.navigate(['']);
-    }
+    this.sess.validateSession();
   }
   loggout(){
-    localStorage.removeItem('UserID');
-    this.router.navigate(['']);
+    this.sess.deleteSession();
   }
 }
