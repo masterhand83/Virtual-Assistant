@@ -46,7 +46,7 @@
                                             </tr>
                                           </thead>
                                           <tbody id="myTable">
-                                            <tr *ngFor="let user of userService.user">
+                                            <tr *ngFor="let user of this.userService.user">
                                               <td>{{user.name}}</td>
                                               <td>{{user.email}}</td>
                                               <td>{{user.projects.length}}</td>
