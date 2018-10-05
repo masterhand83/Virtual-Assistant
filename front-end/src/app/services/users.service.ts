@@ -27,5 +27,14 @@ export class UsersService {
   deleteUser(_id: string){
     return this.http.delete(this.URL_API +`/${_id}`);
   }
+  putUser(_id:string , email:string ,mobile:number,password:string){
+
+    return this.http.put(this.URL_API + `/${_id}`,{
+      _id:_id,
+      email:email,
+      mobile:mobile,
+      password:password
+    });
+  }
 
 }
