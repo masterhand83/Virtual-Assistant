@@ -3,7 +3,7 @@ import {NgForm} from '@angular/forms';
 import {UsersService} from '../../services/users.service';
 import {User} from '../../models/User';
 import { getDefaultService } from '../../../../node_modules/@types/selenium-webdriver/chrome';
-import { Session } from 'inspector';
+
 import { SessionService } from '../../services/session.service';
 declare var M: any;
 @Component({

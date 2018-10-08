@@ -2,185 +2,135 @@
 <!--
     Seria mejor hacer este como un componente
     Desplegable de pdf-->
-    <div class="modal fade" id="pdf" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-              <div class="modal-header">
-                
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body" >
-                      <div class="container">
-                          <div class="row">
-                              <div class="col-lg-12">
-                                  <div class="card text-center" style="background-color: #303136;">
-                                    <div class="card-body">
-                                      <!--Aqui va el contenido-->
-                                      <div class="container">
-                                          
-                                          <button class="btn btn-block btn-dark" type="submit" data-toggle="modal" data-target="#planos"  data-dismiss="modal" aria-label="Close">Planos Arquitectonicos</button> <br>
-                                          <button class="btn btn-block btn-dark" type="submit" data-toggle="modal" data-target="#presupuestos"  data-dismiss="modal" aria-label="Close">Presupuestos</button> <br>
-                                          <button class="btn btn-block btn-dark" type="submit" data-toggle="modal" data-target="#contratos"  data-dismiss="modal" aria-label="Close">Contratos</button> <br>
-                                          
-                                      </div>
+<!--Desplegable de PDF-->
+<div class="modal fade" id="pdf" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+            
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body" >
+                  <div class="container">
+                      <div class="row">
+                          <div class="col-lg-12">
+                              <div class="card text-center" style="background-color: #303136;">
+                                <div class="card-body">
+                                  <!--Aqui va el contenido-->
+                                  <div class="container">
+                                      
+                                      <button class="btn btn-block btn-dark" type="submit" data-toggle="modal" data-target="#planos" data-dismiss="modal" aria-label="Close">Planos Arquitectonicos</button> <br>
+                                      
+                                      <button class="btn btn-block btn-dark" type="submit" data-toggle="modal" data-target="#contratos"  data-dismiss="modal" aria-label="Close">Contratos</button> <br>
+                                      
                                   </div>
                               </div>
-                          </div>   
-                      </div>
-              </div>
+                          </div>
+                      </div>   
+                  </div>
           </div>
-       </div>
-  </div>
-  </div>
-  <!--Desplegable de planos-->
-  <div class="modal fade" id="planos" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-              <div class="modal-header">
-                
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body" >
-                      <div class="container">
-                          <div class="row">
-                              <div class="col-lg-12">
-                                  <div class="card text-center" style="background-color: #303136;">
-                                    <div class="card-body">
-                                      <!--Aqui va el contenido-->
-                                      <div class="container">
-                                          
-                                              <div class="table-responsive">
-                                                      <table class="table table-bordered table-striped">
-                                                              <thead>
-                                                                <tr>
-                                                                  <th>Documento</th>
-                                                                  <th>Acciones</th>
-                                                                  
-                                                                </tr>
-                                                              </thead>
-                                                              <tbody id="planos">
-                                                                <tr>
-                                                                  <td>Plano 1</td>
-                                                                  <td><button class="btn btn-lg btn-dark" ><i class="fas fa-minus fa-1x"></i></button></td>
-                                                                </tr>
-                                                                
-                                                              </tbody>
-                                                      </table>
-                                              </div>
-                                              <button class="btn btn-block btn-dark" > Agregar Documento</button> 
-                                          
-                                      </div>
+      </div>
+   </div>
+</div>
+</div>
+<!--Desplegable de planos-->
+<div class="modal fade" id="planos" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+            
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body" >
+                  <div class="container">
+                      <div class="row">
+                          <div class="col-lg-12">
+                              <div class="card text-center" style="background-color: #303136;">
+                                <div class="card-body">
+                                  <!--Aqui va el contenido-->
+                                  <div class="container">
+                                      
+                                          <div class="table-responsive">
+                                                  <table class="table table-bordered table-striped">
+                                                          <thead>
+                                                            <tr>
+                                                              <th>Documento</th>
+                                                              <th>Acciones</th>
+                                                              
+                                                            </tr>
+                                                          </thead>
+                                                          <tbody id="planos">
+                                                            <tr>
+                                                              <td>Plano 1</td>
+                                                              <td><button class="btn btn-lg btn-dark" ><i class="far fa-edit"></i></button></td>
+                                                            </tr>
+                                                            
+                                                          </tbody>
+                                                  </table>
+                                          </div>
+                                          <button class="btn btn-block btn-dark" > Agregar Documento</button> 
+                                      
                                   </div>
                               </div>
-                          </div>   
-                      </div>
-              </div>
+                          </div>
+                      </div>   
+                  </div>
           </div>
-       </div>
-  </div>
-  </div>
-  <!--Desplagable de presupuestos-->
-  <div class="modal fade" id="presupuestos" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-              <div class="modal-header">
-                
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body" >
-                      <div class="container">
-                          <div class="row">
-                              <div class="col-lg-12">
-                                  <div class="card text-center" style="background-color: #303136;">
-                                    <div class="card-body">
-                                      <!--Aqui va el contenido-->
-                                      <div class="container">
-                                          
-                                              <div class="table-responsive">
-                                                      <table class="table table-bordered table-striped">
-                                                              <thead>
-                                                                <tr>
-                                                                  <th>Documento</th>
-                                                                  <th>Acciones</th>
-                                                                  
-                                                                </tr>
-                                                              </thead>
-                                                              <tbody id="presuestos">
-                                                                <tr>
-                                                                  <td>Presupuesto 1</td>
-                                                                  <td><button class="btn btn-lg btn-dark"><i class="fas fa-minus fa-1x"></i></button></td>
-                                                                </tr>
-                                                                
-                                                              </tbody>
-                                                      </table>
-                                              </div>
-                                              <button class="btn btn-block btn-dark" > Agregar Documento</button>
-                                          
-                                      </div>
+      </div>
+   </div>
+</div>
+</div>
+
+<!--Desplagable de contratos-->
+<div class="modal fade" id="contratos" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+            
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body" >
+                  <div class="container">
+                      <div class="row">
+                          <div class="col-lg-12">
+                              <div class="card text-center" style="background-color: #303136;">
+                                <div class="card-body">
+                                  <!--Aqui va el contenido-->
+                                  <div class="container">
+                                      
+                                          <div class="table-responsive">
+                                                  <table class="table table-bordered table-striped">
+                                                          <thead>
+                                                            <tr>
+                                                              <th>Documento</th>
+                                                              <th>Acciones</th>
+                                                              
+                                                            </tr>
+                                                          </thead>
+                                                          <tbody id="contrato">
+                                                            <tr>
+                                                              <td>Contrato 1</td>
+                                                              <td><button class="btn btn-lg btn-dark"><i class="far fa-edit"></i></button></td>
+                                                            </tr>
+                                                            
+                                                          </tbody>
+                                                  </table>
+                                          </div>
+                                          <button class="btn btn-block btn-dark"> Agregar Documento</button>
+                                      
                                   </div>
                               </div>
-                          </div>   
-                      </div>
-              </div>
+                          </div>
+                      </div>   
+                  </div>
           </div>
-       </div>
-  </div>
-  </div>
-  <!--Desplagable de contratos-->
-  <div class="modal fade" id="contratos" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-              <div class="modal-header">
-                
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body" >
-                      <div class="container">
-                          <div class="row">
-                              <div class="col-lg-12">
-                                  <div class="card text-center" style="background-color: #303136;">
-                                    <div class="card-body">
-                                      <!--Aqui va el contenido-->
-                                      <div class="container">
-                                          
-                                              <div class="table-responsive">
-                                                      <table class="table table-bordered table-striped">
-                                                              <thead>
-                                                                <tr>
-                                                                  <th>Documento</th>
-                                                                  <th>Acciones</th>
-                                                                  
-                                                                </tr>
-                                                              </thead>
-                                                              <tbody id="contrato">
-                                                                <tr>
-                                                                  <td>Contrato 1</td>
-                                                                  <td><button class="btn btn-lg btn-dark"><i class="fas fa-minus fa-1x"></i></button></td>
-                                                                </tr>
-                                                                
-                                                              </tbody>
-                                                      </table>
-                                              </div>
-                                              <button class="btn btn-block btn-dark"> Agregar Documento</button>
-                                          
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>   
-                      </div>
-              </div>
-          </div>
-       </div>
-  </div>
-  
-  
-  
-  </div>
+      </div>
+   </div>
+</div>
+</div>
