@@ -12,7 +12,7 @@ import { ProjectsComponent } from './components/projects/projects.component';
 import { UsersComponent } from './components/users/users.component';
 import { AdmUsersComponent } from './components/adm-users/adm-users.component';
 import { GanttComponent } from './components/gantt/gantt.component';
-import { PdfComponent } from './components/pdf/pdf.component';
+
 //¿?
 import { FormsModule } from "@angular/forms";
 import { HomeComponent } from './components/home/home.component';
@@ -29,7 +29,6 @@ import { HomeComponent } from './components/home/home.component';
     UsersComponent,
     AdmUsersComponent,
     GanttComponent,
-    PdfComponent,
     HomeComponent,  
   ],
   imports: [

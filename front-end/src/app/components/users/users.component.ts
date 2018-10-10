@@ -21,7 +21,7 @@ export class UsersComponent implements OnInit {
   password:string;
   userType:string;
   ngOnInit() {
-    this.sess.validateSession();
+    //this.sess.validateSession();
   }
 
   addUser(form: NgForm){
