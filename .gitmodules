@@ -2,3 +2,6 @@
 [submodule "back-end"]
 	path = back-end
 	url = https://github.com/Reverse117/developing-db.git
+[submodule "BackEnd"]
+	path = BackEnd
+	url = https://github.com/Reverse117/developing-db.git
