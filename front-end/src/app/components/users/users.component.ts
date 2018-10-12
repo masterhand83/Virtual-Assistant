@@ -5,6 +5,7 @@ import {User} from '../../models/User';
 import { getDefaultService } from '../../../../node_modules/@types/selenium-webdriver/chrome';
 
 import { SessionService } from '../../services/session.service';
+import { TouchSequence } from '../../../../node_modules/@types/selenium-webdriver';
 declare var M: any;
 @Component({
   selector: 'app-users',
@@ -20,8 +21,12 @@ export class UsersComponent implements OnInit {
   mobile:string;
   password:string;
   userType:string;
+  
+  
   ngOnInit() {
-    //this.sess.validateSession();
+    this.sess.validateSession();
+    this.getUserType();
+    
   }
 
   addUser(form: NgForm){
@@ -29,7 +34,8 @@ export class UsersComponent implements OnInit {
 
     this.userService.postUser(form.value)
     .subscribe(res=>{
-      console.log(res);   
+      console.log(res); 
+        
       form.reset();
       alert("Usuario guardado exitosamente");
       
@@ -44,7 +50,20 @@ export class UsersComponent implements OnInit {
       form.reset();
     }
   }
- 
+  
+  key:string;
+  userTypeBoolean:boolean;
+  getUserType(){
+    this.key="UserType";
+    this.userType=this.sess.getFromSession(this.key);
+    if(this.userType=="1"){
+      this.userTypeBoolean=true;
+    }
+    else{
+      this.userTypeBoolean=false;
+    }
+    console.log(this.userType);
+  }
 
 
 }

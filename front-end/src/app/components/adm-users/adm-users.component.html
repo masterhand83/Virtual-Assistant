@@ -1,277 +1,320 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-   
-  <div class="container">
-      <a class="navbar-brand" href="#"><b>Virtual-Assistant</b></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-      </button>
-           
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          
-      
-      <ul class="navbar-nav mr-auto" align="rigth">
-          <br>
-          <a class="btn btn-outline-info d-lg-inline-block mb-3 mb-md-0 ml-md-3" href="/control">Centro de Control</a>
-          <br>
-          <a class="btn btn-outline-info d-lg-inline-block mb-3 mb-md-0 ml-md-3" href="/projects">Proyectos</a>
-          <br>
-          <a class="btn btn-outline-info d-lg-inline-block mb-3 mb-md-0 ml-md-3" href="/users">Usuarios</a>
-          <br>
-          <a class="btn btn-outline-danger d-lg-inline-block mb-3 mb-md-0 ml-md-3" (click)="loggout()">Cerrar sesion</a>
-      </ul>
-      </div>
-    </div>       
+
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <b>Virtual-Assistant</b>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+
+            <ul class="navbar-nav mr-auto" align="rigth">
+                <br>
+                <a class="btn btn-outline-info d-lg-inline-block mb-3 mb-md-0 ml-md-3" href="/control">Centro de Control</a>
+                <br>
+                <a class="btn btn-outline-info d-lg-inline-block mb-3 mb-md-0 ml-md-3" href="/projects">Proyectos</a>
+                <br>
+                <a class="btn btn-outline-info d-lg-inline-block mb-3 mb-md-0 ml-md-3" href="/users">Usuarios</a>
+                <br>
+                <a class="btn btn-outline-danger d-lg-inline-block mb-3 mb-md-0 ml-md-3" (click)="loggout()">Cerrar sesion</a>
+            </ul>
+        </div>
+    </div>
 </nav>
 
 
 <header id="home-section">
-  <div class="dark-overlay">
-      <div class="home-inner">
+    <div class="dark-overlay">
+        <div class="home-inner">
 
-          <div class="container">
-              <div class="row">
-                  <div class="container">
-                          <h2>Residentes/Proyectistas</h2>
-                          <p>Buscar Residentes/Proyectistas por nombre, correo o proyectos activos. </p>  
-                          <input class="form-control" id="myInput" type="text" placeholder="Buscar">
-                          <br>
-                          <div class="table-responsive">
-                                  <table class="table table-bordered table-striped">
-                                          <thead>
-                                            <tr>
-                                              <th>Nombre</th>
-                                              <th>Correo</th>
-                                              <th>Proyectos Activos</th>
-                                              <th colspan="2">Acciones</th>
-                                            </tr>
-                                          </thead>
-                                          <tbody id="myTable">
-                                            <tr *ngFor="let user of this.userService.user">
-                                              <td>{{user.name}}</td>
-                                              <td>{{user.email}}</td>
-                                              <td>{{user.projects.length}}</td>
-                                              <td>
-                                                <button (click)="prueba(user.name,user._id)" class="btn btn-lg btn-dark" type="button"  data-toggle="modal" data-target="#acciones"><i class="fas fa-archive fa-1x"></i></button>
-                                              </td>
-                                              <td>
-                                                <button class="btn btn-lg btn-dark" type="button" (click)="deleteUser(user._id)" ><i class="fas fa-trash fa-1x"></i></button>
-                                              </td>
-                                             
-                                            </tr>
-                                            
-                                          </tbody>
-                                        </table>
-                          </div>   
-                  </div>
-              </div>
-          </div>
+            <div class="container">
+                <div class="row">
+                    <div class="container">
+                        <h2>Residentes/Proyectistas</h2>
+                        <p>Buscar Residentes/Proyectistas por nombre, correo o proyectos activos. </p>
+                        <input class="form-control" id="myInput" type="text" placeholder="Buscar">
+                        <br>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Nombre</th>
+                                        <th>Correo</th>
+                                        <th>Proyectos Activos</th>
+                                        <th colspan="2">Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="myTable">
+                                    <tr *ngFor="let user of this.userService.user">
+                                        <td>{{user.name}}</td>
+                                        <td>{{user.email}}</td>
+                                        <td>{{user.projects.length}}</td>
+                                        <td>
+                                            <button (click)="prueba(user.name,user._id)" class="btn btn-lg btn-dark" type="button" data-toggle="modal" data-target="#acciones">
+                                                <i class="fas fa-archive fa-1x"></i>
+                                            </button>
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-lg btn-dark" type="button" (click)="deleteUser(user._id)">
+                                                <i class="fas fa-trash fa-1x"></i>
+                                            </button>
+                                        </td>
 
-          <!--Desplegable de proyectos por residente-->
+                                    </tr>
 
-          <div class="modal fade" id="acciones" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-              <div class="modal-dialog modal-dialog-centered" role="document">
-                  <div class="modal-content">
-                      <div class="modal-header">
-                      
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
-                      <div class="modal-body" >
-                              <div class="container">
-                                      <div class="row">
-                                        <div class="col-lg-12">
-                                          <div class="card text-center" style="background-color: #303136;">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Desplegable de proyectos por residente-->
+
+            <div class="modal fade" id="acciones" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="card text-center" style="background-color: #303136;">
                                             <div class="card-body">
-                                              <!--Aqui va el contenido-->
-                                              <div class="container">
-                                                  <div class="row">
-                                                      <div class="col-lg-6">
-                                                        Usuario: {{name2}}
-                                                      </div>
-                                                      <div class="col-lg-6">
-                                                          <!--Despues del segundo class es para cerrar el primer desplegable-->
-                                                          <button class="btn btn-lg btn-dark" type="submit" data-toggle="modal" data-target="#datosgen"   data-dismiss="modal" aria-label="Close" ><i class="fas fa-cog fa-1x"></i></button>
-                                                      </div>
-                                                      
-                                                  </div> 
-                                                  <br>
-                                                  <br>
-                                                  <div class="row">
-                                                          <div class="table-responsive">
-                                                                  <table class="table table-bordered table-striped">
-                                                                          <thead>
-                                                                            <tr>
-                                                                              <th>Proyecto</th>
-                                                                              <th>Avance</th>
-                                                                              <th>Acciones</th>
-                                                                            </tr>
-                                                                          </thead>
-                                                                          <tbody id="accionestabla">
-                                                                            <tr>
-                                                                              <td>Proyecto 1</td>
-                                                                              <td>
-                                                                                  <div class="progress">
-                                                                                      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
-                                                                                          aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:40%">
-                                                                                          40%
-                                                                                      </div>
-                                                                                  </div>
-                                                                              </td>
-                                                                              <td><button class="btn btn-lg btn-dark" type="submit" data-toggle="modal" data-target="#nuevosdatos" data-dismiss="modal" aria-label="Close"><i class="fas fa-folder-minus fa-1x"></i></button></td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                              <td>Proyecto 2</td>
-                                                                              <td>
-                                                                                  <div class="progress">
-                                                                                      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
-                                                                                           aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:40%">
-                                                                                          40%
-                                                                                      </div>
-                                                                                  </div>
-                                                                              </td>
-                                                                              <!--El segundo class es para borrar el desplegable-->
-                                                                              <td><button class="btn btn-lg btn-dark" type="submit" data-toggle="modal" data-target="#nuevosdatos"  data-dismiss="modal" aria-label="Close"><i class="fas fa-folder-minus fa-1x"></i></button></td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                              
-                                                                            </tr>
-                                                                            <tr>
-                                                                              <td>Proyecto 3</td>
-                                                                              <td>
-                                                                                  <div class="progress">
-                                                                                      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
-                                                                                          aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:40%">
-                                                                                          40%
-                                                                                      </div>
-                                                                                  </div>
-                                                                              </td>
-                                                                              <td><button class="btn btn-lg btn-dark" type="submit" data-toggle="modal" data-target="#nuevosdatos"  data-dismiss="modal" aria-label="Close"><i class="fas fa-folder-minus fa-1x"></i></button></td>
-                                                                            </tr>
-                                                                          </tbody>
-                                                                  </table>
-                                                          </div>
-                                                  </div>
+                                                <!--Aqui va el contenido-->
+                                                <div class="container">
+                                                    <div class="row">
+                                                        <div class="col-lg-6">
+                                                            Usuario: {{name2}}
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <!--Despues del segundo class es para cerrar el primer desplegable-->
+                                                            <button class="btn btn-lg btn-dark" type="submit" data-toggle="modal" data-target="#datosgen" data-dismiss="modal" aria-label="Close">
+                                                                <i class="fas fa-cog fa-1x"></i>
+                                                            </button>
+                                                        </div>
 
-                                              </div>
+                                                    </div>
+                                                    <br>
+                                                    <br>
+                                                    <div class="row">
+                                                        <div class="table-responsive">
+                                                            <table class="table table-bordered table-striped">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>Proyecto</th>
+                                                                        <th>Avance</th>
+                                                                        <th>Acciones</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody id="accionestabla">
+                                                                    <tr>
+                                                                        <td>Proyecto 1</td>
+                                                                        <td>
+                                                                            <div class="progress">
+                                                                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="40" aria-valuemin="0"
+                                                                                    aria-valuemax="100" style="width:40%">
+                                                                                    40%
+                                                                                </div>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td>
+                                                                            <button class="btn btn-lg btn-dark" type="submit"
+                                                                                data-toggle="modal" data-target="#nuevosdatos"
+                                                                                data-dismiss="modal" aria-label="Close">
+                                                                                <i class="fas fa-folder-minus fa-1x"></i>
+                                                                            </button>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Proyecto 2</td>
+                                                                        <td>
+                                                                            <div class="progress">
+                                                                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="40" aria-valuemin="0"
+                                                                                    aria-valuemax="100" style="width:40%">
+                                                                                    40%
+                                                                                </div>
+                                                                            </div>
+                                                                        </td>
+                                                                        <!--El segundo class es para borrar el desplegable-->
+                                                                        <td>
+                                                                            <button class="btn btn-lg btn-dark" type="submit"
+                                                                                data-toggle="modal" data-target="#nuevosdatos"
+                                                                                data-dismiss="modal" aria-label="Close">
+                                                                                <i class="fas fa-folder-minus fa-1x"></i>
+                                                                            </button>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Proyecto 3</td>
+                                                                        <td>
+                                                                            <div class="progress">
+                                                                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="40" aria-valuemin="0"
+                                                                                    aria-valuemax="100" style="width:40%">
+                                                                                    40%
+                                                                                </div>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td>
+                                                                            <button class="btn btn-lg btn-dark" type="submit"
+                                                                                data-toggle="modal" data-target="#nuevosdatos"
+                                                                                data-dismiss="modal" aria-label="Close">
+                                                                                <i class="fas fa-folder-minus fa-1x"></i>
+                                                                            </button>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
                                             </div>
-                                          </div>
                                         </div>
-                                       
-                                      </div>
-                              </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
+                                    </div>
 
-          <!--Segundo DIV de actualizar datos generales-->
-          <div class="modal fade" id="datosgen" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                  <div class="modal-dialog modal-dialog-centered" role="document">
-                      <div class="modal-content">
-                          <div class="modal-header">
-                            
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Segundo DIV de actualizar datos generales-->
+            <div class="modal fade" id="datosgen" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
+                                <span aria-hidden="true">&times;</span>
                             </button>
-                          </div>
-                          <div class="modal-body" >
-                                  <div class="container">
-                                      <div class="row">
-                                          <div class="col-lg-12">
-                                              <div class="card text-center" style="background-color: #303136;">
-                                                <div class="card-body">
-                                                  <!--Aqui va el contenido-->
-                                                  <div class="container">
-                                                      
-                                                      <div class="row">
-                                                            
-                                                              <div class="card-body">
-                                                                      <h3>Actualizar datos generales </h3>
-                                                                      
-                                                                      <p>Ingresa los nuevos datos. </p>
-                                                                      <form #updateForm="ngForm" (ngSubmit)="updateUser(updateForm)">
-                                                                        <div class="form-group">
-                                                                            <input type="text" value="{{id2}}"
-                                                                            name="_id" [(ngModel)]="_id" >
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                          <input type="email" class="form-control form-control-lg" placeholder="Correo Electronico"
-                                                                          name="email"  [(ngModel)]="email">
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <input type="text" class="form-control form-control-lg" placeholder="Numero de Movil"
-                                                                            name="mobile"  [(ngModel)]="mobile">
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <input type="password" class="form-control form-control-lg" placeholder="Contraseña"
-                                                                            name="password"  [(ngModel)]="password">
-                                                                        </div>
+                        </div>
+                        <div class="modal-body">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="card text-center" style="background-color: #303136;">
+                                            <div class="card-body">
+                                                <!--Aqui va el contenido-->
+                                                <div class="container">
 
-                                                                        <input type="submit" value="Actualizar Datos" class="btn btn-outline-light btn-block">
-                                                                      </form>
-                                                              </div>
-                                                              
-                                                      </div>
+                                                    <div class="row">
 
-                                                  </div>
-                                              </div>
-                                          </div>
-                                      </div>   
-                                  </div>
-                          </div>
-                      </div>
-                   </div>
-              </div>
-          </div>
-          <!--Tercer div de nuevos datos de residente/proyectista-->
-          <div class="modal fade" id="nuevosdatos" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                  <div class="modal-dialog modal-dialog-centered" role="document">
-                      <div class="modal-content">
-                          <div class="modal-header">
-                            
+                                                        <div class="card-body">
+                                                            <h3>Actualizar datos generales </h3>
+
+                                                            <p>Ingresa los nuevos datos. </p>
+                                                            <form #updateForm="ngForm" (ngSubmit)="updateUser(updateForm)">
+                                                                <div class="form-group">
+                                                                    <input type="text" value="{{id2}}" name="_id" [(ngModel)]="_id">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <input type="email" class="form-control form-control-lg" placeholder="Correo Electronico" name="email" [(ngModel)]="email">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <input type="text" class="form-control form-control-lg" placeholder="Numero de Movil" name="mobile" [(ngModel)]="mobile">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <input type="password" class="form-control form-control-lg" placeholder="Contraseña" name="password" [(ngModel)]="password">
+                                                                </div>
+
+                                                                <input type="submit" value="Actualizar Datos" class="btn btn-outline-light btn-block">
+                                                            </form>
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Tercer div de nuevos datos de residente/proyectista-->
+            <div class="modal fade" id="nuevosdatos" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
+                                <span aria-hidden="true">&times;</span>
                             </button>
-                          </div>
-                          <div class="modal-body" >
-                                  <div class="container">
-                                      <div class="row">
-                                          <div class="col-lg-12">
-                                              <div class="card text-center" style="background-color: #303136;">
-                                                <div class="card-body">
-                                                  <!--Aqui va el contenido-->
-                                                  <div class="container">
-                                                      
-                                                      <div class="row">
-                                                       
-                                                              <div class="card-body">
-                                                                      <h3>Nuevos datos de usuario</h3> 
-                                                                      <p>Ingresa el correo del nuevo encargado de proyecto </p>
-                                                                      <form action="/adm-users">
-                                                                        
-                                                                        <div class="form-group">
-                                                                          <input type="email" class="form-control form-control-lg" placeholder="Correo Electronico">
+                        </div>
+                        <div class="modal-body">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="card text-center" style="background-color: #303136;">
+                                            <div class="card-body">
+                                                <!--Aqui va el contenido-->
+                                                <div class="container">
+
+                                                    <div class="row">
+
+                                                        <div class="card-body">
+                                                            <h3>Nuevos datos de usuario</h3>
+                                                            <p>Escoje el nuevo encargado de proyecto </p>
+                                                            <form action="/adm-users">
+
+                                                                <div class="form-group">
+                                                                    <div class="col-lg-12">
+
+
+                                                                        <div class="row">
+                                                                            <div class="col-lg-6">
+                                                                                Usuario encargado
+                                                                            </div>
+                                                                            <div class="col-lg-6">
+                                                                                <div class="form-group">
+
+                                                                                    <select class="form-control" id="sel1">
+                                                                                        <option>Usuario 1</option>
+                                                                                        <option>Usuario 2</option>
+                                                                                        <option>Usuario 3</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+
                                                                         </div>
-                                      
 
-                                                                        <input type="submit" value="Actualizar Datos" class="btn btn-outline-light btn-block">
-                                                                      </form>
-                                                              </div>
-                                                              
-                                                      </div>
+                                                                    </div>
+                                                                </div>
 
-                                                  </div>
-                                              </div>
-                                          </div>
-                                      </div>   
-                                  </div>
-                          </div>
-                      </div>
-                   </div>
-              </div>
-          </div>
 
-      </div>
-  </div>
+                                                                <input type="submit" value="Actualizar Datos" class="btn btn-outline-light btn-block">
+                                                            </form>
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
 </header>

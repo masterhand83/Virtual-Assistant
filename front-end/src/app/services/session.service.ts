@@ -22,4 +22,7 @@ export class SessionService {
     localStorage.removeItem('UserType');
     this.router.navigate(['']);
   }
+  getFromSession(key:string){
+    return localStorage.getItem(key);
+  }
 }

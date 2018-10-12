@@ -47,7 +47,9 @@ export class LoginComponent implements OnInit {
         let power: any = [];
         power = res;
         if (power.length > 0) {
+          
           this.sess.createSession(res[0]);
+          
           this.router.navigate(['control']);
         } else {
           console.log('USUARIO NO EXISTENTE');

@@ -1,9 +1,11 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 
   <div class="container">
-    <a class="navbar-brand" href="#"><b>Virtual-Assistant</b></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <a class="navbar-brand" href="#">
+      <b>Virtual-Assistant</b>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+      aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
@@ -16,7 +18,7 @@
         <br>
         <a class="btn btn-outline-info d-lg-inline-block mb-3 mb-md-0 ml-md-3" href="/projects">Proyectos</a>
         <br>
-        <a class="btn btn-outline-info d-lg-inline-block mb-3 mb-md-0 ml-md-3" href="/users">Usuarios</a>
+        <a *ngIf="userTypeBoolean" class="btn btn-outline-info d-lg-inline-block mb-3 mb-md-0 ml-md-3" href="/users">Usuarios</a>
         <br>
         <a class="btn btn-outline-danger d-lg-inline-block mb-3 mb-md-0 ml-md-3" (click)="loggout()">Cerrar sesion</a>
       </ul>
@@ -32,11 +34,12 @@
         <div class="row">
 
           <div class="col-lg-2">
-            <button class="btn btn-lg btn-dark" type="submit" data-toggle="modal" data-target="#registroModal"><i class="far fa-address-card fa-4x"></i></button>
+            <button class="btn btn-lg btn-dark" type="submit" data-toggle="modal" data-target="#registroModal">
+              <i class="far fa-address-card fa-4x"></i>
+            </button>
           </div>
           <!--Div del desplegable de registro-->
-          <div class="modal fade" id="registroModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-            aria-hidden="true">
+          <div class="modal fade" id="registroModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
               <div class="modal-content">
                 <div class="modal-header">
@@ -54,20 +57,16 @@
                             <p>Ingresa los datos y crea un nuevo usuario. </p>
                             <form #userForm="ngForm" (ngSubmit)="addUser(userForm)">
                               <div class="form-group">
-                                <input type="text" class="form-control form-control-lg" placeholder="Nombre" name="name"
-                                  #nombre [(ngModel)]="name" >
+                                <input type="text" class="form-control form-control-lg" placeholder="Nombre" name="name" #nombre [(ngModel)]="name">
                               </div>
                               <div class="form-group">
-                                <input type="email" class="form-control form-control-lg" placeholder="Correo Electronico"
-                                  name="email" #mail [(ngModel)]="email" >
+                                <input type="email" class="form-control form-control-lg" placeholder="Correo Electronico" name="email" #mail [(ngModel)]="email">
                               </div>
                               <div class="form-group">
-                                <input type="text" class="form-control form-control-lg" placeholder="Numero de Movil"
-                                  name="mobile" #mobil [(ngModel)]="mobile" >
+                                <input type="text" class="form-control form-control-lg" placeholder="Numero de Movil" name="mobile" #mobil [(ngModel)]="mobile">
                               </div>
                               <div class="form-group">
-                                <input type="password" class="form-control form-control-lg" placeholder="Contraseña"
-                                  name="password" #pass [(ngModel)]="password" >
+                                <input type="password" class="form-control form-control-lg" placeholder="Contraseña" name="password" #pass [(ngModel)]="password">
                               </div>
 
                               <div class="form-group">
@@ -78,10 +77,10 @@
                                   <option value="3">Proyectista</option>
                                 </select>
                               </div>
-                              
+
                               <input type="submit" class="btn btn-outline-light btn-block" value="Registrar Usuario">
-                              <input type="button" class="btn btn-outline-light btn-block" (click)="resetForm(userForm)" value="Limpiar"> 
-                              
+                              <input type="button" class="btn btn-outline-light btn-block" (click)="resetForm(userForm)" value="Limpiar">
+
                             </form>
                           </div>
                         </div>

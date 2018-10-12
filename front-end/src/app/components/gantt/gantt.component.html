@@ -1,216 +1,246 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-   
-  <div class="container">
-      <a class="navbar-brand" href="#"><b>Virtual-Assistant</b></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-      </button>
-           
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          
-      
-      <ul class="navbar-nav mr-auto" align="rigth">
-          <br>
-          <a class="btn btn-outline-info d-lg-inline-block mb-3 mb-md-0 ml-md-3" href="/control">Centro de Control</a>
-          <br>
-          <a class="btn btn-outline-info d-lg-inline-block mb-3 mb-md-0 ml-md-3" href="/projects">Proyectos</a>
-          <br>
-          <a class="btn btn-outline-info d-lg-inline-block mb-3 mb-md-0 ml-md-3" href="/users">Usuarios</a>
-          <br>
-          <a class="btn btn-outline-danger d-lg-inline-block mb-3 mb-md-0 ml-md-3" (click)="loggout()">Cerrar sesion</a>
-        
-      </ul>
-      </div>
-    </div>       
+
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <b>Virtual-Assistant</b>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+
+            <ul class="navbar-nav mr-auto" align="rigth">
+                <br>
+                <a class="btn btn-outline-info d-lg-inline-block mb-3 mb-md-0 ml-md-3" href="/control">Centro de Control</a>
+                <br>
+                <a class="btn btn-outline-info d-lg-inline-block mb-3 mb-md-0 ml-md-3" href="/projects">Proyectos</a>
+                <br>
+                <a class="btn btn-outline-info d-lg-inline-block mb-3 mb-md-0 ml-md-3" href="/users">Usuarios</a>
+                <br>
+                <a class="btn btn-outline-danger d-lg-inline-block mb-3 mb-md-0 ml-md-3" (click)="loggout()">Cerrar sesion</a>
+
+            </ul>
+        </div>
+    </div>
 </nav>
 
 <header id="home-section">
-  <div class="dark-overlay">
-    <div class="home-inner">
+    <div class="dark-overlay">
+        <div class="home-inner">
 
-      <div class="container">
-          <div class="row">
-              <div class="col-lg-12">
-                  <div class="row">
-                      <div class="col-lg-1">
-                          <button class="btn btn-lg btn-dark" type="submit" data-toggle="modal" data-target="#ajustes" ><i class="fas fa-cog fa-1x"></i></button>
-                      </div>
-                      <div class="col-lg-1">
-                          <button class="btn btn-lg btn-dark" type="submit" data-toggle="modal" data-target="#actividades" ><i class="fas fa-plus fa-1x"></i></button>
-                      </div>
-                      
-                  </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="row">
+                            <div class="col-lg-1">
+                                <button class="btn btn-lg btn-dark" type="submit" data-toggle="modal" data-target="#ajustes">
+                                    <i class="fas fa-cog fa-1x"></i>
+                                </button>
+                            </div>
+                            <div class="col-lg-1">
+                                <button class="btn btn-lg btn-dark" type="submit" data-toggle="modal" data-target="#actividades">
+                                    <i class="fas fa-plus fa-1x"></i>
+                                </button>
+                            </div>
 
-              </div>
-              <br><br><br><br><br>
-              
-                <div class="col-lg-12">
-                <div class="col-lg-12" style="color:#000000">                        		
-                    <div class="card text-center" style="background-color: #FFFFFF;">
-                      <div id="ganttChart"></div>
+                        </div>
+
                     </div>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+
+                    <div class="col-lg-12">
+                        <div class="col-lg-12" style="color:#000000">
+                            <div class="card text-center" style="background-color: #FFFFFF;">
+                                <div id="ganttChart"></div>
+                            </div>
+                        </div>
+                        <br>
+                        <br>
+
+
+
+
+
+                    </div>
+                    <div id="eventMessage"></div>
+
+
+
+
+
+
+
+                    <button class="btn btn-lg btn-dark" type="submit" data-toggle="modal" data-target="#actividadg">Actividad</button>
                 </div>
-                <br><br>
 
 
-                  
-                    
-                  
-                  </div><div id="eventMessage"></div>
-                      
-                    
-                        
-              
-                  
-                  
+            </div>
+        </div>
 
-                <button class="btn btn-lg btn-dark" type="submit" data-toggle="modal" data-target="#actividadg" >Actividad</button>
-              </div>
-              
-
-          </div>
-      </div>
-  
     </div>
-  
+
 </header>
 <div class="modal fade" id="actividadg" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-              
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
-            <div class="modal-body" >
+            <div class="modal-body">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="card text-center" style="background-color: #303136;">
-                              <div class="card-body">
-                                <!--Aqui va el contenido-->
-                                <div class="container">                                               
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <h3>Nombre de la actividad</h3>
-                                        </div>
-                                        <br><br><br>
-                                        <div class="col-lg-6">
-                                            <div class="row">
-                                                <div class="col-lg-8">
-                                                    Objetivos
-                                                </div>
-                                                <div class="col-lg-4">
-                                                    <button class="btn btn-lg btn-dark" type="submit" data-toggle="modal" data-target="#objetivo" ><i class="fas fa-plus fa-1x"></i></button>
-                                                </div>
-                                                <br><br>
-                                                <div class="col-lg-12">
-                                                    <form action="gantt.html">
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="radio" name="exampleRadios" id="objetivos" value="objetivo1">
-                                                            <label class="form-check-label" for="objetivos">
-                                                                Objetivo 1
-                                                            </label>
-                                                        </div>
-                                                        <br><br>
-                                                        <input type="submit" value="Guardar Objetivos" class="btn btn-outline-light btn-block">
-                                                        <br><br>
-                                                    </form>
-                                                    
-                                                </div>
-                                                
-                                                <div class="col-lg-8">
-                                                    Entregables
-                                                </div>
-                                                <div class="col-lg-4">
-                                                    <button class="btn btn-lg btn-dark" type="submit" data-toggle="modal" data-target="#entregable" ><i class="fas fa-plus fa-1x"></i></button>
-                                                </div>
-                                                <br><br>
-                                                <div class="col-lg-12">
-                                                    <form action="gantt.html">
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="radio" name="exampleRadios" id="entregables" value="entregable1">
-                                                            <label class="form-check-label" for="entregables">
-                                                                Entregable 1
-                                                            </label>
-                                                        </div>
-                                                        <br><br>
-                                                        <input type="submit" value="Guardar Entregables" class="btn btn-outline-light btn-block">
-                                                        <br><br>
-                                                    </form>
-                                                    
-                                                </div>
-                                                <br><br>
-                                                <div class="col-lg-12">                                                        
-                                                    
-                                                        <div class="row">
-                                                            
-                                                                <div class="col-lg-6">
-                                                                    Prioridad
-                                                                </div>
-                                                                <div class="col-lg-6">
-                                                                    <div class="form-group">                       
-                                                                        <select class="form-control" id="sel1">
-                                                                            <option>Alta</option>
-                                                                            <option>Media </option>
-                                                                            <option>Baja</option>
-                                                                        </select>
-                                                                    </div>
-                                                                    
-                                                                    
-                                                                </div>
-                                                                <div class="col-lg-12">
-                                                                    <input type="submit" value="Guardar Prioridad" class="btn btn-outline-light btn-block">
-                                                                </div>
-                                                            
-                                                            
-                                                    
+                                <div class="card-body">
+                                    <!--Aqui va el contenido-->
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <h3>Nombre de la actividad</h3>
+                                            </div>
+                                            <br>
+                                            <br>
+                                            <br>
+                                            <div class="col-lg-6">
+                                                <div class="row">
+                                                    <div class="col-lg-8">
+                                                        Objetivos
                                                     </div>
-         
+                                                    <div class="col-lg-4">
+                                                        <button class="btn btn-lg btn-dark" type="submit" data-toggle="modal" data-target="#objetivo">
+                                                            <i class="fas fa-plus fa-1x"></i>
+                                                        </button>
+                                                    </div>
+                                                    <br>
+                                                    <br>
+                                                    <div class="col-lg-12">
+                                                        <form action="gantt.html">
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="radio" name="exampleRadios" id="objetivos" value="objetivo1">
+                                                                <label class="form-check-label" for="objetivos">
+                                                                    Objetivo 1
+                                                                </label>
+                                                            </div>
+                                                            <br>
+                                                            <br>
+                                                            <input type="submit" value="Guardar Objetivos" class="btn btn-outline-light btn-block">
+                                                            <br>
+                                                            <br>
+                                                        </form>
+
+                                                    </div>
+
+                                                    <div class="col-lg-8">
+                                                        Entregables
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <button class="btn btn-lg btn-dark" type="submit" data-toggle="modal" data-target="#entregable">
+                                                            <i class="fas fa-plus fa-1x"></i>
+                                                        </button>
+                                                    </div>
+                                                    <br>
+                                                    <br>
+                                                    <div class="col-lg-12">
+                                                        <form action="gantt.html">
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="radio" name="exampleRadios" id="entregables" value="entregable1">
+                                                                <label class="form-check-label" for="entregables">
+                                                                    Entregable 1
+                                                                </label>
+                                                            </div>
+                                                            <br>
+                                                            <br>
+                                                            <input type="submit" value="Guardar Entregables" class="btn btn-outline-light btn-block">
+                                                            <br>
+                                                            <br>
+                                                        </form>
+
+                                                    </div>
+                                                    <br>
+                                                    <br>
+                                                    <div class="col-lg-12">
+
+                                                        <div class="row">
+
+                                                            <div class="col-lg-6">
+                                                                Prioridad
+                                                            </div>
+                                                            <div class="col-lg-6">
+                                                                <div class="form-group">
+                                                                    <select class="form-control" id="sel1">
+                                                                        <option>Alta</option>
+                                                                        <option>Media </option>
+                                                                        <option>Baja</option>
+                                                                    </select>
+                                                                </div>
+
+
+                                                            </div>
+                                                            <div class="col-lg-12">
+                                                                <input type="submit" value="Guardar Prioridad" class="btn btn-outline-light btn-block">
+                                                            </div>
+
+
+
+                                                        </div>
+
+                                                    </div>
+
                                                 </div>
-                                                
                                             </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <h3>Comentarios</h3>
-                                            <br>
-                                            <textarea class="form-control" rows="10"></textarea>
-                                            <br>
-                                            <div class="row">
-                                                <div class="col-lg-7">
-                                                    <input type="text" class="form-control form-control-lg" placeholder="Comentario">
+                                            <div class="col-lg-6">
+                                                <h3>Comentarios</h3>
+                                                <br>
+                                                <textarea class="form-control" rows="10"></textarea>
+                                                <br>
+                                                <div class="row">
+                                                    <div class="col-lg-7">
+                                                        <input type="text" class="form-control form-control-lg" placeholder="Comentario">
+                                                    </div>
+                                                    <div class="col-lg-5">
+                                                        <button class="btn btn-lg btn-dark btn-block">Comentar</button>
+                                                    </div>
+                                                    <br>
+                                                    <br>
+                                                    <br>
+                                                    <div class="col-lg-6">
+                                                        <input type="submit" value="Iniciar Actividad" class="btn btn-outline-light btn-block">
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <input type="submit" value="Finalizar Actividad" class="btn btn-outline-light btn-block">
+                                                    </div>
+                                                    <br>
+                                                    <br>
+                                                    <br>
+                                                    <div class="col-lg-12">
+                                                        <input type="submit" value="Eliminar Actividad" class="btn btn-outline-light btn-block">
+                                                    </div>
+
                                                 </div>
-                                                <div class="col-lg-5">
-                                                    <button class="btn btn-lg btn-dark btn-block">Comentar</button>
-                                                </div>
-                                                <br><br><br>
-                                                <div class="col-lg-6">
-                                                    <input type="submit" value="Iniciar Actividad" class="btn btn-outline-light btn-block">
-                                                </div>
-                                                <div class="col-lg-6">
-                                                    <input type="submit" value="Finalizar Actividad" class="btn btn-outline-light btn-block">
-                                                </div>
-                                                <br><br><br>
-                                                <div class="col-lg-12">
-                                                    <input type="submit" value="Eliminar Actividad" class="btn btn-outline-light btn-block">
-                                                </div>
+
 
                                             </div>
 
-                                            
                                         </div>
-                                        
-                                    </div>                                     
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>   
+                    </div>
                 </div>
             </div>
         </div>
-     </div>
-</div>
+    </div>
 </div>
 
 <!--Desplegable de ajustes generales-->
@@ -218,242 +248,197 @@
     <div class="modal-dialog modal-dialog-centered " role="document">
         <div class="modal-content">
             <div class="modal-header">
-              
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
-            <div class="modal-body" >
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="card text-center" style="background-color: #303136;">
-                                  <div class="card-body">
+            <div class="modal-body">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card text-center" style="background-color: #303136;">
+                                <div class="card-body">
                                     <!--Aqui va el contenido-->
                                     <div class="container">
                                         <div class="row">
                                             <div class="col-lg-6">
-                                                <button class="btn btn-block btn-dark" >Activar Alertas</button> 
+                                                <button class="btn btn-block btn-dark">Activar Alertas</button>
                                             </div>
+                                            <br>
+                                            <br>
                                             <div class="col-lg-6">
-                                                    <button class="btn btn-block btn-dark">Desactivar Alertas</button> 
+                                                <button class="btn btn-block btn-dark">Desactivar Alertas</button>
                                             </div>
-                                            <br><br><br>
+                                            <br>
+                                            <br>
                                             <div class="col-lg-12">
-
-                                                    <form action="gantt.html">
-                                                        <div class="row">
-                                                                <div class="col-lg-4">
-                                                                        Residente encargado
-                                                                    </div>
-                                                                    <div class="col-lg-4">
-                                                                        <div class="form-group">
-                                                                            
-                                                                                <select class="form-control" id="sel1">
-                                                                                  <option>Residente 1</option>
-                                                                                  <option>Residente 2</option>
-                                                                                  <option>Residente 3</option>
-                                                                                </select>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-lg-4">
-                                                                        <button class="btn btn-block btn-dark" type="submit">Actualizar</button> 
-                                                                    </div>
-                                                                </div>
-                                                    </form>
-                                            </div>
-                                            <div class="col-lg-12">
-
                                                 <form action="gantt.html">
-                                                    <div class="row">
-                                                            <div class="col-lg-4">
-                                                                    Proyectista Encargado
-                                                                </div>
-                                                                <div class="col-lg-4">
-                                                                    <div class="form-group">
-                                                                        
-                                                                            <select class="form-control" id="sel1">
-                                                                              <option>Proyectista 1</option>
-                                                                              <option>Proyectista 2</option>
-                                                                              <option>Proyectista 3</option>
-                                                                            </select>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-lg-4">
-                                                                    <button class="btn btn-block btn-dark" type="submit">Actualizar</button> 
-                                                                </div>
-                                                            </div>
+                                                    <button class="btn btn-block btn-dark" type="submit">Eliminar Proyecto</button>
                                                 </form>
+                                            </div>
+                                            <br>
+                                            <br>
+                                            <div class="col-lg-12">
+                                                <form action="gantt.html">
+                                                    <button class="btn btn-block btn-dark" type="submit">Descargar Proyecto</button>
+                                                </form>
+                                            </div>
+
+
+
                                         </div>
 
-                                            <br><br>
-                                            <div class="col-lg-12">
-                                                <form action="gantt.html">
-                                                        <button class="btn btn-block btn-dark" type="submit">Eliminar Proyecto</button> 
-                                                </form>
-                                            </div>
-                                            <br><br>
-                                            <div class="col-lg-12">
-                                                <form action="gantt.html">
-                                                    <button class="btn btn-block btn-dark" type="submit">Descargar Proyecto</button> 
-                                                </form>
-                                            </div>
-                                            
-                                            
-                                                
-                                        </div>
-                                        
-                                       
-                                        
+
+
                                     </div>
                                 </div>
                             </div>
-                        </div>   
+                        </div>
                     </div>
+                </div>
             </div>
         </div>
-     </div>
-</div>
+    </div>
 </div>
 <!--Desplegable de actividades-->
 <div class="modal fade" id="actividades" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered " role="document">
-      <div class="modal-content">
-          <div class="modal-header">
-            
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body" >
-                  <div class="container">
-                      <div class="row">
-                          <div class="col-lg-12">
-                              
-                                  <div class="container">
-                                      <div class="row">
-                                              <div class="col-lg-12">
-                                                      <div class="card text-center" style="background-color: #303136;" >
-                                                        <div class="card-body">
-                                                          <h3>Agregar actividad</h3>
-                                                          <p>Ingresa los datos y crea una nueva actividad. </p>
-                                                          <form action="/gantt">
-                                                           <div class="form-group">
-                                                              <input type="text" class="form-control form-control-lg" placeholder="Nombre">
-                                                            </div>    
-                                                            <div class="form-group">
-                                                                  <input type="text" class="form-control form-control-lg" placeholder="Descripcion">
-                                                              </div>                   
-                                                            <div class="form-group">
-                                                              Fecha de Inicio: <input type="date" class="form-control form-control-lg">
-                                                            </div>
-                                                            <div class="form-group">
-                                                              Fecha de Termino:  <input type="date" class="form-control form-control-lg" >
-                                                            </div>
-                                                            
-                                                            <div class="form-group">
-                                                                    <label for="sel1">Prioridad</label>
-                                                                    <select class="form-control" id="sel1">
-                                                                      <option>Alta</option>
-                                                                      <option>Media </option>
-                                                                      <option>Baja</option>
-                                                                    </select>
-                                                            </div>
-                                                            
-                                
-                                                            <input type="submit" value="Agregar Actividad" class="btn btn-outline-light btn-block">
-                                                          </form>
-                                                        </div>
-                                                      </div>
-                                                    </div>     
-                                      </div>     
-                                  </div>                         
-                      </div>   
-                  </div>
-          </div>
-      </div>
-   </div>
-</div>
+    <div class="modal-dialog modal-dialog-centered " role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="card text-center" style="background-color: #303136;">
+                                            <div class="card-body">
+                                                <h3>Agregar actividad</h3>
+                                                <p>Ingresa los datos y crea una nueva actividad. </p>
+                                                <form action="/gantt">
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control form-control-lg" placeholder="Nombre">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control form-control-lg" placeholder="Descripcion">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        Fecha de Inicio:
+                                                        <input type="date" class="form-control form-control-lg">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        Fecha de Termino:
+                                                        <input type="date" class="form-control form-control-lg">
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="sel1">Prioridad</label>
+                                                        <select class="form-control" id="sel1">
+                                                            <option>Alta</option>
+                                                            <option>Media </option>
+                                                            <option>Baja</option>
+                                                        </select>
+                                                    </div>
+
+
+                                                    <input type="submit" value="Agregar Actividad" class="btn btn-outline-light btn-block">
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <!--Desplegable de objetivos-->
 <div class="modal fade" id="objetivo" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-          <div class="modal-header">
-            
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body" >
-                  <div class="container">
-                      <div class="row">
-                          <div class="col-lg-12">
-                              <div class="card text-center" style="background-color: #303136;">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card text-center" style="background-color: #303136;">
                                 <div class="card-body">
-                                  <!--Aqui va el contenido-->
-                                  <div class="container">
-                                          <h3>Objetivo</h3>
-                                          <p>Ingresa el nuevo objetivo </p>
-                                          <form action="gantt.html">
+                                    <!--Aqui va el contenido-->
+                                    <div class="container">
+                                        <h3>Objetivo</h3>
+                                        <p>Ingresa el nuevo objetivo </p>
+                                        <form action="gantt.html">
                                             <div class="form-group">
-                                              <input type="text" class="form-control form-control-lg" placeholder="Objetivo">
+                                                <input type="text" class="form-control form-control-lg" placeholder="Objetivo">
                                             </div>
-                                            
+
                                             <input type="submit" value="Guardar" class="btn btn-outline-light btn-block">
-                                          </form>
-                                      
-                                      
-                                  </div>
-                              </div>
-                          </div>
-                      </div>   
-                  </div>
-          </div>
-      </div>
-   </div>
-</div>
+                                        </form>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <!--Desplegable de entregable-->
 <div class="modal fade" id="entregable" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-          <div class="modal-header">
-            
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body" >
-                  <div class="container">
-                      <div class="row">
-                          <div class="col-lg-12">
-                              <div class="card text-center" style="background-color: #303136;">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card text-center" style="background-color: #303136;">
                                 <div class="card-body">
-                                  <!--Aqui va el contenido-->
-                                  <div class="container">
-                                          <h3>Entregable</h3>
-                                          <p>Ingresa el nuevo entregable </p>
-                                          <form action="gantt.html">
+                                    <!--Aqui va el contenido-->
+                                    <div class="container">
+                                        <h3>Entregable</h3>
+                                        <p>Ingresa el nuevo entregable </p>
+                                        <form action="gantt.html">
                                             <div class="form-group">
-                                              <input type="text" class="form-control form-control-lg" placeholder="Entregable">
+                                                <input type="text" class="form-control form-control-lg" placeholder="Entregable">
                                             </div>
-                                            
+
                                             <input type="submit" value="Guardar" class="btn btn-outline-light btn-block">
-                                          </form>
-                                      
-                                      
-                                  </div>
-                              </div>
-                          </div>
-                      </div>   
-                  </div>
-          </div>
-      </div>
-   </div>
+                                        </form>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-</div>
-
-
-
