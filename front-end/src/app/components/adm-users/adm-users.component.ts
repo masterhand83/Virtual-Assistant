@@ -4,6 +4,10 @@ import {User} from '../../models/User';
 import {NgForm} from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { SessionService } from '../../services/session.service';
+
+
+import { ActivatedRoute } from '../../../../node_modules/@angular/router';
+
 declare var M: any;
 
 
@@ -15,26 +19,39 @@ declare var M: any;
 })
 export class AdmUsersComponent implements OnInit {
   
-  constructor(private userService: UsersService,private sess:SessionService) { 
+  constructor(private userService: UsersService,private sess:SessionService,private _route:ActivatedRoute) { 
     
   }
   name2:string;
   id2:string;
+  idUser:number;
 
 
   ngOnInit() {
-    this.sess.validateSession();
+   
+
+    this.idUser=+this._route.snapshot.paramMap.get('id');
+    console.log(this.idUser);
     this.getUsers();
+
   }
-  loggout(){
-    this.sess.deleteSession();
-  }
+  
   getUsers(){
-    this.userService.getUser()
-    .subscribe(res=>{
-      this.userService.user=res as User[];
-      console.log(res);
-    });
+    if(this.idUser==2){
+      this.userService.getResidents()
+      .subscribe(res=>{
+        this.userService.user=res as User[];
+        console.log(res);
+      });
+    }
+    else if(this.idUser==3){
+      this.userService.getDesigners()
+      .subscribe(res=>{
+        this.userService.user=res as User[];
+        console.log(res);
+      });
+    }
+    
     
 
   }

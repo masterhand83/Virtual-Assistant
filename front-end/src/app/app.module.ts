@@ -4,6 +4,7 @@ import { HttpClientModule, HttpClient } from "@angular/common/http";
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { ControlComponent } from './components/control/control.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 //Rutas
 import { AppRoutingModule } from "./app.routes";
 import { AlertsComponent } from './components/alerts/alerts.component';
@@ -18,6 +19,8 @@ import { FormsModule } from "@angular/forms";
 import { HomeComponent } from './components/home/home.component';
 
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +32,9 @@ import { HomeComponent } from './components/home/home.component';
     UsersComponent,
     AdmUsersComponent,
     GanttComponent,
-    HomeComponent,  
+    HomeComponent,
+    NavbarComponent,
+    
   ],
   imports: [
     BrowserModule,

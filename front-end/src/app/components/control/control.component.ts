@@ -12,9 +12,9 @@ export class ControlComponent implements OnInit {
   constructor(private router:Router,private sess:SessionService) { }
 
   ngOnInit() {
-    this.sess.validateSession();
+    
   }
   loggout(){
-    this.sess.deleteSession();
+    
   }
 }

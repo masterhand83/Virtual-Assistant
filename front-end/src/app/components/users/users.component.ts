@@ -24,7 +24,7 @@ export class UsersComponent implements OnInit {
   
   
   ngOnInit() {
-    this.sess.validateSession();
+    
     this.getUserType();
     
   }
@@ -42,9 +42,7 @@ export class UsersComponent implements OnInit {
     });
 
   }
-  loggout(){
-    this.sess.deleteSession();
-  }
+  
   resetForm(form?: NgForm){
     if(form){
       form.reset();
@@ -62,7 +60,7 @@ export class UsersComponent implements OnInit {
     else{
       this.userTypeBoolean=false;
     }
-    console.log(this.userType);
+    
   }
 
 

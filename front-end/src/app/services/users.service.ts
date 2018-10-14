@@ -24,6 +24,14 @@ export class UsersService {
   getUser(){
     return this.http.get(this.URL_API);
   }
+
+  getResidents(){
+    return this.http.get('http://localhost:3000/api/users/residents');
+  }
+  getDesigners(){
+    return this.http.get('http://localhost:3000/api/users/designers');
+  }
+
   deleteUser(_id: string){
     return this.http.delete(this.URL_API +`/${_id}`);
   }

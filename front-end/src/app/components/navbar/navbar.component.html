@@ -1,0 +1,24 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+   
+  <div class="container">
+      <a class="navbar-brand" href="#"><b>Virtual-Assistant</b></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+      </button>
+           
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          
+      
+      <ul class="navbar-nav mr-auto" align="rigth">
+          
+          <a class="btn btn-outline-info d-lg-inline-block mb-3 mb-md-0 ml-md-3" href="/control">Centro de Control</a>
+          
+          <a class="btn btn-outline-info d-lg-inline-block mb-3 mb-md-0 ml-md-3" href="/projects">Proyectos</a>
+        
+          <a *ngIf="userTypeBoolean" class="btn btn-outline-info d-lg-inline-block mb-3 mb-md-0 ml-md-3" href="/users">Usuarios</a>
+          
+          <a class="btn btn-outline-danger d-lg-inline-block mb-3 mb-md-0 ml-md-3" (click)="loggout()">Cerrar sesion</a>
+      </ul>
+      </div>
+    </div>       
+</nav>

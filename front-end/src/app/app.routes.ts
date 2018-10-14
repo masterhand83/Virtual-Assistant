@@ -14,7 +14,7 @@ const routes: Routes=[
     {path: '',component:LoginComponent},
     {path: 'projects',component:ProjectsComponent},
     {path: 'users',component:UsersComponent},
-    {path: 'adm-users',component:AdmUsersComponent},
+    {path: 'adm-users/:id',component:AdmUsersComponent},
     {path: 'gantt',component:GanttComponent},
     {path:'home',component:HomeComponent}
 

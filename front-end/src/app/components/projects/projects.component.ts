@@ -11,10 +11,8 @@ export class ProjectsComponent implements OnInit {
   constructor(private sess:SessionService) { }
 
   ngOnInit() {
-    this.sess.validateSession();
+    
   }
-  loggout(){
-    this.sess.deleteSession();
-  }
+  
 
 }
