@@ -25,36 +25,44 @@ export class AdmUsersComponent implements OnInit {
   name2:string;
   id2:string;
   idUser:number;
+  checku:boolean;
+ 
 
 
   ngOnInit() {
    
 
     this.idUser=+this._route.snapshot.paramMap.get('id');
-    console.log(this.idUser);
+    
     this.getUsers();
+     
+  
 
   }
   
   getUsers(){
     if(this.idUser==2){
+      this.checku=true;
       this.userService.getResidents()
       .subscribe(res=>{
         this.userService.user=res as User[];
-        console.log(res);
+        
       });
     }
     else if(this.idUser==3){
+      this.checku=false;
       this.userService.getDesigners()
       .subscribe(res=>{
         this.userService.user=res as User[];
-        console.log(res);
+        
       });
     }
     
     
 
   }
+
+  
 
   deleteUser(_id:string){
     if(confirm('¿Estas seguro de eliminarlo?')){
@@ -72,7 +80,7 @@ export class AdmUsersComponent implements OnInit {
     console.log(form.value);
     this.userService.putUser(form.value._id,form.value.email,form.value.mobile,form.value.password)
     .subscribe(res=>{
-      console.log(res);
+      
       this.getUsers();
       alert("Actualizado Satisfactoriamente");
     });
@@ -85,5 +93,8 @@ export class AdmUsersComponent implements OnInit {
     this.name2=name2;
     
   }
+
+  
+  
 
 }

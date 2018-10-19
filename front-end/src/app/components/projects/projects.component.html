@@ -125,9 +125,7 @@
                                                     <div class="form-group">
 
                                                         <select class="form-control" id="sel1">
-                                                            <option>Residente 1</option>
-                                                            <option>Residente 2</option>
-                                                            <option>Residente 3</option>
+                                                                <option *ngFor="let user of this.userService.user" value="{{user.id}}">{{user.name}} </option> 
                                                         </select>
                                                     </div>
                                                 </div>
@@ -146,9 +144,8 @@
                                                     <div class="form-group">
 
                                                         <select class="form-control" id="sel1">
-                                                            <option>Proyectista 1</option>
-                                                            <option>Proyectista 2</option>
-                                                            <option>Proyectista 3</option>
+                                                            <option *ngFor="let user2 of this.userService.user2" value="{{user2.id}}">{{user2.name}} </option>
+                                                            
                                                         </select>
                                                     </div>
                                                 </div>
