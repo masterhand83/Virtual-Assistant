@@ -6,13 +6,14 @@ import { User } from "../models/User";
   providedIn: 'root'
 })
 export class UsersService {
+  readonly IP = "192.168.1.66"
   readonly URL_API = 'http://localhost:3000/api/users/user';
   user: User[];
   constructor(private http: HttpClient) {
       
   }
   loginUser(email:string,contra:string){
-    return this.http.post('http://localhost:3000/api/users/login',{
+    return this.http.post('http://'+this.IP+':3000/api/users/login',{
       email: email,
       password: contra
     });
