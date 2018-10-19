@@ -22,8 +22,7 @@ export class AdmUsersComponent implements OnInit {
   constructor(private userService: UsersService,private sess:SessionService,private _route:ActivatedRoute) { 
     
   }
-  name2:string;
-  id2:string;
+ 
   idUser:number;
   checku:boolean;
  
@@ -86,14 +85,16 @@ export class AdmUsersComponent implements OnInit {
     });
 
   }
-
+  name2:string="HOLA";
+  id2:string="HOLA";
+  
   prueba(name2:string,id2:string){
    
     this.id2=id2;
     this.name2=name2;
     
   }
-
+  
   
   
 

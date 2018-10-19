@@ -6,7 +6,7 @@ import { User } from "../models/User";
   providedIn: 'root'
 })
 export class UsersService {
-  readonly IP = "192.168.1.66"
+  readonly IP = "localhost";
   readonly URL_API = 'http://localhost:3000/api/users/user';
   
   user: User[];
