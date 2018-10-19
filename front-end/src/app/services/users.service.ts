@@ -8,7 +8,10 @@ import { User } from "../models/User";
 export class UsersService {
   readonly IP = "192.168.1.66"
   readonly URL_API = 'http://localhost:3000/api/users/user';
+  
   user: User[];
+  user2:User[];
+
   constructor(private http: HttpClient) {
       
   }
