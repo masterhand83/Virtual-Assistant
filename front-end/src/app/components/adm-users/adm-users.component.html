@@ -28,7 +28,7 @@
                                         <td>{{user.email}}</td>
                                         <td>{{user.projects.length}}</td>
                                         <td>
-                                            <button (click)="prueba(user.name,user._id)" class="btn btn-lg btn-dark" type="button" data-toggle="modal" data-target="#acciones">
+                                            <button (click)="SelectedUser(user.name,user._id,user.email,user.mobile,user.password)" class="btn btn-lg btn-dark" type="button" data-toggle="modal" data-target="#acciones">
                                                 <i class="fas fa-archive fa-1x"></i>
                                             </button>
                                         </td>
@@ -193,16 +193,16 @@
                                                             <p>Ingresa los nuevos datos. </p>
                                                             <form #updateForm="ngForm" (ngSubmit)="updateUser(updateForm)">
                                                                 <div class="form-group">
-                                                                    <input type="text" value="{{id2}}" name="_id" [(ngModel)]="_id">
+                                                                    <input type="hidden"  name="_id" [(ngModel)]="id2">
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <input type="email" class="form-control form-control-lg" placeholder="Correo Electronico" name="email" [(ngModel)]="email" value="{{name2}}">
+                                                                    <input type="email" class="form-control form-control-lg" placeholder="Correo Electronico" name="email" [(ngModel)]="email2" >
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <input type="text" class="form-control form-control-lg" placeholder="Numero de Movil" name="mobile" [(ngModel)]="mobile">
+                                                                    <input type="text" class="form-control form-control-lg" placeholder="Numero de Movil" name="mobile" [(ngModel)]="mobile2">
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <input type="password" class="form-control form-control-lg" placeholder="Contraseña" name="password" [(ngModel)]="password">
+                                                                    <input type="text" class="form-control form-control-lg" placeholder="Contraseña" name="password" [(ngModel)]="password2">
                                                                 </div>
 
                                                                 <input type="submit" value="Actualizar Datos" class="btn btn-outline-light btn-block">

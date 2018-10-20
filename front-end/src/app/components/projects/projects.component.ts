@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { SessionService } from '../../services/session.service';
 import {UsersService} from '../../services/users.service';
 import {User} from '../../models/User';
+
+
 @Component({
   selector: 'app-projects',
   templateUrl: './projects.component.html',
@@ -15,6 +17,26 @@ export class ProjectsComponent implements OnInit {
   ngOnInit() {
     this.getResidents();
     this.getDesigners();
+    
+
+    
+    this.getUserType();
+  }
+
+  
+
+  key:string;
+  userTypeBoolean:boolean=false;
+  userType:string;
+  getUserType(){
+    this.key="UserType";
+    this.userType=this.sess.getFromSession(this.key);
+    if(this.userType=="1"){
+      this.userTypeBoolean=true;
+    }
+    else{
+      this.userTypeBoolean=false;
+    }
     
   }
 
