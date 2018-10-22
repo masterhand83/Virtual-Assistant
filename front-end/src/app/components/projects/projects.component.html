@@ -47,7 +47,11 @@
                                             </div>
                                         </td>
                                         <td>
-                                            <button class="btn btn-lg btn-dark" type="submit" data-toggle="modal" data-target="#verp">Ver Proyecto</button>
+                                            <button *ngIf="userTypeBoolean || userTypeBoolean3" class="btn btn-lg btn-dark" type="submit" data-toggle="modal" data-target="#verp">Ver Proyecto</button>
+                                            <a *ngIf="userTypeBoolean2" href="/gantt">
+                                                <button  class="btn btn-lg btn-dark">Ver Proyecto</button>
+                                            </a>
+                                            
                                         </td>
                                     </tr>
                                     <tr>
@@ -62,7 +66,10 @@
                                             </div>
                                         </td>
                                         <td>
-                                            <button class="btn btn-lg btn-dark" type="submit" data-toggle="modal" data-target="#verp">Ver Proyecto</button>
+                                            <button *ngIf="userTypeBoolean || userTypeBoolean3" class="btn btn-lg btn-dark" type="submit" data-toggle="modal" data-target="#verp">Ver Proyecto</button>
+                                            <a *ngIf="userTypeBoolean2" href="/gantt">
+                                                <button  class="btn btn-lg btn-dark">Ver Proyecto</button>
+                                            </a>
                                         </td>
                                     </tr>
                                     <tr>
@@ -77,7 +84,11 @@
                                             </div>
                                         </td>
                                         <td>
-                                            <button class="btn btn-lg btn-dark" type="submit" data-toggle="modal" data-target="#verp">Ver Proyecto</button>
+                                            <button *ngIf="userTypeBoolean || userTypeBoolean3" class="btn btn-lg btn-dark" type="submit" data-toggle="modal" data-target="#verp">Ver Proyecto</button>
+                                            <a *ngIf="userTypeBoolean2" href="/gantt">
+                                                <button  class="btn btn-lg btn-dark">Ver Proyecto</button>
+                                            </a>
+                                            
                                         </td>
                                     </tr>
 
@@ -308,7 +319,7 @@
                                         </div>
                                         <br>
                                         <br>
-                                        <div class="col-lg-12">
+                                        <div *ngIf="userTypeBoolean" class="col-lg-12">
                                             <a href="/gantt">
                                                 <button class="btn btn-block btn-dark" type="submit">Ver Proceso</button>
                                             </a>

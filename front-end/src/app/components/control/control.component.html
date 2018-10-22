@@ -9,15 +9,18 @@
                         Bienvenido Usuario.
                     </div>
                     <br><br><br><br><br>
-
-                    <div class="col-lg-6">
+                    
+                    <div *ngIf="userTypeBoolean" class="col-lg-6">
                         <app-alerts></app-alerts>
                     </div>
 
-                    <div class="col-lg-6">
+                    <div *ngIf="userTypeBoolean"  class="col-lg-6" >
                         <app-messages></app-messages>
                     </div>
 
+                    <div *ngIf="!userTypeBoolean" class="col-lg-12">
+                        <app-messages></app-messages>
+                    </div>
 
                 </div>
             </div>

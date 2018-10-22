@@ -27,6 +27,8 @@ export class ProjectsComponent implements OnInit {
 
   key:string;
   userTypeBoolean:boolean=false;
+  userTypeBoolean2:boolean=false;
+  userTypeBoolean3:boolean=false;
   userType:string;
   getUserType(){
     this.key="UserType";
@@ -34,8 +36,11 @@ export class ProjectsComponent implements OnInit {
     if(this.userType=="1"){
       this.userTypeBoolean=true;
     }
-    else{
-      this.userTypeBoolean=false;
+    else if(this.userType=="2"){
+      this.userTypeBoolean2=true;
+    }
+    else if(this.userType="3"){
+      this.userTypeBoolean3=true;
     }
     
   }
