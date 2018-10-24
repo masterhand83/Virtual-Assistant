@@ -35,9 +35,9 @@
                                     </tr>
                                 </thead>
                                 <tbody id="myTable">
-                                    <tr>
-                                        <td>Proyecto 1</td>
-                                        <td>Residente 1</td>
+                                    <tr *ngFor="let project of this.projectsService.project">
+                                        <td>{{project.name}}</td>
+                                        <td></td>
                                         <td>
                                             <div class="progress">
                                                 <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0"
@@ -47,50 +47,14 @@
                                             </div>
                                         </td>
                                         <td>
-                                            <button *ngIf="userTypeBoolean || userTypeBoolean3" class="btn btn-lg btn-dark" type="submit" data-toggle="modal" data-target="#verp">Ver Proyecto</button>
+                                            <button *ngIf="userTypeBoolean || userTypeBoolean3" (click)="SelectedProject(project._id,project.name,project.description)" class="btn btn-lg btn-dark" type="submit" data-toggle="modal" data-target="#verp">Ver Proyecto</button>
                                             <a *ngIf="userTypeBoolean2" href="/gantt">
-                                                <button  class="btn btn-lg btn-dark">Ver Proyecto</button>
+                                                <button class="btn btn-lg btn-dark">Ver Proyecto</button>
                                             </a>
                                             
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td>Proyecto 2</td>
-                                        <td>Residente 2</td>
-                                        <td>
-                                            <div class="progress">
-                                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="44" aria-valuemin="0"
-                                                    aria-valuemax="100" style="width:44%">
-                                                    44%
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <button *ngIf="userTypeBoolean || userTypeBoolean3" class="btn btn-lg btn-dark" type="submit" data-toggle="modal" data-target="#verp">Ver Proyecto</button>
-                                            <a *ngIf="userTypeBoolean2" href="/gantt">
-                                                <button  class="btn btn-lg btn-dark">Ver Proyecto</button>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Proyecto 3</td>
-                                        <td>Residente 3</td>
-                                        <td>
-                                            <div class="progress">
-                                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="52" aria-valuemin="0"
-                                                    aria-valuemax="100" style="width:52%">
-                                                    52%
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <button *ngIf="userTypeBoolean || userTypeBoolean3" class="btn btn-lg btn-dark" type="submit" data-toggle="modal" data-target="#verp">Ver Proyecto</button>
-                                            <a *ngIf="userTypeBoolean2" href="/gantt">
-                                                <button  class="btn btn-lg btn-dark">Ver Proyecto</button>
-                                            </a>
-                                            
-                                        </td>
-                                    </tr>
+                                    
 
                                 </tbody>
                             </table>
@@ -206,7 +170,7 @@
                                                     </div>
                                                     <div class="col-lg-8">
                                                         <div class="form-group">
-                                                            <input type="text" class="form-control form-control-lg" placeholder="Nombre del proyecto">
+                                                            <input type="text" class="form-control form-control-lg" placeholder="Nombre del proyecto" name="name"[(ngModel)]="name2">
                                                         </div>
                                                     </div>
                                                     <br>
@@ -215,7 +179,7 @@
                                                     </div>
                                                     <div class="col-lg-8">
                                                         <div class="form-group">
-                                                            <input type="text" class="form-control form-control-lg" placeholder="Descripcion del proyecto">
+                                                            <input type="text" class="form-control form-control-lg" placeholder="Descripcion del proyecto" name="description"[(ngModel)]="description2">
                                                         </div>
                                                     </div>
                                                     <br>

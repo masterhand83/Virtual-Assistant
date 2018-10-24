@@ -3,6 +3,7 @@ import { SessionService } from '../../services/session.service';
 import {UsersService} from '../../services/users.service';
 import {ProjectsService} from '../../services/projects.service';
 import {User} from '../../models/User';
+import {Project} from '../../models/Project';
 
 import { NgForm } from '../../../../node_modules/@angular/forms';
 
@@ -75,6 +76,9 @@ export class ProjectsComponent implements OnInit {
     this.projectsService.createProject(form.value.name,form.value.description,this.UserID,form.value.idUser2,form.value.idUser3)
     .subscribe(res=>{
       console.log(res);  
+      alert('Proyecto Asignado Correctamente');
+      form.reset();
+      this.getProjects();
       
     });
     
@@ -85,14 +89,27 @@ export class ProjectsComponent implements OnInit {
     if(this.userType=="1"){
       this.projectsService.getProjects()
       .subscribe(res => {
-        console.log(res);
-        
-
+        this.projectsService.project=res as Project[];
       });
+      
+    }
+    if(this.userType=="2" || this.userType=="3"){
+      this.projectsService.getProjectsRP(this.UserID)
+      .subscribe(res=>{
+        this.projectsService.project=res as Project[];
+      })
     }
   }
 
- 
+  id2:string="";
+  name2:string="";
+  description2:string="";
+  SelectedProject(_id:string,name:string,description:string){
+    
+    this.id2=_id;
+    this.name2=name;
+    this.description2=description; 
+  }
   
 
 }

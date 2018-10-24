@@ -1,12 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+
+import {Project} from '../models/Project';
 @Injectable({
   providedIn: 'root'
 })
 export class ProjectsService {
   readonly IP = "localhost";
   readonly URL_API = 'http://localhost:3000/api/projects/project';
+  readonly URL_API2= 'http://localhost:3000/api/users/project';
 
+  project:Project[];
   
   constructor(private http: HttpClient) {
     
@@ -26,5 +30,8 @@ export class ProjectsService {
 
   getProjects(){
     return this.http.get(this.URL_API);
+  }
+  getProjectsRP(_id:string){
+    return this.http.get(this.URL_API2+`/${_id}`);
   }
 }
