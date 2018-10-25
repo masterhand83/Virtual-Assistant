@@ -12,6 +12,13 @@ export class SessionService {
     localStorage.setItem('UserType',res.userType);
     console.log('SESION CREADA PARA',res);
   }
+  createProjectSession(projectid:string){
+    localStorage.setItem('ActualProject',projectid);
+    console.log('SESION CREADA PARA ',projectid);
+  }
+  deleteProjectSession(){
+    localStorage.removeItem('ActualProject');
+  }
   validateSession(){
     if (localStorage.getItem('UserID') == null) {
       this.router.navigate(['']);
