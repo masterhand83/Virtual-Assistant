@@ -19,6 +19,7 @@ export class SessionService {
   deleteProjectSession(){
     localStorage.removeItem('ActualProject');
   }
+  
   validateSession(){
     if (localStorage.getItem('UserID') == null) {
       this.router.navigate(['']);
