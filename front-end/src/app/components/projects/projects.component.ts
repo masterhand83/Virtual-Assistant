@@ -24,6 +24,7 @@ export class ProjectsComponent implements OnInit {
 
     this.getUserType();
     this.getProjects();
+
   }
 
   
@@ -90,6 +91,9 @@ export class ProjectsComponent implements OnInit {
       this.projectsService.getProjects()
       .subscribe(res => {
         this.projectsService.project=res as Project[];
+      
+        
+        
       });
       
     }
@@ -100,6 +104,26 @@ export class ProjectsComponent implements OnInit {
       })
     }
   }
+
+  getUsersInCharge(_id:string){
+    this.projectsService.getUsersInCharge(_id)
+    .subscribe(res=>{
+      console.log(res);
+      this.projectsService.usersincharge=res as User[];
+    })
+  }
+
+  updateInformation(form:NgForm){
+
+    this.projectsService.putInformation(form.value._id,form.value.name,form.value.description,form.value.storeName,
+    form.value.storeNumber,form.value.m2,form.value.m2,form.value.location,form.value.furnitureDate,
+    form.value.openingDate)
+    .subscribe(res=>{
+      console.log(res);
+    });
+
+  }
+
 
   id2:string="";
   name2:string="";

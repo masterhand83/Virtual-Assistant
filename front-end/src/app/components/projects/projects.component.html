@@ -37,7 +37,9 @@
                                 <tbody id="myTable">
                                     <tr *ngFor="let project of this.projectsService.project">
                                         <td>{{project.name}}</td>
-                                        <td></td>
+                                        <td>
+                                            
+                                        </td>
                                         <td>
                                             <div class="progress">
                                                 <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0"
@@ -163,8 +165,9 @@
                                     <br>
                                     <div class="row">
                                         <div class="col-lg-12">
-                                            <form action="/projects">
+                                            <form  #updateForm="ngForm" (ngSubmit)="updateInformation(updateForm)">
                                                 <div class="row">
+                                                    <input type="hidden" name="_id" [(ngModel)]="id2">
                                                     <div class="col-lg-4">
                                                         Nombre del Proyecto
                                                     </div>
@@ -179,7 +182,7 @@
                                                     </div>
                                                     <div class="col-lg-8">
                                                         <div class="form-group">
-                                                            <input type="text" class="form-control form-control-lg" placeholder="Descripcion del proyecto" name="description"[(ngModel)]="description2">
+                                                            <input type="text" class="form-control form-control-lg" placeholder="Descripcion del proyecto" name="description" [(ngModel)]="description2">
                                                         </div>
                                                     </div>
                                                     <br>
@@ -188,7 +191,7 @@
                                                     </div>
                                                     <div class="col-lg-8">
                                                         <div class="form-group">
-                                                            <input type="text" class="form-control form-control-lg" placeholder="Nombre de tienda">
+                                                            <input type="text" class="form-control form-control-lg" placeholder="Nombre de tienda" name="storeName" [(ngModel)]="storeName">
                                                         </div>
                                                     </div>
                                                     <br>
@@ -197,7 +200,7 @@
                                                     </div>
                                                     <div class="col-lg-8">
                                                         <div class="form-group">
-                                                            <input type="text" class="form-control form-control-lg" placeholder="Numero de Tienda">
+                                                            <input type="text" class="form-control form-control-lg" placeholder="Numero de Tienda" name="storeNumber" [(ngModel)]="storeNumber">
                                                         </div>
                                                     </div>
 
@@ -209,7 +212,7 @@
                                                     </div>
                                                     <div class="col-lg-8">
                                                         <div class="form-group">
-                                                            <input type="text" class="form-control form-control-lg" placeholder="Metraje">
+                                                            <input type="text" class="form-control form-control-lg" placeholder="Metraje" name="m2" [(ngModel)]="m2">
                                                         </div>
                                                     </div>
 
@@ -221,7 +224,7 @@
                                                     </div>
                                                     <div class="col-lg-8">
                                                         <div class="form-group">
-                                                            <input type="text" class="form-control form-control-lg" placeholder="Ubicacion">
+                                                            <input type="text" class="form-control form-control-lg" placeholder="Ubicacion" name="location" [(ngModel)]="location">
                                                         </div>
                                                     </div>
 
@@ -233,22 +236,10 @@
                                                     </div>
                                                     <div class="col-lg-8">
                                                         <div class="form-group">
-                                                            <input type="date" class="form-control form-control-lg">
+                                                            <input type="date" class="form-control form-control-lg" name="localReception" [(ngModel)]="localReception">
                                                         </div>
                                                     </div>
 
-
-                                                    <br>
-                                                    <br>
-
-                                                    <div class="col-lg-4">
-                                                        Pedido de Muebles
-                                                    </div>
-                                                    <div class="col-lg-8">
-                                                        <div class="form-group">
-                                                            <input type="date" class="form-control form-control-lg">
-                                                        </div>
-                                                    </div>
 
                                                     <br>
                                                     <br>
@@ -258,7 +249,19 @@
                                                     </div>
                                                     <div class="col-lg-8">
                                                         <div class="form-group">
-                                                            <input type="date" class="form-control form-control-lg">
+                                                            <input type="date" class="form-control form-control-lg" name="openingDate" [(ngModel)]="openingDate">
+                                                        </div>
+                                                    </div>
+
+                                                    <br>
+                                                    <br>    
+
+                                                    <div class="col-lg-4">
+                                                        Pedido de Muebles
+                                                    </div>
+                                                    <div class="col-lg-8">
+                                                        <div class="form-group">
+                                                            <input type="date" class="form-control form-control-lg" name="furnitureDate" [(ngModel)]="furnitureDate">
                                                         </div>
                                                     </div>
 

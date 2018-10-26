@@ -1,6 +1,5 @@
 export interface Project{
 
-
     "name":string,
     "description":string,
     "storeName": string,
@@ -11,6 +10,6 @@ export interface Project{
     "openingDate":Date,
     "furnitureDate": Date,
     "alertsActivated":Boolean,
-    "activities":Object[]
+    "activities":Object[],
 
 }
