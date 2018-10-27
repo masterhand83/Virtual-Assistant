@@ -12,6 +12,7 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {
     this.sess.validateSession();
+    
     this.getUserType();
   }
   loggout(){

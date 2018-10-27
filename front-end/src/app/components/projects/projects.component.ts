@@ -105,6 +105,8 @@ export class ProjectsComponent implements OnInit {
     }
   }
 
+  
+
   getUsersInCharge(_id:string){
     this.projectsService.getUsersInCharge(_id)
     .subscribe(res=>{
@@ -114,25 +116,47 @@ export class ProjectsComponent implements OnInit {
   }
 
   updateInformation(form:NgForm){
-
-    this.projectsService.putInformation(form.value._id,form.value.name,form.value.description,form.value.storeName,
-    form.value.storeNumber,form.value.m2,form.value.m2,form.value.location,form.value.furnitureDate,
-    form.value.openingDate)
-    .subscribe(res=>{
-      console.log(res);
-    });
+    if (confirm('¿Estas seguro de actualizar?')) {
+      this.projectsService.putInformation(form.value._id,form.value.name,form.value.description,form.value.storeName,
+        form.value.storeNumber,form.value.m2,form.value.location,form.value.localReception,form.value.furnitureDate,
+        form.value.openingDate)
+        .subscribe(res=>{
+          alert('Proyecto Actualizado Exitosamente');
+          this.getProjects();
+        });
+    }
+    
 
   }
 
+  projectCookie(projectid:string){
+    this.sess.createProjectSession(projectid);
+  }
 
   id2:string="";
   name2:string="";
   description2:string="";
-  SelectedProject(_id:string,name:string,description:string){
+  storeName2:string="";
+  storeNumber2:number;
+  m22:number;
+  location2:string="";
+  localReception2:Date;
+  furnitureDate2:Date;
+  openingDate2:Date;
+  SelectedProject(_id:string,name:string,description:string,storeName: string,
+    storeNumber: number,m2: number,location: string,localReception: Date,furnitureDate: Date,openingDate:Date){
     
     this.id2=_id;
     this.name2=name;
     this.description2=description; 
+    this.storeName2=storeName;
+    this.storeNumber2=storeNumber;
+    this.m22=m2;
+    this.location2=location;
+    this.localReception2=localReception;
+    this.furnitureDate2=furnitureDate;
+    this.openingDate2=openingDate;
+
   }
   
 

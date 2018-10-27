@@ -49,9 +49,10 @@
                                             </div>
                                         </td>
                                         <td>
-                                            <button *ngIf="userTypeBoolean || userTypeBoolean3" (click)="SelectedProject(project._id,project.name,project.description)" class="btn btn-lg btn-dark" type="submit" data-toggle="modal" data-target="#verp">Ver Proyecto</button>
+                                            <button *ngIf="userTypeBoolean || userTypeBoolean3" (click)="SelectedProject(project._id,project.name,project.description,project.storeName,project.storeNumber
+                                            ,project.m2,project.location,project.localReception,project.furnitureDate,project.openingDate)" class="btn btn-lg btn-dark" type="submit" data-toggle="modal" data-target="#verp">Ver Proyecto</button>
                                             <a *ngIf="userTypeBoolean2" href="/gantt">
-                                                <button class="btn btn-lg btn-dark">Ver Proyecto</button>
+                                                <button (click)="projectCookie(id2)" class="btn btn-lg btn-dark">Ver Proyecto</button>
                                             </a>
                                             
                                         </td>
@@ -191,7 +192,7 @@
                                                     </div>
                                                     <div class="col-lg-8">
                                                         <div class="form-group">
-                                                            <input type="text" class="form-control form-control-lg" placeholder="Nombre de tienda" name="storeName" [(ngModel)]="storeName">
+                                                            <input type="text" class="form-control form-control-lg" placeholder="Nombre de tienda" name="storeName" [(ngModel)]="storeName2" >
                                                         </div>
                                                     </div>
                                                     <br>
@@ -200,7 +201,7 @@
                                                     </div>
                                                     <div class="col-lg-8">
                                                         <div class="form-group">
-                                                            <input type="text" class="form-control form-control-lg" placeholder="Numero de Tienda" name="storeNumber" [(ngModel)]="storeNumber">
+                                                            <input type="text" class="form-control form-control-lg" placeholder="Numero de Tienda" name="storeNumber" [(ngModel)]="storeNumber2">
                                                         </div>
                                                     </div>
 
@@ -212,7 +213,7 @@
                                                     </div>
                                                     <div class="col-lg-8">
                                                         <div class="form-group">
-                                                            <input type="text" class="form-control form-control-lg" placeholder="Metraje" name="m2" [(ngModel)]="m2">
+                                                            <input type="text" class="form-control form-control-lg" placeholder="Metraje" name="m2" [(ngModel)]="m22">
                                                         </div>
                                                     </div>
 
@@ -224,7 +225,7 @@
                                                     </div>
                                                     <div class="col-lg-8">
                                                         <div class="form-group">
-                                                            <input type="text" class="form-control form-control-lg" placeholder="Ubicacion" name="location" [(ngModel)]="location">
+                                                            <input type="text" class="form-control form-control-lg" placeholder="Ubicacion" name="location" [(ngModel)]="location2">
                                                         </div>
                                                     </div>
 
@@ -234,7 +235,13 @@
                                                     <div class="col-lg-4">
                                                         Recepcion Local
                                                     </div>
-                                                    <div class="col-lg-8">
+                                                    <br>
+                                                    <div class="col-lg-3">
+                                                        
+                                                        <input type="text"  class="form-control form-control-lg" name="localReception2" [(ngModel)]="localReception2" readonly>
+                                                          
+                                                    </div>
+                                                    <div class="col-lg-5">
                                                         <div class="form-group">
                                                             <input type="date" class="form-control form-control-lg" name="localReception" [(ngModel)]="localReception">
                                                         </div>
@@ -247,7 +254,13 @@
                                                     <div class="col-lg-4">
                                                         Fecha de apertura
                                                     </div>
-                                                    <div class="col-lg-8">
+                                                    <br>
+                                                    <div class="col-lg-3">
+                                                        
+                                                        <input type="text"  class="form-control form-control-lg" name="openingDate2" [(ngModel)]="openingDate2" readonly>
+                                                        
+                                                    </div>
+                                                    <div class="col-lg-5">
                                                         <div class="form-group">
                                                             <input type="date" class="form-control form-control-lg" name="openingDate" [(ngModel)]="openingDate">
                                                         </div>
@@ -259,7 +272,13 @@
                                                     <div class="col-lg-4">
                                                         Pedido de Muebles
                                                     </div>
-                                                    <div class="col-lg-8">
+                                                    
+                                                    <div class="col-lg-3">
+                                                        
+                                                        <input type="text" class="form-control form-control-lg"  name="furnitureDate2" [(ngModel)]="furnitureDate2" readonly>
+                                                        
+                                                    </div>
+                                                    <div class="col-lg-5">
                                                         <div class="form-group">
                                                             <input type="date" class="form-control form-control-lg" name="furnitureDate" [(ngModel)]="furnitureDate">
                                                         </div>
@@ -288,7 +307,7 @@
                                         <br>
                                         <div *ngIf="userTypeBoolean" class="col-lg-12">
                                             <a href="/gantt">
-                                                <button class="btn btn-block btn-dark" type="submit">Ver Proceso</button>
+                                                <button (click)="projectCookie(id2)" class="btn btn-block btn-dark" type="submit">Ver Proceso</button>
                                             </a>
 
 

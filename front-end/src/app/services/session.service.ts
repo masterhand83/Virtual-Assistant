@@ -14,7 +14,7 @@ export class SessionService {
   }
   createProjectSession(projectid:string){
     localStorage.setItem('ActualProject',projectid);
-    console.log('SESION CREADA PARA ',projectid);
+    console.log('SESION CREADA PARA PROYECTO ',projectid);
   }
   deleteProjectSession(){
     localStorage.removeItem('ActualProject');
@@ -25,9 +25,15 @@ export class SessionService {
       this.router.navigate(['']);
     }
   }
+  validateProject(){
+    if(localStorage.getItem('ActualProject')==null){
+      this.router.navigate(['/projects']);
+    }
+  }
   deleteSession(){
     localStorage.removeItem('UserID');
     localStorage.removeItem('UserType');
+    localStorage.removeItem('ActualProject');
     this.router.navigate(['']);
   }
   getFromSession(key:string){
