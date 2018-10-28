@@ -30,16 +30,23 @@ export class UsersComponent implements OnInit {
   }
 
   addUser(form: NgForm){
-    
-
-    this.userService.postUser(form.value)
-    .subscribe(res=>{
-      console.log(res); 
+    if(form.value.name!=null && form.value.email!=null && form.value.mobile!=null
+    && form.value.password!=null && form.value.userType!=null ){
+      this.userService.postUser(form.value)
+      .subscribe(res=>{
+        console.log(res); 
+          
+        form.reset();
+        alert("Usuario guardado exitosamente");
         
-      form.reset();
-      alert("Usuario guardado exitosamente");
+      });
       
-    });
+    }
+    else{
+      alert('Favor de completar todos los campos');
+    }
+
+    
 
   }
   

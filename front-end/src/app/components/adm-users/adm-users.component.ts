@@ -100,25 +100,31 @@ export class AdmUsersComponent implements OnInit {
   
   updateUserInCharge(form:NgForm){
     
+    if(form.value.idNewUser!=null){
+      if(this.idUser == 2){
+        if (confirm('¿Estas seguro de actualizar?')) {
+          this.projectService.changeResident(form.value.id3,form.value.idNewUser)
+          .subscribe(res=>{
+            alert('Usuario Actualizado Correctamente');
+            this.getUsers(); 
+          });
+        }
+      }
+      else if(this.idUser == 3){
+        if (confirm('¿Estas seguro de actualizar?')) {
+          this.projectService.changeDesigner(form.value.id3,form.value.idNewUser)
+          .subscribe(res=>{
+            alert('Usuario Actualizado Correctamente');
+            this.getUsers();
+          });
+        }
+      }
+    }
+    else{
+      alert('Favor de completar todos los campos');
+    }
     
-    if(this.idUser == 2){
-      if (confirm('¿Estas seguro de actualizar?')) {
-        this.projectService.changeResident(form.value.id3,form.value.idNewUser)
-        .subscribe(res=>{
-          alert('Usuario Actualizado Correctamente');
-          this.getUsers(); 
-        });
-      }
-    }
-    else if(this.idUser == 3){
-      if (confirm('¿Estas seguro de actualizar?')) {
-        this.projectService.changeDesigner(form.value.id3,form.value.idNewUser)
-        .subscribe(res=>{
-          alert('Usuario Actualizado Correctamente');
-          this.getUsers();
-        });
-      }
-    }
+    
     
 
     

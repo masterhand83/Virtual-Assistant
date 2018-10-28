@@ -31,16 +31,16 @@
                             <p>Ingresa los datos y crea un nuevo usuario. </p>
                             <form #userForm="ngForm" (ngSubmit)="addUser(userForm)">
                               <div class="form-group">
-                                <input type="text" class="form-control form-control-lg" placeholder="Nombre" name="name" #nombre [(ngModel)]="name" onpaste="return false"  maxlength="100">
+                                <input type="text" class="form-control form-control-lg" placeholder="Nombre" name="name" #nombre [(ngModel)]="name"   maxlength="100">
                               </div>
                               <div class="form-group">
-                                <input type="email" class="form-control form-control-lg" placeholder="Correo Electronico" name="email" #mail [(ngModel)]="email"  onpaste="return false" maxlength="100">
+                                <input type="email" class="form-control form-control-lg" placeholder="Correo Electronico" name="email" #mail [(ngModel)]="email"   maxlength="100">
                               </div>
                               <div class="form-group">
-                                <input type="text" class="form-control form-control-lg" placeholder="Numero de Movil" name="mobile" #mobil [(ngModel)]="mobile"  onpaste="return false" maxlength="100" >
+                                <input type="text" class="form-control form-control-lg" placeholder="Numero de Movil" name="mobile" #mobil [(ngModel)]="mobile"   maxlength="100" >
                               </div>
                               <div class="form-group">
-                                <input type="password" class="form-control form-control-lg" placeholder="Contraseña" name="password" #pass [(ngModel)]="password"  onpaste="return false" maxlength="100" > 
+                                <input type="password" class="form-control form-control-lg" placeholder="Contraseña" name="password" #pass [(ngModel)]="password"   maxlength="100" > 
                               </div>
 
                               <div class="form-group">
