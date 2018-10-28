@@ -12,7 +12,8 @@ export class ProjectsService {
   readonly URL_API = 'http://localhost:3000/api/projects/project';
   readonly URL_API2= 'http://localhost:3000/api/users/project';
   readonly URL_API3 = 'http://localhost:3000/api/projects/user';
-
+  readonly URL_API4 = 'http://localhost:3000/api/projects/resident';
+  readonly URL_API5= 'http://localhost:3000/api/projects/designer';
   project:Project[];
   usersincharge:User[];
   
@@ -65,5 +66,25 @@ export class ProjectsService {
 
   deleteProject(_id:string){
     return this.http.delete(this.URL_API + `/${_id}`);
+  }
+
+  
+  changeResident(_id:string,idNewUser:string){
+
+    return this.http.put(this.URL_API4 + `/${_id}`,{
+      _id:_id,
+      idNewResident:idNewUser,
+
+    });
+    
+  }
+  changeDesigner(_id:string,idNewUser:string){
+
+    return this.http.put(this.URL_API5 + `/${_id}`,{
+      _id:_id,
+      idNewDesigner:idNewUser,
+
+    });
+    
   }
 }

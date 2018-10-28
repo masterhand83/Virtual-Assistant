@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from "../models/User";
+import { Project } from '../models/Project';
 
 @Injectable({
   providedIn: 'root'
@@ -8,9 +9,11 @@ import { User } from "../models/User";
 export class UsersService {
   readonly IP = "localhost";
   readonly URL_API = 'http://localhost:3000/api/users/user';
+  readonly URL_API2 = 'http://localhost:3000/api/users/project';
   
   user: User[];
   user2:User[];
+  projects:Project[];
 
   constructor(private http: HttpClient) {
       
@@ -47,6 +50,9 @@ export class UsersService {
       mobile:mobile,
       password:password
     });
+  }
+  getUserProjects(_id:string){
+    return this.http.get(this.URL_API2+`/${_id}`);
   }
 
 }

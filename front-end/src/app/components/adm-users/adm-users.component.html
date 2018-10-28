@@ -28,7 +28,7 @@
                                         <td>{{user.email}}</td>
                                         <td>{{user.projects.length}}</td>
                                         <td>
-                                            <button (click)="SelectedUser(user.name,user._id,user.email,user.mobile,user.password)" class="btn btn-lg btn-dark" type="button" data-toggle="modal" data-target="#acciones">
+                                            <button (click)="SelectedUser(user.name,user._id,user.email,user.mobile,user.password)" (click)="getUserProjects(user._id)" class="btn btn-lg btn-dark" type="button" data-toggle="modal" data-target="#acciones">
                                                 <i class="fas fa-archive fa-1x"></i>
                                             </button>
                                         </td>
@@ -91,8 +91,8 @@
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody id="accionestabla">
-                                                                    <tr>
-                                                                        <td>Proyecto 1</td>
+                                                                    <tr *ngFor="let project of this.projects">
+                                                                        <td>{{project.name}}</td>
                                                                         <td>
                                                                             <div class="progress">
                                                                                 <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="40" aria-valuemin="0"
@@ -102,53 +102,15 @@
                                                                             </div>
                                                                         </td>
                                                                         <td>
-                                                                            <button class="btn btn-lg btn-dark" type="submit"
+                                                                            <button (click)="SelectedProject(project._id)" 
+                                                                                class="btn btn-lg btn-dark" type="submit"
                                                                                 data-toggle="modal" data-target="#nuevosdatos"
                                                                                 data-dismiss="modal" aria-label="Close">
                                                                                 <i class="fas fa-folder-minus fa-1x"></i>
                                                                             </button>
                                                                         </td>
                                                                     </tr>
-                                                                    <tr>
-                                                                        <td>Proyecto 2</td>
-                                                                        <td>
-                                                                            <div class="progress">
-                                                                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="40" aria-valuemin="0"
-                                                                                    aria-valuemax="100" style="width:40%">
-                                                                                    40%
-                                                                                </div>
-                                                                            </div>
-                                                                        </td>
-                                                                        <!--El segundo class es para borrar el desplegable-->
-                                                                        <td>
-                                                                            <button class="btn btn-lg btn-dark" type="submit"
-                                                                                data-toggle="modal" data-target="#nuevosdatos"
-                                                                                data-dismiss="modal" aria-label="Close">
-                                                                                <i class="fas fa-folder-minus fa-1x"></i>
-                                                                            </button>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>Proyecto 3</td>
-                                                                        <td>
-                                                                            <div class="progress">
-                                                                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="40" aria-valuemin="0"
-                                                                                    aria-valuemax="100" style="width:40%">
-                                                                                    40%
-                                                                                </div>
-                                                                            </div>
-                                                                        </td>
-                                                                        <td>
-                                                                            <button class="btn btn-lg btn-dark" type="submit"
-                                                                                data-toggle="modal" data-target="#nuevosdatos"
-                                                                                data-dismiss="modal" aria-label="Close">
-                                                                                <i class="fas fa-folder-minus fa-1x"></i>
-                                                                            </button>
-                                                                        </td>
-                                                                    </tr>
+                                                                    
                                                                 </tbody>
                                                             </table>
                                                         </div>
@@ -245,7 +207,7 @@
                                                         <div class="card-body">
                                                             <h3>Nuevos datos de usuario</h3>
                                                             <p>Escoje el nuevo encargado de proyecto </p>
-                                                            <form action="/adm-users">
+                                                            <form #update="ngForm" (ngSubmit)="updateUserInCharge(update)">
 
                                                                 <div class="form-group">
                                                                     <div class="col-lg-12">
@@ -256,11 +218,12 @@
                                                                                 <h6 *ngIf="checku">Residente Encargado</h6>
                                                                                 <h6 *ngIf="!checku">Proyectista Encargado</h6>
                                                                             </div>
+                                                                            <input type="hidden" name="id3" [(ngModel)]="id3">
                                                                             <div class="col-lg-6">
                                                                                 <div class="form-group">
 
-                                                                                    <select  class="form-control" id="sel1">
-                                                                                        <option *ngFor="let user of this.userService.user" value="{{user.id}}">{{user.name}} </option>
+                                                                                    <select  class="form-control" name="idNewUser" [(ngModel)]="idNewUser" >
+                                                                                        <option *ngFor="let user of this.userService.user" value="{{user._id}}">{{user.name}} </option>
                                                                                         
                                                                                     </select>
                                                                                 </div>

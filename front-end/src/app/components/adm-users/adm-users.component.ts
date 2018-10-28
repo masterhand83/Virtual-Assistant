@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../../services/users.service';
+import {ProjectsService} from '../../services/projects.service'
 import { User } from '../../models/User';
 import { NgForm } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
@@ -7,6 +8,7 @@ import { SessionService } from '../../services/session.service';
 
 
 import { ActivatedRoute } from '../../../../node_modules/@angular/router';
+import { Project } from '../../models/Project';
 
 declare var M: any;
 
@@ -19,7 +21,8 @@ declare var M: any;
 })
 export class AdmUsersComponent implements OnInit {
 
-  constructor(private userService: UsersService, private sess: SessionService, private _route: ActivatedRoute) {
+  constructor(private userService: UsersService, private sess: SessionService, private _route: ActivatedRoute, 
+  private projectService:ProjectsService) {
 
   }
 
@@ -85,6 +88,43 @@ export class AdmUsersComponent implements OnInit {
         });
     }
   }
+  
+  projects:Object[];
+  getUserProjects(_id:string){
+    this.userService.getUserProjects(_id)
+    .subscribe(res=>{
+      
+      this.projects=res as Project[];
+    });
+  }
+  
+  updateUserInCharge(form:NgForm){
+    
+    
+    if(this.idUser == 2){
+      if (confirm('¿Estas seguro de actualizar?')) {
+        this.projectService.changeResident(form.value.id3,form.value.idNewUser)
+        .subscribe(res=>{
+          alert('Usuario Actualizado Correctamente');
+          this.getUsers(); 
+        });
+      }
+    }
+    else if(this.idUser == 3){
+      if (confirm('¿Estas seguro de actualizar?')) {
+        this.projectService.changeDesigner(form.value.id3,form.value.idNewUser)
+        .subscribe(res=>{
+          alert('Usuario Actualizado Correctamente');
+          this.getUsers();
+        });
+      }
+    }
+    
+
+    
+
+  }
+
   name2: string = "";
   id2: string = "";
   email2: string = "";
@@ -99,7 +139,11 @@ export class AdmUsersComponent implements OnInit {
     this.password2 = password2;
 
   }
-
+  id3:string;
+  SelectedProject(_id:string){
+    console.log(_id);
+    this.id3=_id;
+  }
 
 
 
