@@ -31,21 +31,21 @@
                             <p>Ingresa los datos y crea un nuevo usuario. </p>
                             <form #userForm="ngForm" (ngSubmit)="addUser(userForm)">
                               <div class="form-group">
-                                <input type="text" class="form-control form-control-lg" placeholder="Nombre" name="name" #nombre [(ngModel)]="name">
+                                <input type="text" class="form-control form-control-lg" placeholder="Nombre" name="name" #nombre [(ngModel)]="name" onpaste="return false"  maxlength="100">
                               </div>
                               <div class="form-group">
-                                <input type="email" class="form-control form-control-lg" placeholder="Correo Electronico" name="email" #mail [(ngModel)]="email">
+                                <input type="email" class="form-control form-control-lg" placeholder="Correo Electronico" name="email" #mail [(ngModel)]="email"  onpaste="return false" maxlength="100">
                               </div>
                               <div class="form-group">
-                                <input type="text" class="form-control form-control-lg" placeholder="Numero de Movil" name="mobile" #mobil [(ngModel)]="mobile">
+                                <input type="text" class="form-control form-control-lg" placeholder="Numero de Movil" name="mobile" #mobil [(ngModel)]="mobile"  onpaste="return false" maxlength="100" >
                               </div>
                               <div class="form-group">
-                                <input type="password" class="form-control form-control-lg" placeholder="Contraseña" name="password" #pass [(ngModel)]="password">
+                                <input type="password" class="form-control form-control-lg" placeholder="Contraseña" name="password" #pass [(ngModel)]="password"  onpaste="return false" maxlength="100" > 
                               </div>
 
                               <div class="form-group">
                                 <label for="sel1">Selecciona el tipo de usuario:</label>
-                                <select class="form-control" name="userType" #TipoUsuario [(ngModel)]="userType">
+                                <select class="form-control" name="userType" #TipoUsuario [(ngModel)]="userType" >
                                   <option value="1">Gerente</option>
                                   <option value="2">Residente</option>
                                   <option value="3">Proyectista</option>

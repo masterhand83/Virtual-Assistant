@@ -21,6 +21,7 @@ export class GanttComponent implements OnInit {
     if (confirm('¿Estas seguro de eliminarlo?')) {
       this.projectService.deleteProject(_id)
         .subscribe(res => {
+          this.sess.deleteProjectSession();
           this.router.navigate([('/projects')]);
           alert('Eliminado Exitosamente');
           
