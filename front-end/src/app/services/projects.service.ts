@@ -15,6 +15,7 @@ export class ProjectsService {
   readonly URL_API4 = 'http://localhost:3000/api/projects/resident';
   readonly URL_API5= 'http://localhost:3000/api/projects/designer';
   project:Project[];
+  project2:Project[];
   usersincharge:User[];
   
   constructor(private http: HttpClient) {

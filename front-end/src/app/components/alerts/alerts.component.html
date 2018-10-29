@@ -14,34 +14,17 @@
                                         <th>Acciones</th>
                                     </tr>
                                 </thead>
-                                <tbody id="">
-                                    <tr>
-                                        <td>Proyecto 1</td>
+                                <tbody>
+                                    <tr *ngFor="let project of this.projectsService.project">
+                                        <td>{{project.name}}</td>
                                         <td>
-                                            Residente 7
+                                            {{project.resident}}
                                         </td>
-                                        <td>7</td>
+                                        <td>0</td>
                                         <td><button class="btn btn-lg btn-dark" type="submit" data-toggle="modal"
                                                 data-target="#alertas"><i class="fas fa-arrow-alt-circle-right fa-1x"></i></button></td>
                                     </tr>
-                                    <tr>
-                                        <td>Proyecto 2</td>
-                                        <td>
-                                            Residente 7
-                                        </td>
-                                        <td>7</td>
-                                        <td><button class="btn btn-lg btn-dark" type="submit" data-toggle="modal"
-                                                data-target="#alertas"><i class="fas fa-arrow-alt-circle-right fa-1x"></i></button></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Proyecto 3</td>
-                                        <td>
-                                            Residente 4
-                                        </td>
-                                        <td>7</td>
-                                        <td><button class="btn btn-lg btn-dark" type="submit" data-toggle="modal"
-                                                data-target="#alertas"><i class="fas fa-arrow-alt-circle-right fa-1x"></i></button></td>
-                                    </tr>
+                                    
 
                                 </tbody>
                             </table>

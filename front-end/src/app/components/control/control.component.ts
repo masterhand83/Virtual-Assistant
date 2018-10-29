@@ -14,7 +14,10 @@ export class ControlComponent implements OnInit {
   ngOnInit() {
     this.getUserType();
   }
-  
+
+ 
+
+
   key:string;
   userTypeBoolean:boolean=false;
   userType:string;
