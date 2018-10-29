@@ -72,16 +72,23 @@ export class ProjectsComponent implements OnInit {
   }
  
   createProject(form:NgForm){
+    if(form.value.name!="" && form.value.description!="" && form.value.idUser2!=null && 
+    form.value.idUser3!=null && form.value.name!=undefined && form.value.description!=undefined && form.value.idUser2!=undefined && 
+    form.value.idUser3!=undefined){
+      this.projectsService.createProject(form.value.name,form.value.description,this.UserID,form.value.idUser2,form.value.idUser3)
+      .subscribe(res=>{
+        console.log(res);  
+        alert('Proyecto Asignado Correctamente');
+        form.reset();
+        this.getProjects();
+        
+      });
+    }
+    else{
+      alert('Favor de completar todos los campos');
+    }
     
     
-    this.projectsService.createProject(form.value.name,form.value.description,this.UserID,form.value.idUser2,form.value.idUser3)
-    .subscribe(res=>{
-      console.log(res);  
-      alert('Proyecto Asignado Correctamente');
-      form.reset();
-      this.getProjects();
-      
-    });
     
     
   }
@@ -116,15 +123,32 @@ export class ProjectsComponent implements OnInit {
   }
 
   updateInformation(form:NgForm){
-    if (confirm('¿Estas seguro de actualizar?')) {
-      this.projectsService.putInformation(form.value._id,form.value.name,form.value.description,form.value.storeName,
-        form.value.storeNumber,form.value.m2,form.value.location,form.value.localReception,form.value.furnitureDate,
-        form.value.openingDate)
-        .subscribe(res=>{
-          alert('Proyecto Actualizado Exitosamente');
-          this.getProjects();
-        });
+   
+    
+    if(form.value.name!="" && form.value.description!="" && form.value.storeName!="" &&
+      form.value.storeNumber!="" && form.value.m2!="" && form.value.location!="" &&  
+      form.value.localReception!=null && form.value.furnitureDate!=null && form.value.openingDate!=null &&
+      form.value.name!=undefined && form.value.description!=undefined && form.value.storeName!=undefined &&
+      form.value.storeNumber!=undefined && form.value.m2!=undefined && form.value.location!=undefined
+      && form.value.localReception!="" && form.value.furnitureDate!="" && form.value.openingDate!=""
+
+      ){
+        if (confirm('¿Estas seguro de actualizar?')) {
+          this.projectsService.putInformation(form.value._id,form.value.name,form.value.description,form.value.storeName,
+            form.value.storeNumber,form.value.m2,form.value.location,form.value.localReception,form.value.furnitureDate,
+            form.value.openingDate)
+            .subscribe(res=>{
+              alert('Proyecto Actualizado Exitosamente');
+              this.getProjects();
+            });
+        }
     }
+    else{
+      alert('Favor de completar todos los campos');
+    }
+
+
+    
     
 
   }

@@ -79,14 +79,20 @@ export class AdmUsersComponent implements OnInit {
 
   updateUser(form: NgForm) {
 
-
-    if (confirm('¿Estas seguro de actualizar?')) {
-      this.userService.putUser(form.value._id, form.value.email, form.value.mobile, form.value.password)
-        .subscribe(res => {
-          this.getUsers();
-          alert("Actualizado Satisfactoriamente");
-        });
+    if(form.value.email!="" && form.value.mobile!="" && form.value.password!="" &&
+    form.value.email!=undefined && form.value.mobile!=undefined && form.value.password!=undefined ){
+      if (confirm('¿Estas seguro de actualizar?')) {
+        this.userService.putUser(form.value._id, form.value.email, form.value.mobile, form.value.password)
+          .subscribe(res => {
+            this.getUsers();
+            alert("Actualizado Satisfactoriamente");
+          });
+      }
     }
+    else{
+      alert('Favor de completar todos los campos');
+    }
+    
   }
   
   projects:Object[];
