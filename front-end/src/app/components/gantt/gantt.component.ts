@@ -23,8 +23,27 @@ export class GanttComponent implements OnInit {
   ngOnInit() {
     let s = this._Renderer2.createElement('script');
     s.text = `
-    var i = 'hola mundo'
-    alert(i)
+    $(function () {
+      $("#ganttChart").ganttView({
+          data: ganttDatas,
+          slideWidth: 800,
+          behavior: {
+              onClick: function (data) {
+                  var msg = "Le diste clic a un evento: { Empieza: " + data.start.toString("M/d/yyyy") + ", Termina: " + data.end.toString("M/d/yyyy") + " }";
+                  $("#eventMessage").text(msg);
+                  openR();
+              },
+              onResize: function (data) {
+                  var msg = "Cambiaste de fecha el proyecto: {Empieza: " + data.start.toString("M/d/yyyy") + ", Termina: " + data.end.toString("M/d/yyyy") + " }";
+                  $("#eventMessage").text(msg);
+              },
+              onDrag: function (data) {
+                  var msg = "Cambiaste de lugar la actividad: { Empieza: " + data.start.toString("M/d/yyyy") + ", Termina: " + data.end.toString("M/d/yyyy") + " }";
+                  $("#eventMessage").text(msg);
+              }
+          }
+      });
+    });
     `
     this._Renderer2.appendChild(this._document.body,s);
 
