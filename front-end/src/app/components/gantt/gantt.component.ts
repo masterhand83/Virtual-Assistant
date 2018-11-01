@@ -36,11 +36,8 @@ export class GanttComponent implements OnInit {
     this.sess.validateProject();
     this.getUserType();
     this.getIdProject();
-    this.generateScript();
   }
-  generateScript(){
-    this.script = `<script></script>`
-  }
+  
 
 
 
