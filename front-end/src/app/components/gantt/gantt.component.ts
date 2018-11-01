@@ -23,15 +23,23 @@ export class GanttComponent implements OnInit {
   ngOnInit() {
     let s = this._Renderer2.createElement('script');
     s.text = `
+    var ganttDatas = [
+            
+      {
+          id:1,name: "1", series: [
+              { name: "Actividad 1", start: new Date ('2018-11-14T23:28:41.511Z') , end: new Date('2018-11-21T23:28:41.511Z'), color: "#040228" },
+
+          ]
+      }
+  
+  ];
     $(function () {
       $("#ganttChart").ganttView({
           data: ganttDatas,
           slideWidth: 800,
           behavior: {
               onClick: function (data) {
-                  var msg = "Le diste clic a un evento: { Empieza: " + data.start.toString("M/d/yyyy") + ", Termina: " + data.end.toString("M/d/yyyy") + " }";
-                  $("#eventMessage").text(msg);
-                  openR();
+                  $('#entregable').modal();
               },
               onResize: function (data) {
                   var msg = "Cambiaste de fecha el proyecto: {Empieza: " + data.start.toString("M/d/yyyy") + ", Termina: " + data.end.toString("M/d/yyyy") + " }";
