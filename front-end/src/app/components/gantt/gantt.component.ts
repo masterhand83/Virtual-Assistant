@@ -23,21 +23,8 @@ export class GanttComponent implements OnInit {
   script: string;
   ngOnInit() {
     let result: string = '[';
-    let gantDatos = [
-      {
-        id:435345245345,name: '1', series: [
-            { name: 'Actividad 1', start: new Date ('2018-11-14T23:28:41.511Z') , end: new Date('2018-11-21T23:28:41.511Z'), color: '#040228' },
-
-        ]
-    },
-    {
-      id:5345345345345,name: '1', series: [
-          { name: 'Actividad 2', start: '2018-11-15T23:28:41.511Z', end: '2018-11-23T23:28:41.511Z', color: '#040228' },
-
-      ]
-    }    
-  ];
-    result = this.arrayToString(gantDatos,'gantt');  
+    
+    result = this.arrayToString(this.gantDatos,'gantt');  
 
     
     let s = this._Renderer2.createElement('script');
@@ -78,8 +65,25 @@ export class GanttComponent implements OnInit {
     this.getUserType();
     this.getIdProject();
   }
-  
 
+ 
+  gantDatos = [
+    {
+      id:435345245345,name: '1', series: [
+          { name: 'Actividad 1', start: new Date ('2018-11-14T23:28:41.511Z') , end: new Date('2018-11-21T23:28:41.511Z'), color: '#040228' },
+      ]
+    },
+    {
+      id:5345345345345,name: '1', series: [
+          { name: 'Actividad 2', start: '2018-11-15T23:28:41.511Z', end: '2018-11-23T23:28:41.511Z', color: '#040228' },
+      ]
+    }    
+  ];
+
+  getActivities(_id:string){
+
+  }
+  
 
 
   deleteProject(_id: string) {
