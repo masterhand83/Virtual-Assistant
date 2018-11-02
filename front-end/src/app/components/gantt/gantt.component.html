@@ -310,30 +310,30 @@
                                             <div class="card-body">
                                                 <h3>Agregar actividad</h3>
                                                 <p>Ingresa los datos y crea una nueva actividad. </p>
-                                                <form action="/gantt">
+                                                <form #activityForm="ngForm" (ngSubmit)="addActivityToProject(activityForm)">
                                                     <div class="form-group">
                                                         <input type="text" class="form-control form-control-lg"
-                                                            placeholder="Nombre">
+                                                            placeholder="Nombre" name="name" [(ngModel)]="name" >
                                                     </div>
                                                     <div class="form-group">
                                                         <input type="text" class="form-control form-control-lg"
-                                                            placeholder="Descripcion">
+                                                            placeholder="Descripcion" name="description" [(ngModel)]="description">
                                                     </div>
                                                     <div class="form-group">
                                                         Fecha de Inicio:
-                                                        <input type="date" class="form-control form-control-lg">
+                                                        <input type="date" class="form-control form-control-lg" name="start" [(ngModel)]="start">
                                                     </div>
                                                     <div class="form-group">
                                                         Fecha de Termino:
-                                                        <input type="date" class="form-control form-control-lg">
+                                                        <input type="date" class="form-control form-control-lg" name="end" [(ngModel)]="end">
                                                     </div>
 
                                                     <div class="form-group">
                                                         <label for="sel1">Prioridad</label>
-                                                        <select class="form-control" id="sel1">
-                                                            <option>Alta</option>
-                                                            <option>Media </option>
-                                                            <option>Baja</option>
+                                                        <select class="form-control" name="priority" [(ngModel)]="priority">
+                                                            <option value="1">Alta</option>
+                                                            <option value="2">Media </option>
+                                                            <option value="3">Baja</option>
                                                         </select>
                                                     </div>
 

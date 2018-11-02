@@ -14,6 +14,7 @@ export class ProjectsService {
   readonly URL_API3 = 'http://localhost:3000/api/projects/user';
   readonly URL_API4 = 'http://localhost:3000/api/projects/resident';
   readonly URL_API5= 'http://localhost:3000/api/projects/designer';
+  readonly URL_API6= 'http://localhost:3000/api/projects/activity';
   project:Project[];
   project2:Project[];
   usersincharge:User[];
@@ -87,5 +88,17 @@ export class ProjectsService {
 
     });
     
+  }
+
+  addActivityToProject(_id:string,name:string,description:string,start:Date,end:Date,
+  priority:Number){
+    return this.http.put(this.URL_API6 + `/${_id}`,{
+      name: name,
+      description:description,
+      start:start,
+      end: end,
+      priority: priority
+     
+    });
   }
 }
