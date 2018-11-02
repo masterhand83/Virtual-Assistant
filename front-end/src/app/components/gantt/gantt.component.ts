@@ -104,7 +104,24 @@ export class GanttComponent implements OnInit {
    
   }
 
+  activated:boolean;
+  activateProjectAlerts(){
+    this.activated=true;
+    
+    this.projectService.activateProjectAlerts(this._id,this.activated)
+    .subscribe(res=>{
+      alert('Alertas activivadas');
+    });
+  }
 
+  desactivateProjectAlerts(){
+    this.activated=false;
+
+    this.projectService.activateProjectAlerts(this._id,this.activated)
+    .subscribe(res=>{
+      alert('Alertas desactivivadas');
+    });
+  }
 
   key: string;
   userTypeBoolean: boolean = false;

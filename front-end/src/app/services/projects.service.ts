@@ -15,6 +15,7 @@ export class ProjectsService {
   readonly URL_API4 = 'http://localhost:3000/api/projects/resident';
   readonly URL_API5= 'http://localhost:3000/api/projects/designer';
   readonly URL_API6= 'http://localhost:3000/api/projects/activity';
+  readonly URL_API7= 'http://localhost:3000/api/projects/alert';
   project:Project[];
   project2:Project[];
   usersincharge:User[];
@@ -99,6 +100,13 @@ export class ProjectsService {
       end: end,
       priority: priority
      
+    });
+  }
+
+  activateProjectAlerts(_id:string,activated:boolean){
+    return this.http.put(this.URL_API7 + `/${_id}`,{
+      _id:_id,
+      activated:activated
     });
   }
 }
