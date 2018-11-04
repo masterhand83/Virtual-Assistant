@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SessionService } from '../../services/session.service';
 import { ProjectsService } from '../../services/projects.service';
+import { ActivitiesService } from '../../services/activities.service';
 import { Router } from '@angular/router';
 
 import { Renderer2,Inject } from "@angular/core";
@@ -16,6 +17,7 @@ export class GanttComponent implements OnInit {
   constructor(
     private sess: SessionService, 
     private projectService: ProjectsService, 
+    private activitiesService: ActivitiesService,
     private router: Router,
     private _Renderer2: Renderer2,
     @Inject(DOCUMENT) private _document
@@ -79,12 +81,16 @@ export class GanttComponent implements OnInit {
     }    
   ];
 
-  gantt:any[];
+  gantt:Object[];
   getActivitiesProject(){
     this.projectService.getActivitiesProject(this._id)
     .subscribe(res=>{
+      
       this.gantt==res;
-      console.log(this.gantt);
+      
+
+
+      
 
     });
     
