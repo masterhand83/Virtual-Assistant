@@ -22,6 +22,15 @@ export class GanttComponent implements OnInit {
     ) { }
   script: string;
   ngOnInit() {
+
+  
+    this.sess.validateProject();
+    this.getUserType();
+    this.getIdProject();
+    this.getActivitiesProject();
+
+
+    //Esto es para las actividades del gantt
     let result: string = '[';
     
     result = this.arrayToString(this.gantDatos,'gantt');  
@@ -53,17 +62,7 @@ export class GanttComponent implements OnInit {
     });
     `
     this._Renderer2.appendChild(this._document.body,s);
-
-   
     
-
-
-
-
-
-    this.sess.validateProject();
-    this.getUserType();
-    this.getIdProject();
   }
 
  
@@ -80,8 +79,15 @@ export class GanttComponent implements OnInit {
     }    
   ];
 
-  getActivities(_id:string){
+  gantt:any[];
+  getActivitiesProject(){
+    this.projectService.getActivitiesProject(this._id)
+    .subscribe(res=>{
+      this.gantt==res;
+      console.log(this.gantt);
 
+    });
+    
   }
   
 
