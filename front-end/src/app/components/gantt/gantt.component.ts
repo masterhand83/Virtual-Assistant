@@ -15,14 +15,9 @@ import { NgForm } from '../../../../node_modules/@angular/forms';
 export class GanttComponent implements OnInit {
 
   constructor(
-<<<<<<< HEAD
-    private sess: SessionService,
-    private projectService: ProjectsService,
-=======
     private sess: SessionService, 
     private projectService: ProjectsService, 
     private activitiesService: ActivitiesService,
->>>>>>> 0234fd93a79173446e2a33392bf6c0715fc676ca
     private router: Router,
     private _Renderer2: Renderer2,
     @Inject(DOCUMENT) private _document
@@ -51,8 +46,7 @@ export class GanttComponent implements OnInit {
                     $('#actividadg').modal();
                     let hid = document.querySelector('#information');
                     hid.value = data.id;
-                    var msg = "{Id: "+data.id+" , Empieza: " + data.name + ", Termina: " + data.end.toString("M/d/yyyy") + " }";
-                    alert(msg);
+                    
                 },
                 onResize: function (data) {
                     var msg = "Cambiaste de fecha el proyecto: {Empieza: " + data.start.toString("M/d/yyyy") + ", Termina: " + data.end.toString("M/d/yyyy") + " }";
@@ -69,31 +63,18 @@ export class GanttComponent implements OnInit {
       console.log(s.text);
       this._Renderer2.appendChild(this._document.body, s);
     });
-    //Esto es para las actividades del gantt
-    console.log(this.gantt);
-
+    
 
   }
 
 
-  gantDatos = [
-    {
-      id: 435345245345, name: '1', series: [
-        { name: 'Actividad 1', start: new Date('2018-11-14T23:28:41.511Z'), end: new Date('2018-11-21T23:28:41.511Z'), color: '#040228' },
-      ]
-    },
-    {
-      id: 5345345345345, name: '1', series: [
-        { name: 'Actividad 2', start: '2018-11-15T23:28:41.511Z', end: '2018-11-23T23:28:41.511Z', color: '#040228' },
-      ]
-    }
-  ];
+ 
 
   gantt: any[];
   getActivitiesProject(cb) {
     this.projectService.getActivitiesProject(this._id)
       .subscribe((res: any[]) => {
-      cb(res);
+       cb(res);
         
       });
 
@@ -101,46 +82,10 @@ export class GanttComponent implements OnInit {
 
 
 
-  drawGantt(res: any[]) {
-    let result: string = '[';
-    result = this.arrayToString(res, 'gantt');
-    let s = this._Renderer2.createElement('script');
-    s.text = `
-    var ganttDatas = ${result}
-    $(function () {
-      $("#ganttChart").ganttView({
-          data: ganttDatas,
-          slideWidth: 1200,
-          behavior: {
-              onClick: function (data) {
-                  $('#actividadg').modal();
-                  var msg = "{Id: "+data.id+" , Empieza: " + data.name + ", Termina: " + data.end.toString("M/d/yyyy") + " }";
-                  alert(msg);
-              },
-              onResize: function (data) {
-                  var msg = "Cambiaste de fecha el proyecto: {Empieza: " + data.start.toString("M/d/yyyy") + ", Termina: " + data.end.toString("M/d/yyyy") + " }";
-                  $("#eventMessage").text(msg);
-              },
-              onDrag: function (data) {
-                  var msg = "Cambiaste de lugar la actividad: { Empieza: " + data.start.toString("M/d/yyyy") + ", Termina: " + data.end.toString("M/d/yyyy") + " }";
-                  $("#eventMessage").text(msg);
-              }
-          }
-      });
-    });
-    `
-<<<<<<< HEAD
-    this._Renderer2.appendChild(this._document.body, s);
-  }
-=======
-    this._Renderer2.appendChild(this._document.body,s);
-    
-  }
-
+ 
  
   
   
->>>>>>> 0234fd93a79173446e2a33392bf6c0715fc676ca
 
   deleteProject(_id: string) {
     if (confirm('¿Estas seguro de eliminarlo?')) {

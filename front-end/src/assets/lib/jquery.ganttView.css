@@ -40,12 +40,13 @@ div.ganttview-hzheader-month {
 }
 
 div.ganttview-hzheader-day {
-	width: 20px;
+	width: 21px;
 	height: 20px;
 	border-right: 1px solid #f0f0f0;
 	border-top: 1px solid #d0d0d0;
 	line-height: 20px;
 	color: #777;
+	
 }
 
 
@@ -56,6 +57,7 @@ div.ganttview-vtheader {
 	width: 240px;
 	overflow: hidden;
 	background-color: #fff;
+	font-size: 10px;
 }
 
 div.ganttview-vtheader-item {
@@ -108,7 +110,7 @@ div.ganttview-blocks {
 }
 
 div.ganttview-block-container {
-	height: 28px;
+	height: 31px;
 	padding-top: 4px;
 }
 
@@ -125,7 +127,7 @@ div.ganttview-block {
 div.ganttview-block-text {
 	position: absolute;
 	height: 12px;
-	font-size: 0.8em;
+	font-size: 10px;
 	color: #999;
 	padding: 2px 3px;
 }
