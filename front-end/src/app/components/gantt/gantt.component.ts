@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SessionService } from '../../services/session.service';
 import { ProjectsService } from '../../services/projects.service';
+import { ActivitiesService } from '../../services/activities.service';
 import { Router } from '@angular/router';
 
 import { Renderer2, Inject } from "@angular/core";
@@ -14,8 +15,14 @@ import { NgForm } from '../../../../node_modules/@angular/forms';
 export class GanttComponent implements OnInit {
 
   constructor(
+<<<<<<< HEAD
+    private sess: SessionService, 
+    private projectService: ProjectsService, 
+    private activitiesService: ActivitiesService,
+=======
     private sess: SessionService,
     private projectService: ProjectsService,
+>>>>>>> 525ac852996eaf6179679c5a5e9408fffa38a229
     private router: Router,
     private _Renderer2: Renderer2,
     @Inject(DOCUMENT) private _document
@@ -122,7 +129,41 @@ export class GanttComponent implements OnInit {
       });
     });
     `
+<<<<<<< HEAD
+    this._Renderer2.appendChild(this._document.body,s);
+    
+  }
+
+ 
+  gantDatos = [
+    {
+      id:435345245345,name: '1', series: [
+          { name: 'Actividad 1', start: new Date ('2018-11-14T23:28:41.511Z') , end: new Date('2018-11-21T23:28:41.511Z'), color: '#040228' },
+      ]
+    },
+    {
+      id:5345345345345,name: '1', series: [
+          { name: 'Actividad 2', start: '2018-11-15T23:28:41.511Z', end: '2018-11-23T23:28:41.511Z', color: '#040228' },
+      ]
+    }    
+  ];
+
+  gantt:Object[];
+  getActivitiesProject(){
+    this.projectService.getActivitiesProject(this._id)
+    .subscribe(res=>{
+      
+      this.gantt==res;
+      
+
+
+      
+
+    });
+    
+=======
     this._Renderer2.appendChild(this._document.body, s);
+>>>>>>> 525ac852996eaf6179679c5a5e9408fffa38a229
   }
 
   deleteProject(_id: string) {
