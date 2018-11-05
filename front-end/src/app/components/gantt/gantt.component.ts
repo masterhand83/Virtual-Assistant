@@ -29,6 +29,7 @@ export class GanttComponent implements OnInit {
     this.getIdProject();
     this.getActivitiesProject(res=>{
       console.log('ñlkjafñlkjasfñlkjaslñj')
+      console.log(res)
       let result: string = '[';
       result = this.arrayToString(res, 'gantt');
       let s = this._Renderer2.createElement('script');
@@ -41,6 +42,8 @@ export class GanttComponent implements OnInit {
             behavior: {
                 onClick: function (data) {
                     $('#actividadg').modal();
+                    let hid = document.querySelector('#information');
+                    hid.value = data.id;
                     var msg = "{Id: "+data.id+" , Empieza: " + data.name + ", Termina: " + data.end.toString("M/d/yyyy") + " }";
                     alert(msg);
                 },
@@ -56,7 +59,7 @@ export class GanttComponent implements OnInit {
         });
       });
     `
-      console.log(s);
+      console.log(s.text);
       this._Renderer2.appendChild(this._document.body, s);
     });
     //Esto es para las actividades del gantt
