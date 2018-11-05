@@ -15,8 +15,14 @@ import { NgForm } from '../../../../node_modules/@angular/forms';
 export class GanttComponent implements OnInit {
 
   constructor(
+<<<<<<< HEAD
     private sess: SessionService,
     private projectService: ProjectsService,
+=======
+    private sess: SessionService, 
+    private projectService: ProjectsService, 
+    private activitiesService: ActivitiesService,
+>>>>>>> 0234fd93a79173446e2a33392bf6c0715fc676ca
     private router: Router,
     private _Renderer2: Renderer2,
     @Inject(DOCUMENT) private _document
@@ -104,7 +110,7 @@ export class GanttComponent implements OnInit {
     $(function () {
       $("#ganttChart").ganttView({
           data: ganttDatas,
-          slideWidth: 800,
+          slideWidth: 1200,
           behavior: {
               onClick: function (data) {
                   $('#actividadg').modal();
@@ -123,8 +129,18 @@ export class GanttComponent implements OnInit {
       });
     });
     `
+<<<<<<< HEAD
     this._Renderer2.appendChild(this._document.body, s);
   }
+=======
+    this._Renderer2.appendChild(this._document.body,s);
+    
+  }
+
+ 
+  
+  
+>>>>>>> 0234fd93a79173446e2a33392bf6c0715fc676ca
 
   deleteProject(_id: string) {
     if (confirm('¿Estas seguro de eliminarlo?')) {

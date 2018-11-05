@@ -49,8 +49,7 @@ behavior: {
             vHeaderWidth: 100,
             behavior: {
             	clickable: true,
-            	draggable: true,
-            	resizable: true
+            	
             }
         };
         
@@ -64,7 +63,7 @@ behavior: {
 
 		function build() {
 			
-			var minDays = Math.floor((opts.slideWidth / opts.cellWidth)  + 5);
+			var minDays = Math.floor((opts.slideWidth / opts.cellWidth) );
 			var startEnd = DateUtils.getBoundaryDatesFromData(opts.data, minDays);
 			opts.start = startEnd[0];
 			opts.end = startEnd[1];
@@ -116,7 +115,7 @@ behavior: {
             applyLastClass(div.parent());
 		}
 		
-		var monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+		var monthNames = ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sept", "Oct", "Nov", "Di"];
 
 		// Creates a 3 dimensional array [year][month][day] of every day 
 		// between the given start and end dates
