@@ -52,7 +52,11 @@
                                             <button *ngIf="userTypeBoolean || userTypeBoolean3" (click)="SelectedProject(project._id,project.name,project.description,project.storeName,project.storeNumber
                                             ,project.m2,project.location,project.localReception,project.furnitureDate,project.openingDate)" class="btn btn-lg btn-dark" type="submit" data-toggle="modal" data-target="#verp">Ver Proyecto</button>
                                             <a *ngIf="userTypeBoolean2" href="/gantt">
-                                                <button (click)="projectCookie(id2)" class="btn btn-lg btn-dark">Ver Proyecto</button>
+                                                <button 
+                                                (click)="SelectedProject(project._id,project.name,project.description,project.storeName,project.storeNumber
+                                                ,project.m2,project.location,project.localReception,project.furnitureDate,project.openingDate)"
+                                                
+                                                (click)="projectCookie(id2)" class="btn btn-lg btn-dark">Ver Proyecto</button>
                                             </a>
                                             
                                         </td>
@@ -87,10 +91,10 @@
                                     <p>Ingresa los datos y asigna un nuevo proyecto. </p>
                                     <form #projectForm="ngForm" (ngSubmit)="createProject(projectForm)">
                                         <div class="form-group">
-                                            <input type="text" class="form-control form-control-lg" placeholder="Nombre del Proyecto" name="name" [(ngModel)]="name"   maxlength="100">
+                                            <input type="text" class="form-control form-control-lg" placeholder="Nombre del Proyecto" name="name" [(ngModel)]="name"   maxlength="100" #nameref="ngModel" pattern="[A-Za-z0-9 ]{0,100}">
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" class="form-control form-control-lg" placeholder="Descripcion" name="description" [(ngModel)]="description"   maxlength="100" >
+                                            <input type="text" class="form-control form-control-lg" placeholder="Descripcion" name="description" [(ngModel)]="description"   maxlength="100"  #descriptionref="ngModel" pattern="[A-Za-z0-9 ]{0,100}">
                                         </div>
                                         <div class="col-lg-12">
 
@@ -132,9 +136,15 @@
 
                                         </div>
 
+                                        <div [hidden]="!nameref.errors?.pattern">
+                                            En el nombre solo puede haber letras y numeros.
+                                        </div> 
+                                        <div [hidden]="!descriptionref.errors?.pattern">
+                                            En la descripcion solo puede haber letras y numeros.
+                                        </div> 
 
 
-                                        <input type="submit" value="Asignar Proyecto" class="btn btn-outline-light btn-block">
+                                        <input [hidden]="nameref.errors?.pattern || descriptionref.errors?.pattern" type="submit" value="Asignar Proyecto" class="btn btn-outline-light btn-block">
                                     </form>
                                 </div>
                             </div>
@@ -174,7 +184,7 @@
                                                     </div>
                                                     <div class="col-lg-8">
                                                         <div class="form-group">
-                                                            <input type="text" class="form-control form-control-lg" placeholder="Nombre del proyecto" name="name"[(ngModel)]="name2"   maxlength="100">
+                                                            <input type="text" class="form-control form-control-lg" placeholder="Nombre del proyecto" name="name"[(ngModel)]="name2"  maxlength="100" #name2ref="ngModel" pattern="[A-Za-z0-9 ]{0,100}" >
                                                         </div>
                                                     </div>
                                                     <br>
@@ -183,7 +193,7 @@
                                                     </div>
                                                     <div class="col-lg-8">
                                                         <div class="form-group">
-                                                            <input type="text" class="form-control form-control-lg" placeholder="Descripcion del proyecto" name="description" [(ngModel)]="description2"   maxlength="100">
+                                                            <input type="text" class="form-control form-control-lg" placeholder="Descripcion del proyecto" name="description" [(ngModel)]="description2" maxlength="100" #description2ref="ngModel" pattern="[A-Za-z0-9 ]{0,100}">
                                                         </div>
                                                     </div>
                                                     <br>
@@ -192,7 +202,7 @@
                                                     </div>
                                                     <div class="col-lg-8">
                                                         <div class="form-group">
-                                                            <input type="text" class="form-control form-control-lg" placeholder="Nombre de tienda" name="storeName" [(ngModel)]="storeName2"   maxlength="100">
+                                                            <input type="text" class="form-control form-control-lg" placeholder="Nombre de tienda" name="storeName" [(ngModel)]="storeName2"  maxlength="100" #storeName2ref="ngModel" pattern="[A-Za-z0-9 ]{0,100}">
                                                         </div>
                                                     </div>
                                                     <br>
@@ -201,7 +211,7 @@
                                                     </div>
                                                     <div class="col-lg-8">
                                                         <div class="form-group">
-                                                            <input type="text" class="form-control form-control-lg" placeholder="Numero de Tienda" name="storeNumber" [(ngModel)]="storeNumber2"   maxlength="100">
+                                                            <input type="text" class="form-control form-control-lg" placeholder="Numero de Tienda" name="storeNumber" [(ngModel)]="storeNumber2"   maxlength="100" #storeNumber2ref="ngModel" pattern="[0-9]{0,100}">
                                                         </div>
                                                     </div>
 
@@ -213,7 +223,7 @@
                                                     </div>
                                                     <div class="col-lg-8">
                                                         <div class="form-group">
-                                                            <input type="text" class="form-control form-control-lg" placeholder="Metraje" name="m2" [(ngModel)]="m22"   maxlength="100">
+                                                            <input type="text" class="form-control form-control-lg" placeholder="Metraje" name="m2" [(ngModel)]="m22"   maxlength="100" #m22ref="ngModel" pattern="[0-9]{0,100}">
                                                         </div>
                                                     </div>
 
@@ -225,7 +235,7 @@
                                                     </div>
                                                     <div class="col-lg-8">
                                                         <div class="form-group">
-                                                            <input type="text" class="form-control form-control-lg" placeholder="Ubicacion" name="location" [(ngModel)]="location2"  maxlength="100">
+                                                            <input type="text" class="form-control form-control-lg" placeholder="Ubicacion" name="location" [(ngModel)]="location2"  maxlength="100" #location2ref="ngModel" pattern="[A-Za-z0-9 ]{0,100}">
                                                         </div>
                                                     </div>
 
@@ -286,10 +296,35 @@
 
                                                     <br>
                                                     <br>
-
                                                     <div class="col-lg-12">
-                                                        <button class="btn btn-block btn-dark" type="submit">Actualizar Informacion General</button>
+                                                            <div [hidden]="!name2ref.errors?.pattern">
+                                                                    En el nombre del proyecto solo puede haber letras y numeros.
+                                                            </div>      
+                                                            <div [hidden]="!description2ref.errors?.pattern">
+                                                                En la descripcion solo puede haber letras y numeros.
+                                                              </div> 
+                                                              <div [hidden]="!storeName2ref.errors?.pattern">
+                                                                En el nombre de la tienda solo puede haber letras y numeros.
+                                                            </div>   
+                                                            <div [hidden]="!location2ref.errors?.pattern">
+                                                                En la ubicacion  solo puede haber letras y numeros.
+                                                            </div> 
+                                                              
+                                                            <div [hidden]="!storeNumber2ref.errors?.pattern ">
+                                                                En el numero de tienda pueden haber numeros.
+                                                            </div> 
+                                                            <div [hidden]= "!m22ref.errors?.pattern">
+                                                                En el  metraje solo pueden haber numeros.
+                                                            </div> 
                                                     </div>
+                                                    
+                                                    
+                                                    <div class="col-lg-12">
+                                                            <input [hidden]="name2ref.errors?.pattern || description2ref.errors?.pattern ||
+                                                            storeName2ref.errors?.pattern || storeNumber2ref.errors?.pattern || m22ref.errors?.pattern || location2ref.errors?.pattern" class="btn btn-block btn-dark" type="submit" value="Actualizar informacion general">
+                                                    </div>
+                                                   
+                                                    
                                                 </div>
 
                                             </form>

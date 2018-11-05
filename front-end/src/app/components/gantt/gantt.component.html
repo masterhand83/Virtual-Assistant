@@ -51,7 +51,7 @@
 
 
 
-                    <button class="btn btn-lg btn-dark" type="submit" data-toggle="modal" data-target="#actividadg">Actividad</button>
+                    
                 </div>
 
 
@@ -182,12 +182,17 @@
                                             <div class="col-lg-6">
                                                 <h3>Comentarios</h3>
                                                 <br>
-                                                <textarea class="form-control" rows="10"></textarea>
+                                                <div class="col-lg-12">
+                                                    <textarea class="form-control" rows="10" readonly>
+                                                        Hola
+                                                    </textarea>
+                                                </div>
+                                               
                                                 <br>
                                                 <div class="row">
                                                     <div class="col-lg-7">
                                                         <input type="text" class="form-control form-control-lg"
-                                                            placeholder="Comentario">
+                                                            placeholder="Comentario"  maxlength="100">
                                                     </div>
                                                     <div class="col-lg-5">
                                                         <button class="btn btn-lg btn-dark btn-block">Comentar</button>
@@ -313,11 +318,11 @@
                                                 <form #activityForm="ngForm" (ngSubmit)="addActivityToProject(activityForm)">
                                                     <div class="form-group">
                                                         <input type="text" class="form-control form-control-lg"
-                                                            placeholder="Nombre" name="name" [(ngModel)]="name" >
+                                                            placeholder="Nombre" name="name" [(ngModel)]="name" maxlength="100" #nameref="ngModel" pattern="[A-Za-z0-9 ]{0,100}">
                                                     </div>
                                                     <div class="form-group">
                                                         <input type="text" class="form-control form-control-lg"
-                                                            placeholder="Descripcion" name="description" [(ngModel)]="description">
+                                                            placeholder="Descripcion" name="description" [(ngModel)]="description" maxlength="100" #descriptionref="ngModel" pattern="[A-Za-z0-9 ]{0,100}">
                                                     </div>
                                                     <div class="form-group">
                                                         Fecha de Inicio:
@@ -337,8 +342,15 @@
                                                         </select>
                                                     </div>
 
+                                                    <div [hidden]="!nameref.errors?.pattern">
+                                                        En el nombre solo puede haber letras y numeros.
+                                                    </div> 
+                                                    <div [hidden]="!descriptionref.errors?.pattern">
+                                                        En la descripcion solo puede haber letras y numeros.
+                                                    </div> 
 
-                                                    <input type="submit" value="Agregar Actividad" class="btn btn-outline-light btn-block">
+
+                                                    <input [hidden]="nameref.errors?.pattern || descriptionref.errors?.pattern" type="submit" value="Agregar Actividad" class="btn btn-outline-light btn-block">
                                                 </form>
                                             </div>
                                         </div>
@@ -374,7 +386,7 @@
                                         <p>Ingresa el nuevo objetivo </p>
                                         <form action="gantt.html">
                                             <div class="form-group">
-                                                <input type="text" class="form-control form-control-lg" placeholder="Objetivo">
+                                                <input type="text" class="form-control form-control-lg" placeholder="Objetivo"  maxlength="100">
                                             </div>
 
                                             <input type="submit" value="Guardar" class="btn btn-outline-light btn-block">
@@ -415,7 +427,7 @@
                                         <p>Ingresa el nuevo entregable </p>
                                         <form action="gantt.html">
                                             <div class="form-group">
-                                                <input type="text" class="form-control form-control-lg" placeholder="Entregable">
+                                                <input type="text" class="form-control form-control-lg" placeholder="Entregable"  maxlength="100">
                                             </div>
 
                                             <input type="submit" value="Guardar" class="btn btn-outline-light btn-block">

@@ -100,14 +100,22 @@ export class GanttComponent implements OnInit {
 
   }
   addActivityToProject(form: NgForm) {
-    if (confirm('¿Estas seguro de añadir esta actividad?')) {
-      this.projectService.addActivityToProject(this._id, form.value.name, form.value.description,
-        form.value.start, form.value.end, form.value.priority)
-        .subscribe(res => {
-          console.log(res);
-          alert('Actividad añadida correctamente al proyecto')
-        });
+    if(form.value.name!="" && form.value.description!="" && form.value.start!="" && form.value.end!="" && form.value.priority!="" &&
+    form.value.name!=null && form.value.description!=null && form.value.start!=null && form.value.end!=null && form.value.priority!=null &&
+    form.value.name!=null && form.value.description!=undefined && form.value.start!=undefined && form.value.end!=undefined && form.value.priority!=undefined){
+      if (confirm('¿Estas seguro de añadir esta actividad?')) {
+        this.projectService.addActivityToProject(this._id, form.value.name, form.value.description,
+          form.value.start, form.value.end, form.value.priority)
+          .subscribe(res => {
+            console.log(res);
+            alert('Actividad añadida correctamente al proyecto')
+          });
+      }
     }
+    else{
+      alert('Favor de completar todos los campos');
+    }
+    
 
   }
 
@@ -126,7 +134,7 @@ export class GanttComponent implements OnInit {
 
     this.projectService.activateProjectAlerts(this._id, this.activated)
       .subscribe(res => {
-        alert('Alertas desactivivadas');
+        alert('Alertas desactivadas');
       });
   }
 
@@ -152,6 +160,7 @@ export class GanttComponent implements OnInit {
   getIdProject() {
     this.key2 = "ActualProject";
     this._id = this.sess.getFromSession(this.key2);
+    console.log(this._id);
   }
 
   arrayToString(data: any[], mode: string) {
