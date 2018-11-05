@@ -201,7 +201,11 @@
                                                     <br>
                                                     <br>
                                                     <div class="col-lg-12">
-                                                        <input type="submit" value="Eliminar Actividad" class="btn btn-outline-light btn-block">
+                                                        
+                                                        <input type="text"  name="information" id="information" [(ngModel)]="information" >
+                                                        <input (click)="deleteActivity()" type="submit" value="Eliminar Actividad" class="btn btn-outline-light btn-block">
+                                                        
+                                                       
                                                     </div>
                                                     <br>
                                                     <br>
@@ -445,5 +449,5 @@
     </div>
 </div>
 <!--INFORMACION DE LA ACTIVIDAD-->
-<input type="hidden" name="" id='information' #selectedActivity>
+
 <script></script>

@@ -23,9 +23,10 @@ export class GanttComponent implements OnInit {
     @Inject(DOCUMENT) private _document
   ) { }
   script: string;
+  
   ngOnInit() {
 
-
+    
     this.sess.validateProject();
     this.getUserType();
     this.getIdProject();
@@ -47,6 +48,7 @@ export class GanttComponent implements OnInit {
                     let hid = document.querySelector('#information');
                     hid.value = data.id;
                     
+                    
                 },
                 onResize: function (data) {
                     var msg = "Cambiaste de fecha el proyecto: {Empieza: " + data.start.toString("M/d/yyyy") + ", Termina: " + data.end.toString("M/d/yyyy") + " }";
@@ -62,8 +64,10 @@ export class GanttComponent implements OnInit {
     `
       console.log(s.text);
       this._Renderer2.appendChild(this._document.body, s);
+
+      
     });
-    
+   
 
   }
 
@@ -80,7 +84,22 @@ export class GanttComponent implements OnInit {
 
   }
 
+  deleteActivity(){
 
+    var id=document.getElementById("information").innerHTML;
+    console.log(id);
+
+    /*
+    var URL_API = 'http://localhost:3000/api/activities/activity';
+
+    var xhttp = new XMLHttpRequest();
+
+    xhttp.open("DELETE", URL_API +`/5be080e860162a043c88827a`, true);
+    xhttp.send();
+    */
+  }
+
+  
 
  
  
@@ -110,6 +129,7 @@ export class GanttComponent implements OnInit {
             console.log(res);
             alert('Actividad añadida correctamente al proyecto')
           });
+          
       }
     }
     else{
