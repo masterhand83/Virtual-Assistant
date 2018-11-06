@@ -35,6 +35,9 @@ export class GanttComponent implements OnInit {
       console.log(res)
       let result: string = '[';
       result = this.arrayToString(res, 'gantt');
+      let authorName:string="";
+      authorName=this.getAuthorName();
+      
       let s = this._Renderer2.createElement('script');
       s.text = `
       var ganttDatas = ${result}
@@ -47,7 +50,7 @@ export class GanttComponent implements OnInit {
                     $('#actividadg').modal();
                     let hid = document.querySelector('#information');
                     hid.value = data.id;
-                    
+                    getComments();
                     
                 },
                 onResize: function (data) {
@@ -75,7 +78,77 @@ export class GanttComponent implements OnInit {
             deleteActivity();
             location.reload();
           }
-        })
+        });
+
+        var addComment=$('#addComment');
+        function addComments(){
+          var id=document.querySelector('#information').value;
+          
+
+          var comment=document.querySelector('#comment').value;
+          
+          var authorName= '${authorName}';
+
+          var url = "http://localhost:3000/api/activities/comment";
+
+          var data = {};
+          data.authorName = authorName;
+          data.comment  = comment;
+          var json = JSON.stringify(data);
+
+          var xhr = new XMLHttpRequest();
+          xhr.open("POST", url + '/'+id, true);
+          xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
+          xhr.onload = function () {
+            var users = JSON.parse(xhr.responseText);
+            if (xhr.readyState == 4 && xhr.status == "201") {
+              console.table(users);
+            } else {
+              console.error(users);
+            }
+          }
+          xhr.send(json);
+
+          document.querySelector('#comment').value="";
+          
+
+
+        }
+        addComment.on('click',()=>{ 
+            addComments();  
+            getComments();  
+           
+        });
+        
+
+        function getComments(){
+          var id=document.querySelector('#information').value;
+          
+          var url  = "http://localhost:3000/api/activities/comment";
+          var xhr  = new XMLHttpRequest()
+          xhr.open('GET', url + '/'+id, true)
+          xhr.onload = function () {
+            var comments = JSON.parse(xhr.responseText);
+            if (xhr.readyState == 4 && xhr.status == "200") {
+              var texto="";
+              for(i=0;i<comments.length;i++){
+                
+                texto+= comments[i].authorName + ": " + comments[i].comment + "                                                  "; 
+              }
+              document.querySelector('#textComment').value=texto;
+              
+
+            } else {
+              console.error(users);
+            }
+          }
+          xhr.send(null);
+
+          
+
+          
+          
+        }
 
       });
     `
@@ -179,6 +252,14 @@ export class GanttComponent implements OnInit {
     this.key2 = "ActualProject";
     this._id = this.sess.getFromSession(this.key2);
     console.log(this._id);
+  }
+
+  key3: string;
+  authorName: string;
+  getAuthorName() {
+    this.key3 = "Name";
+    this.authorName = this.sess.getFromSession(this.key3);
+    return this.authorName;
   }
 
   arrayToString(data: any[], mode: string) {

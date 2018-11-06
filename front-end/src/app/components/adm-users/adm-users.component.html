@@ -33,7 +33,7 @@
                                             </button>
                                         </td>
                                         <td>
-                                            <button class="btn btn-lg btn-dark" type="button" (click)="deleteUser(user._id)">
+                                            <button *ngIf="user.projects.length==0"class="btn btn-lg btn-dark" type="button" (click)="deleteUser(user._id)">
                                                 <i class="fas fa-trash fa-1x"></i>
                                             </button>
                                         </td>
