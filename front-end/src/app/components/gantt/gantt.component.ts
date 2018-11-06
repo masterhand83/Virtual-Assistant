@@ -144,11 +144,111 @@ export class GanttComponent implements OnInit {
           }
           xhr.send(null);
 
+        }
+        var editPriority = $('#editPriority');
+
+        function editP(){
+          var id=document.querySelector('#information').value;
+          var priorityText=document.querySelector('#priority').value;
+          
+          var url = "http://localhost:3000/api/activities/priority";
+
+          var data = {};
+          data.priority = priorityText;
+          var json = JSON.stringify(data);
+
+          var xhr = new XMLHttpRequest();
+          xhr.open("PUT", url + '/'+id, true);
+          xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
+          xhr.onload = function () {
+            var users = JSON.parse(xhr.responseText);
+            if (xhr.readyState == 4 && xhr.status == "200") {
+              console.table(users);
+            } else {
+              console.error(users);
+            }
+          }
+          xhr.send(json);
           
 
-          
-          
+
         }
+        editPriority.on('click',()=>{
+          editP();
+          alert('Prioridad Actualizada Exitosamente');
+          
+        });
+
+        var addObjective = $('#addObjective');
+
+        function addO(){
+          var id=document.querySelector('#information').value;
+          var objective=document.querySelector('#objective').value;
+          
+          var url = "http://localhost:3000/api/activities/objective";
+
+          var data = {};
+          data.objective= objective;
+          var json = JSON.stringify(data);
+
+          var xhr = new XMLHttpRequest();
+          xhr.open("PUT", url + '/'+id, true);
+          xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
+          xhr.onload = function () {
+            var users = JSON.parse(xhr.responseText);
+            if (xhr.readyState == 4 && xhr.status == "200") {
+              console.table(users);
+            } else {
+              console.error(users);
+            }
+          }
+          xhr.send(json);
+
+
+        }
+        addObjective.on('click',()=>{
+          addO();
+          document.querySelector('#objective').value="";
+          alert('Objetivo añadido al proyecto');
+        });
+
+        var addDeliverable = $('#addDeliverable');
+
+        function addD(){
+          var id=document.querySelector('#information').value;
+          var deliverable=document.querySelector('#deliverable').value;
+          
+          var url = "http://localhost:3000/api/activities/deliverable";
+
+          var data = {};
+          data.deliverable= deliverable;
+          var json = JSON.stringify(data);
+
+          var xhr = new XMLHttpRequest();
+          xhr.open("PUT", url + '/'+id, true);
+          xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
+          xhr.onload = function () {
+            var users = JSON.parse(xhr.responseText);
+            if (xhr.readyState == 4 && xhr.status == "200") {
+              console.table(users);
+            } else {
+              console.error(users);
+            }
+          }
+          xhr.send(json);
+
+
+        }
+        addDeliverable.on('click',()=>{
+          addD();
+          document.querySelector('#deliverable').value="";
+          alert('Entregable añadido al proyecto');
+        });
+
+  
+        
+ 
+        
 
       });
     `

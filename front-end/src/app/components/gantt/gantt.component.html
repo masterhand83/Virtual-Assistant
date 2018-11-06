@@ -158,17 +158,17 @@
                                                             </div>
                                                             <div class="col-lg-6">
                                                                 <div class="form-group">
-                                                                    <select class="form-control" id="sel1">
-                                                                        <option>Alta</option>
-                                                                        <option>Media </option>
-                                                                        <option>Baja</option>
+                                                                    <select class="form-control" id="priority">
+                                                                        <option value="1"> Alta</option>
+                                                                        <option value="2"> Media </option>
+                                                                        <option value="3"> Baja</option>
                                                                     </select>
                                                                 </div>
 
 
                                                             </div>
                                                             <div *ngIf="userTypeBoolean" class="col-lg-12">
-                                                                <input type="submit" value="Guardar Prioridad" class="btn btn-outline-light btn-block">
+                                                                <input type="submit" value="Guardar Prioridad" class="btn btn-outline-light btn-block" id="editPriority">
                                                             </div>
 
 
@@ -390,10 +390,10 @@
                                         <p>Ingresa el nuevo objetivo </p>
                                         <form action="gantt.html">
                                             <div class="form-group">
-                                                <input type="text" class="form-control form-control-lg" placeholder="Objetivo"  maxlength="100">
+                                                <input type="text" class="form-control form-control-lg" placeholder="Objetivo"  maxlength="100" id="objective">
                                             </div>
 
-                                            <input type="submit" value="Guardar" class="btn btn-outline-light btn-block">
+                                            <input type="submit" value="Guardar" class="btn btn-outline-light btn-block" id="addObjective">
                                         </form>
 
 
@@ -431,10 +431,10 @@
                                         <p>Ingresa el nuevo entregable </p>
                                         <form action="gantt.html">
                                             <div class="form-group">
-                                                <input type="text" class="form-control form-control-lg" placeholder="Entregable"  maxlength="100">
+                                                <input type="text" class="form-control form-control-lg" placeholder="Entregable"  maxlength="100" id="deliverable">
                                             </div>
 
-                                            <input type="submit" value="Guardar" class="btn btn-outline-light btn-block">
+                                            <input type="submit" value="Guardar" class="btn btn-outline-light btn-block" id="addDeliverable">
                                         </form>
 
 
