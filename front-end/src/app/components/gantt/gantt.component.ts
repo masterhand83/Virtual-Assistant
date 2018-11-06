@@ -60,6 +60,23 @@ export class GanttComponent implements OnInit {
                 }
             }
         });
+        var deleteButton = $('#deleteActivity');
+
+        function deleteActivity(){
+        var id=document.querySelector('#information').value;
+
+        var URL_API = 'http://localhost:3000/api/activities/activity';
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("DELETE", URL_API + '/'+id, true);
+        xhttp.send();
+        }
+        deleteButton.on('click',()=>{
+          if (confirm('¿Estas seguro de eliminar esta actividad?')) {
+            deleteActivity();
+            location.reload();
+          }
+        })
+
       });
     `
       console.log(s.text);
@@ -84,26 +101,6 @@ export class GanttComponent implements OnInit {
 
   }
 
-  deleteActivity(){
-
-    var id=document.getElementById("information").innerHTML;
-    console.log(id);
-
-    /*
-    var URL_API = 'http://localhost:3000/api/activities/activity';
-
-    var xhttp = new XMLHttpRequest();
-
-    xhttp.open("DELETE", URL_API +`/5be080e860162a043c88827a`, true);
-    xhttp.send();
-    */
-  }
-
-  
-
- 
- 
-  
   
 
   deleteProject(_id: string) {
@@ -113,7 +110,7 @@ export class GanttComponent implements OnInit {
           this.sess.deleteProjectSession();
           this.router.navigate([('/projects')]);
           alert('Eliminado Exitosamente');
-
+          location.reload();
         });
     }
 
@@ -127,7 +124,8 @@ export class GanttComponent implements OnInit {
           form.value.start, form.value.end, form.value.priority)
           .subscribe(res => {
             console.log(res);
-            alert('Actividad añadida correctamente al proyecto')
+            alert('Actividad añadida correctamente al proyecto');
+            location.reload();
           });
           
       }
