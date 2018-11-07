@@ -97,10 +97,7 @@ export class ProjectsComponent implements OnInit {
     if(this.userType=="1"){
       this.projectsService.getProjects()
       .subscribe(res => {
-        this.projectsService.project=res as Project[];
-      
-        
-        
+        this.projectsService.project=res as Project[]; 
       });
       
     }

@@ -4,6 +4,8 @@ import { HttpClient } from '@angular/common/http';
 import {Project} from '../models/Project';
 import {User} from '../models/User';
 import { NgForm } from '../../../node_modules/@angular/forms';
+import { TouchSequence } from '../../../node_modules/@types/selenium-webdriver';
+import { Alert } from '../models/Alert';
 @Injectable({
   providedIn: 'root'
 })
@@ -16,9 +18,13 @@ export class ProjectsService {
   readonly URL_API5= 'http://localhost:3000/api/projects/designer';
   readonly URL_API6= 'http://localhost:3000/api/projects/activity';
   readonly URL_API7= 'http://localhost:3000/api/projects/alert';
+  readonly URL_API8= 'http://localhost:3000/api/alerts/alert';
+
   project:Project[];
   project2:Project[];
   usersincharge:User[];
+
+  alerts:Alert[];
   
   constructor(private http: HttpClient) {
     
@@ -112,6 +118,21 @@ export class ProjectsService {
 
   getActivitiesProject(_id:string){
     return this.http.get(this.URL_API6 + `/${_id}`);
+  }
+
+  getAlertsProject(_id:string){
+    return this.http.get(this.URL_API7+ `/${_id}`);
+  }
+
+  deleteAlert(_id:string){
+    return this.http.delete(this.URL_API8+ `/${_id}`);
+  } 
+
+  addAlert(_id:string,name:string,description:string){
+    return this.http.post(this.URL_API7 +`/${_id}`,{ 
+      name:name,
+      description:description
+    });
   }
 
   

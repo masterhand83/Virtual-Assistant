@@ -3,7 +3,7 @@ import {NgForm} from '@angular/forms';
 import {UsersService} from '../../services/users.service';
 import {User} from '../../models/User';
 import { getDefaultService } from '../../../../node_modules/@types/selenium-webdriver/chrome';
-
+import { Router } from '@angular/router';
 import { SessionService } from '../../services/session.service';
 import { TouchSequence } from '../../../../node_modules/@types/selenium-webdriver';
 declare var M: any;
@@ -15,7 +15,7 @@ declare var M: any;
 })
 export class UsersComponent implements OnInit {
 
-  constructor(private userService: UsersService,private sess:SessionService) { }
+  constructor(private userService: UsersService,private sess:SessionService, private router:Router) { }
   name:string;
   email:string;
   mobile:string;
@@ -72,7 +72,9 @@ export class UsersComponent implements OnInit {
     }
     else{
       this.userTypeBoolean=false;
+      this.router.navigate(['control']);
     }
+   
     
   }
 

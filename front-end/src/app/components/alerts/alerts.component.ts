@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ProjectsService} from '../../services/projects.service';
 import {Project} from '../../models/Project';
 import { SessionService } from '../../services/session.service';
+import { Alert } from '../../models/Alert';
 
 @Component({
   selector: 'app-alerts',
@@ -37,17 +38,41 @@ export class AlertsComponent implements OnInit {
     }
   }
 
+  nameProject:string;
+
+  getAlerts(_id:string,name:string) {
+    this.nameProject=name;
+    this.projectsService.getAlertsProject(_id)
+    .subscribe(res => {
+      this.projectsService.alerts=res as Alert[];
+    });
+
+  }
+
+  deleteAlert(_id:string,_id2:string){
+    this.projectsService.deleteAlert(_id)
+    .subscribe(res=>{
+      alert('Alerta Eliminada');
+    });
+    this.getProjects();
+  }
+
   key:string;
   key2:string;
   UserID:string;
   
   userType:string;
+  checku:boolean=false;
   getUserType(){
     this.key="UserType";
     this.userType=this.sess.getFromSession(this.key);
     
     this.key2="UserID";
     this.UserID=this.sess.getFromSession(this.key2);
+
+    if(this.userType=="1"){
+      this.checku=true;
+    }
     
   }
 

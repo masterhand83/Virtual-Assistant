@@ -43,12 +43,17 @@ export class MessagesComponent implements OnInit {
   UserID: string;
 
   userType: string;
+  checku:boolean=false;
   getUserType() {
     this.key = "UserType";
     this.userType = this.sess.getFromSession(this.key);
 
     this.key2 = "UserID";
     this.UserID = this.sess.getFromSession(this.key2);
+
+    if(this.userType=="1"){
+      this.checku=true;
+    }
 
 
   }
