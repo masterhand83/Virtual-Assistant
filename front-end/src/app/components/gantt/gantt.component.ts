@@ -23,9 +23,10 @@ export class GanttComponent implements OnInit {
     @Inject(DOCUMENT) private _document
   ) { }
   script: string;
+  
   ngOnInit() {
 
-
+    
     this.sess.validateProject();
     this.getUserType();
     this.getIdProject();
@@ -34,6 +35,10 @@ export class GanttComponent implements OnInit {
       console.log(res)
       let result: string = '[';
       result = this.arrayToString(res, 'gantt');
+      let authorName:string="";
+      authorName=this.getAuthorName();
+      let IDProject:string="";
+      IDProject=this.getIdProject();
       let s = this._Renderer2.createElement('script');
       s.text = `
       var ganttDatas = ${result}
@@ -44,10 +49,10 @@ export class GanttComponent implements OnInit {
             behavior: {
                 onClick: function (data) {
                     $('#actividadg').modal();
-                    let hid = document.querySelector('#activityName');
-                    let ed = document.querySelector('#actID');
-                    hid.innerHTML= data.name;
-                    ed.value = data.id;
+                    let hid = document.querySelector('#information');
+                    hid.value = data.id;
+                    getComments();
+                    getObjandDel();
                     
                 },
                 onResize: function (data) {
@@ -60,12 +65,316 @@ export class GanttComponent implements OnInit {
                 }
             }
         });
+        var deleteButton = $('#deleteActivity');
+
+        function deleteActivity(){
+        var id=document.querySelector('#information').value;
+
+        var URL_API = 'http://localhost:3000/api/activities/activity';
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("DELETE", URL_API + '/'+id, true);
+        xhttp.send();
+        }
+        deleteButton.on('click',()=>{
+          if (confirm('¿Estas seguro de eliminar esta actividad?')) {
+            deleteActivity();
+            location.reload();
+          }
+        });
+
+        var addComment=$('#addComment');
+        function addComments(){
+          var id=document.querySelector('#information').value;
+          
+
+          var comment=document.querySelector('#comment').value;
+          
+          var authorName= '${authorName}';
+
+          var url = "http://localhost:3000/api/activities/comment";
+
+          var data = {};
+          data.authorName = authorName;
+          data.comment  = comment;
+          var json = JSON.stringify(data);
+
+          var xhr = new XMLHttpRequest();
+          xhr.open("POST", url + '/'+id, true);
+          xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
+          xhr.onload = function () {
+            var users = JSON.parse(xhr.responseText);
+            if (xhr.readyState == 4 && xhr.status == "201") {
+              console.table(users);
+            } else {
+              console.error(users);
+            }
+          }
+          xhr.send(json);
+
+          document.querySelector('#comment').value="";
+          
+
+
+        }
+        addComment.on('click',()=>{ 
+            addComments();  
+            getComments();  
+           
+        });
+        
+
+        function getComments(){
+          var id=document.querySelector('#information').value;
+          
+          var url  = "http://localhost:3000/api/activities/comment";
+          var xhr  = new XMLHttpRequest()
+          xhr.open('GET', url + '/'+id, true)
+          xhr.onload = function () {
+            var comments = JSON.parse(xhr.responseText);
+            if (xhr.readyState == 4 && xhr.status == "200") {
+              var texto="";
+              for(i=0;i<comments.length;i++){
+                
+                texto+= comments[i].authorName + ": " + comments[i].comment + "                                                  "; 
+              }
+              document.querySelector('#textComment').value=texto;
+              
+
+            } else {
+              console.error(users);
+            }
+          }
+          xhr.send(null);
+
+        }
+        var editPriority = $('#editPriority');
+
+        function editP(){
+          var id=document.querySelector('#information').value;
+          var priorityText=document.querySelector('#priority').value;
+          
+          var url = "http://localhost:3000/api/activities/priority";
+
+          var data = {};
+          data.priority = priorityText;
+          var json = JSON.stringify(data);
+
+          var xhr = new XMLHttpRequest();
+          xhr.open("PUT", url + '/'+id, true);
+          xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
+          xhr.onload = function () {
+            var users = JSON.parse(xhr.responseText);
+            if (xhr.readyState == 4 && xhr.status == "200") {
+              console.table(users);
+            } else {
+              console.error(users);
+            }
+          }
+          xhr.send(json);
+          
+
+
+        }
+        editPriority.on('click',()=>{
+          editP();
+          alert('Prioridad Actualizada Exitosamente');
+          
+        });
+
+        var addObjective = $('#addObjective');
+
+        function addO(){
+          var id=document.querySelector('#information').value;
+          var objective=document.querySelector('#objective').value;
+          
+          var url = "http://localhost:3000/api/activities/objective";
+
+          var data = {};
+          data.objective= objective;
+          var json = JSON.stringify(data);
+
+          var xhr = new XMLHttpRequest();
+          xhr.open("PUT", url + '/'+id, true);
+          xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
+          xhr.onload = function () {
+            var users = JSON.parse(xhr.responseText);
+            if (xhr.readyState == 4 && xhr.status == "200") {
+              console.table(users);
+            } else {
+              console.error(users);
+            }
+          }
+          xhr.send(json);
+
+
+        }
+        addObjective.on('click',()=>{
+          addO();
+          document.querySelector('#objective').value="";
+          alert('Objetivo añadido al proyecto');
+          getObjandDel();
+        });
+
+        var addDeliverable = $('#addDeliverable');
+
+        function addD(){
+          var id=document.querySelector('#information').value;
+          var deliverable=document.querySelector('#deliverable').value;
+          
+          var url = "http://localhost:3000/api/activities/deliverable";
+
+          var data = {};
+          data.deliverable= deliverable;
+          var json = JSON.stringify(data);
+
+          var xhr = new XMLHttpRequest();
+          xhr.open("PUT", url + '/'+id, true);
+          xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
+          xhr.onload = function () {
+            var users = JSON.parse(xhr.responseText);
+            if (xhr.readyState == 4 && xhr.status == "200") {
+              console.table(users);
+            } else {
+              console.error(users);
+            }
+          }
+          xhr.send(json);
+
+
+        }
+        addDeliverable.on('click',()=>{
+          addD();
+          document.querySelector('#deliverable').value="";
+          alert('Entregable añadido al proyecto');
+          getObjandDel();
+        });
+
+        var name="Hola";
+        function getObjandDel(){
+          var id=document.querySelector('#information').value;
+          
+          var url  = "http://localhost:3000/api/activities/activity";
+          var xhr  = new XMLHttpRequest()
+          xhr.open('GET', url + '/'+id, true)
+          xhr.onload = function () {
+            var activity = JSON.parse(xhr.responseText);
+            if (xhr.readyState == 4 && xhr.status == "200") { 
+
+              let panel = document.querySelector('#objetivos');
+              let objetivos = activity.objective;
+              let html = '';
+              objetivos.forEach(el=>{
+                html += '<li>'+el+'</li>';
+              });
+              panel.innerHTML = html;
+
+              let panel2 = document.querySelector('#entregables');
+              let entregables = activity.deliverable;
+              let html2 = '';
+              entregables.forEach(ol=>{
+                html2 += '<li>'+ol+'</li>';
+              });
+              panel2.innerHTML = html2;
+
+              
+              name=activity.name;
+              
+
+              document.querySelector('#priority').value=activity.priority;
+
+            } else {
+              console.error(activity);
+            }
+          }
+          xhr.send(null);
+
+        }
+
+        var addAlertObjective = $('#addAlertObjective');
+
+        function addAlertO(){
+
+
+          var id='${IDProject}';
+          
+          var url = "http://localhost:3000/api/projects/alert";
+
+          var data = {};
+          data.name= "Objetivos Verificados";
+          data.description="Se han verificado los objetivos en la actividad: "  +name+"  ";
+          var json = JSON.stringify(data);
+
+          var xhr = new XMLHttpRequest();
+          xhr.open("POST", url + '/'+id, true);
+          xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
+          xhr.onload = function () {
+            var users = JSON.parse(xhr.responseText);
+            if (xhr.readyState == 4 && xhr.status == "200") {
+              console.table(users);
+            } else {
+              console.error(users);
+            }
+          }
+          xhr.send(json);
+
+
+        }
+        addAlertObjective.on('click',()=>{
+          addAlertO();
+          alert('Se verifico correcamente');
+        });
+
+        var addAlertDeliverable = $('#addAlertDeliverable');
+
+        function addAlertD(){
+
+
+          var id='${IDProject}';
+          
+          var url = "http://localhost:3000/api/projects/alert";
+
+          var data = {};
+          data.name= "Entregables Verificados";
+          data.description="Se han verificado los entregables en la actividad: "  +name+"  ";
+          var json = JSON.stringify(data);
+
+          var xhr = new XMLHttpRequest();
+          xhr.open("POST", url + '/'+id, true);
+          xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
+          xhr.onload = function () {
+            var users = JSON.parse(xhr.responseText);
+            if (xhr.readyState == 4 && xhr.status == "200") {
+              console.table(users);
+            } else {
+              console.error(users);
+            }
+          }
+          xhr.send(json);
+
+
+        }
+        addAlertDeliverable.on('click',()=>{
+          addAlertD();
+          alert('Se verifico correcamente');
+        });
+        
+
+       
+        
+        
+  
+        
+ 
+        
+
       });
     `
       console.log(s.text);
       this._Renderer2.appendChild(this._document.body, s);
+
+      
     });
-    
+   
 
   }
 
@@ -82,11 +391,6 @@ export class GanttComponent implements OnInit {
 
   }
 
-
-
- 
- 
-  
   
 
   deleteProject(_id: string) {
@@ -96,20 +400,30 @@ export class GanttComponent implements OnInit {
           this.sess.deleteProjectSession();
           this.router.navigate([('/projects')]);
           alert('Eliminado Exitosamente');
-
+          location.reload();
         });
     }
 
   }
   addActivityToProject(form: NgForm) {
-    if (confirm('¿Estas seguro de añadir esta actividad?')) {
-      this.projectService.addActivityToProject(this._id, form.value.name, form.value.description,
-        form.value.start, form.value.end, form.value.priority)
-        .subscribe(res => {
-          console.log(res);
-          alert('Actividad añadida correctamente al proyecto')
-        });
+    if(form.value.name!="" && form.value.description!="" && form.value.start!="" && form.value.end!="" && form.value.priority!="" &&
+    form.value.name!=null && form.value.description!=null && form.value.start!=null && form.value.end!=null && form.value.priority!=null &&
+    form.value.name!=null && form.value.description!=undefined && form.value.start!=undefined && form.value.end!=undefined && form.value.priority!=undefined){
+      if (confirm('¿Estas seguro de añadir esta actividad?')) {
+        this.projectService.addActivityToProject(this._id, form.value.name, form.value.description,
+          form.value.start, form.value.end, form.value.priority)
+          .subscribe(res => {
+            console.log(res);
+            alert('Actividad añadida correctamente al proyecto');
+            location.reload();
+          });
+          
+      }
     }
+    else{
+      alert('Favor de completar todos los campos');
+    }
+    
 
   }
 
@@ -128,7 +442,7 @@ export class GanttComponent implements OnInit {
 
     this.projectService.activateProjectAlerts(this._id, this.activated)
       .subscribe(res => {
-        alert('Alertas desactivivadas');
+        alert('Alertas desactivadas');
       });
   }
 
@@ -154,6 +468,15 @@ export class GanttComponent implements OnInit {
   getIdProject() {
     this.key2 = "ActualProject";
     this._id = this.sess.getFromSession(this.key2);
+    return this._id;
+  }
+
+  key3: string;
+  authorName: string;
+  getAuthorName() {
+    this.key3 = "Name";
+    this.authorName = this.sess.getFromSession(this.key3);
+    return this.authorName;
   }
 
   arrayToString(data: any[], mode: string) {

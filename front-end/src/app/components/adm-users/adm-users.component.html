@@ -33,7 +33,7 @@
                                             </button>
                                         </td>
                                         <td>
-                                            <button class="btn btn-lg btn-dark" type="button" (click)="deleteUser(user._id)">
+                                            <button *ngIf="user.projects.length==0"class="btn btn-lg btn-dark" type="button" (click)="deleteUser(user._id)">
                                                 <i class="fas fa-trash fa-1x"></i>
                                             </button>
                                         </td>
@@ -158,16 +158,27 @@
                                                                     <input type="hidden"  name="_id" [(ngModel)]="id2">
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <input type="email" class="form-control form-control-lg" placeholder="Correo Electronico" name="email" [(ngModel)]="email2"   maxlength="100" >
+                                                                    <input type="email" class="form-control form-control-lg" placeholder="Correo Electronico" name="email" [(ngModel)]="email2"   maxlength="100" #emailref="ngModel"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" >
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <input type="text" class="form-control form-control-lg" placeholder="Numero de Movil" name="mobile" [(ngModel)]="mobile2"   maxlength="100">
+                                                                    <input type="text" class="form-control form-control-lg" placeholder="Numero de Movil" name="mobile" [(ngModel)]="mobile2"   maxlength="100" #mobileref="ngModel"  pattern="[0-9]{10,14}$">
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <input type="text" class="form-control form-control-lg" placeholder="Contraseña" name="password" [(ngModel)]="password2"  maxlength="100">
+                                                                    <input type="text" class="form-control form-control-lg" placeholder="Contraseña" name="password" [(ngModel)]="password2"  maxlength="100" #passwordref="ngModel" pattern="[A-Za-z0-9-_.:,;^~+*`¿¡'?\=)(/&%$#°|¬]{8,30}">
                                                                 </div>
 
-                                                                <input type="submit" value="Actualizar Datos" class="btn btn-outline-light btn-block">
+                                                                
+                                                                <div [hidden]="!emailref.errors?.pattern">
+                                                                    Correo Invalido.
+                                                                </div> 
+                                                                <div [hidden]="!mobileref.errors?.pattern">
+                                                                    El numero debe de tener minimo 10 y maximo 14 caracteres.
+                                                                </div> 
+                                                                <div [hidden]="!passwordref.errors?.pattern">
+                                                                    La contraseña debe de tener minimo 8 y maximo 30 caracteres, sin espacios.
+                                                                </div>
+
+                                                                <input [hidden]="emailref.errors?.pattern || mobileref.errors?.pattern ||  passwordref.errors?.pattern" type="submit" value="Actualizar Datos" class="btn btn-outline-light btn-block">
                                                             </form>
                                                         </div>
 

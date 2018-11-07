@@ -31,16 +31,16 @@
                             <p>Ingresa los datos y crea un nuevo usuario. </p>
                             <form #userForm="ngForm" (ngSubmit)="addUser(userForm)">
                               <div class="form-group">
-                                <input type="text" class="form-control form-control-lg" placeholder="Nombre" name="name" #nombre [(ngModel)]="name"   maxlength="100" required>
+                                <input type="text" class="form-control form-control-lg" placeholder="Nombre" name="name" #nombre [(ngModel)]="name"   maxlength="100" required #nameref="ngModel" pattern="[A-Za-z ]{0,100}">
                               </div>
                               <div class="form-group">
-                                <input type="email" class="form-control form-control-lg" placeholder="Correo Electronico" name="email" #mail [(ngModel)]="email"   maxlength="100" required>
+                                <input type="email" class="form-control form-control-lg" placeholder="Correo Electronico" name="email" #mail [(ngModel)]="email"   maxlength="100" required #emailref="ngModel"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
                               </div>
                               <div class="form-group">
-                                <input type="text" class="form-control form-control-lg" placeholder="Numero de Movil" name="mobile" #mobil [(ngModel)]="mobile"   maxlength="100" required>
+                                <input type="text" class="form-control form-control-lg" placeholder="Numero de Movil" name="mobile" #mobil [(ngModel)]="mobile"   maxlength="100" required #mobileref="ngModel"  pattern="[0-9]{10,14}$">
                               </div>
                               <div class="form-group">
-                                <input type="password" class="form-control form-control-lg" placeholder="Contraseña" name="password" #pass [(ngModel)]="password"   maxlength="100" required> 
+                                <input type="password" class="form-control form-control-lg" placeholder="Contraseña" name="password" #pass [(ngModel)]="password"   maxlength="100" required #passwordref="ngModel" pattern="[A-Za-z0-9-_.:,;^~+*`¿¡'?\=)(/&%$#°|¬]{8,30}"> 
                               </div>
 
                               <div class="form-group">
@@ -51,8 +51,20 @@
                                   <option value="3">Proyectista</option>
                                 </select>
                               </div>
+                              <div [hidden]="!nameref.errors?.pattern">
+                                  En el nombre solo puede haber letras.
+                              </div> 
+                              <div [hidden]="!emailref.errors?.pattern">
+                                  Correo Invalido.
+                              </div> 
+                              <div [hidden]="!mobileref.errors?.pattern">
+                                  El numero debe de tener minimo 10 y maximo 14 caracteres.
+                              </div> 
+                              <div [hidden]="!passwordref.errors?.pattern">
+                                  La contraseña debe de tener minimo 8 y maximo 30 caracteres, sin espacios.
+                              </div>
 
-                              <input type="submit" class="btn btn-outline-light btn-block" value="Registrar Usuario">
+                              <input [hidden]="emailref.errors?.pattern || mobileref.errors?.pattern || nameref.errors?.pattern || passwordref.errors?.pattern" type="submit" class="btn btn-outline-light btn-block" value="Registrar Usuario">
                               <input type="button" class="btn btn-outline-light btn-block" (click)="resetForm(userForm)" value="Limpiar">
 
                             </form>
