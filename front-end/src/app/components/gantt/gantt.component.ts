@@ -357,16 +357,6 @@ export class GanttComponent implements OnInit {
           addAlertD();
           alert('Se verifico correcamente');
         });
-        
-
-       
-        
-        
-  
-        
- 
-        
-
       });
     `
       console.log(s.text);
