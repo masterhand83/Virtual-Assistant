@@ -44,8 +44,10 @@ export class GanttComponent implements OnInit {
             behavior: {
                 onClick: function (data) {
                     $('#actividadg').modal();
-                    let hid = document.querySelector('#information');
-                    hid.value = data.id;
+                    let hid = document.querySelector('#activityName');
+                    let ed = document.querySelector('#actID');
+                    hid.innerHTML= data.name;
+                    ed.value = data.id;
                     
                 },
                 onResize: function (data) {

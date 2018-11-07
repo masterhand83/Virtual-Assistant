@@ -80,8 +80,9 @@
                                     <!--Aqui va el contenido-->
                                     <div class="container">
                                         <div class="row">
-                                            <div class="col-lg-12">
-                                                <h3>Nombre de la actividad</h3>
+                                            <div class="col-lg-12" >
+                                                ACTIVIDAD: <h3 id="activityName"></h3>
+                                                <input type="hidden" name="" id="actID">
                                             </div>
                                             <br>
                                             <br>
@@ -89,7 +90,7 @@
                                             <div class="col-lg-6">
                                                 <div class="row">
                                                     <div class="col-lg-8">
-                                                        Objetivos
+                                                        Objetivos [ {{this.selectedAct}} ]
                                                     </div>
                                                     <div *ngIf="userTypeBoolean" class="col-lg-4">
                                                         <button class="btn btn-lg btn-dark" type="submit" data-toggle="modal"
@@ -433,5 +434,4 @@
     </div>
 </div>
 <!--INFORMACION DE LA ACTIVIDAD-->
-<input type="hidden" name="" id='information' #selectedActivity>
 <script></script>
