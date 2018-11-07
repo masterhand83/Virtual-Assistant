@@ -101,17 +101,13 @@
                                                     <br>
                                                     <div class="col-lg-12">
                                                         <form action="gantt.html">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="radio" name="exampleRadios"
-                                                                    id="objetivos" value="objetivo1">
-                                                                <label class="form-check-label" for="objetivos">
-                                                                    Objetivo 1
-                                                                </label>
-                                                            </div>
+                                                            <ul id="objetivos">
+                                                                
+                                                            </ul>
                                                             <br>
                                                             <br>
-                                                            <input *ngIf="userTypeBoolean2" type="submit" value="Guardar Objetivos"
-                                                                class="btn btn-outline-light btn-block">
+                                                            <input *ngIf="userTypeBoolean2" type="submit" value="Verificar Objetivos"
+                                                                class="btn btn-outline-light btn-block" id="addAlertObjective">
                                                             <br>
                                                             <br>
                                                         </form>
@@ -131,17 +127,13 @@
                                                     <br>
                                                     <div class="col-lg-12">
                                                         <form action="gantt.html">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="radio" name="exampleRadios"
-                                                                    id="entregables" value="entregable1">
-                                                                <label class="form-check-label" for="entregables">
-                                                                    Entregable 1
-                                                                </label>
-                                                            </div>
+                                                            <ul id="entregables">
+                                                                
+                                                            </ul>
                                                             <br>
                                                             <br>
                                                             <input *ngIf="userTypeBoolean2" type="submit" value="Guardar Entregables"
-                                                                class="btn btn-outline-light btn-block">
+                                                                class="btn btn-outline-light btn-block" id="addAlertDeliverable">
                                                             <br>
                                                             <br>
                                                         </form>

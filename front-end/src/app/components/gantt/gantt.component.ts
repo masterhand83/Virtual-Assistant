@@ -37,7 +37,8 @@ export class GanttComponent implements OnInit {
       result = this.arrayToString(res, 'gantt');
       let authorName:string="";
       authorName=this.getAuthorName();
-      
+      let IDProject:string="";
+      IDProject=this.getIdProject();
       let s = this._Renderer2.createElement('script');
       s.text = `
       var ganttDatas = ${result}
@@ -51,6 +52,7 @@ export class GanttComponent implements OnInit {
                     let hid = document.querySelector('#information');
                     hid.value = data.id;
                     getComments();
+                    getObjandDel();
                     
                 },
                 onResize: function (data) {
@@ -210,6 +212,7 @@ export class GanttComponent implements OnInit {
           addO();
           document.querySelector('#objective').value="";
           alert('Objetivo añadido al proyecto');
+          getObjandDel();
         });
 
         var addDeliverable = $('#addDeliverable');
@@ -243,8 +246,122 @@ export class GanttComponent implements OnInit {
           addD();
           document.querySelector('#deliverable').value="";
           alert('Entregable añadido al proyecto');
+          getObjandDel();
         });
 
+        var name="Hola";
+        function getObjandDel(){
+          var id=document.querySelector('#information').value;
+          
+          var url  = "http://localhost:3000/api/activities/activity";
+          var xhr  = new XMLHttpRequest()
+          xhr.open('GET', url + '/'+id, true)
+          xhr.onload = function () {
+            var activity = JSON.parse(xhr.responseText);
+            if (xhr.readyState == 4 && xhr.status == "200") { 
+
+              let panel = document.querySelector('#objetivos');
+              let objetivos = activity.objective;
+              let html = '';
+              objetivos.forEach(el=>{
+                html += '<li>'+el+'</li>';
+              });
+              panel.innerHTML = html;
+
+              let panel2 = document.querySelector('#entregables');
+              let entregables = activity.deliverable;
+              let html2 = '';
+              entregables.forEach(ol=>{
+                html2 += '<li>'+ol+'</li>';
+              });
+              panel2.innerHTML = html2;
+
+              
+              name=activity.name;
+              
+
+              document.querySelector('#priority').value=activity.priority;
+
+            } else {
+              console.error(activity);
+            }
+          }
+          xhr.send(null);
+
+        }
+
+        var addAlertObjective = $('#addAlertObjective');
+
+        function addAlertO(){
+
+
+          var id='${IDProject}';
+          
+          var url = "http://localhost:3000/api/projects/alert";
+
+          var data = {};
+          data.name= "Objetivos Verificados";
+          data.description="Se han verificado los objetivos en la actividad: "  +name+"  ";
+          var json = JSON.stringify(data);
+
+          var xhr = new XMLHttpRequest();
+          xhr.open("POST", url + '/'+id, true);
+          xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
+          xhr.onload = function () {
+            var users = JSON.parse(xhr.responseText);
+            if (xhr.readyState == 4 && xhr.status == "200") {
+              console.table(users);
+            } else {
+              console.error(users);
+            }
+          }
+          xhr.send(json);
+
+
+        }
+        addAlertObjective.on('click',()=>{
+          addAlertO();
+          alert('Se verifico correcamente');
+        });
+
+        var addAlertDeliverable = $('#addAlertDeliverable');
+
+        function addAlertD(){
+
+
+          var id='${IDProject}';
+          
+          var url = "http://localhost:3000/api/projects/alert";
+
+          var data = {};
+          data.name= "Entregables Verificados";
+          data.description="Se han verificado los entregables en la actividad: "  +name+"  ";
+          var json = JSON.stringify(data);
+
+          var xhr = new XMLHttpRequest();
+          xhr.open("POST", url + '/'+id, true);
+          xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
+          xhr.onload = function () {
+            var users = JSON.parse(xhr.responseText);
+            if (xhr.readyState == 4 && xhr.status == "200") {
+              console.table(users);
+            } else {
+              console.error(users);
+            }
+          }
+          xhr.send(json);
+
+
+        }
+        addAlertDeliverable.on('click',()=>{
+          addAlertD();
+          alert('Se verifico correcamente');
+        });
+        
+
+       
+        
+        
   
         
  
@@ -351,7 +468,7 @@ export class GanttComponent implements OnInit {
   getIdProject() {
     this.key2 = "ActualProject";
     this._id = this.sess.getFromSession(this.key2);
-    console.log(this._id);
+    return this._id;
   }
 
   key3: string;
