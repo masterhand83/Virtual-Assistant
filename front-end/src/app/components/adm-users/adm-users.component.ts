@@ -5,6 +5,7 @@ import { User } from '../../models/User';
 import { NgForm } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { SessionService } from '../../services/session.service';
+import { Router } from '@angular/router';
 
 
 import { ActivatedRoute } from '../../../../node_modules/@angular/router';
@@ -22,7 +23,7 @@ declare var M: any;
 export class AdmUsersComponent implements OnInit {
 
   constructor(private userService: UsersService, private sess: SessionService, private _route: ActivatedRoute, 
-  private projectService:ProjectsService) {
+  private projectService:ProjectsService, private router:Router) {
 
   }
 
@@ -37,8 +38,8 @@ export class AdmUsersComponent implements OnInit {
     this.idUser = +this._route.snapshot.paramMap.get('id');
 
     this.getUsers();
-
-
+    this.getUserType();
+    
 
   }
 
@@ -113,6 +114,7 @@ export class AdmUsersComponent implements OnInit {
           .subscribe(res=>{
             alert('Usuario Actualizado Correctamente');
             this.getUsers(); 
+            this.alertResident();
           });
         }
       }
@@ -122,6 +124,7 @@ export class AdmUsersComponent implements OnInit {
           .subscribe(res=>{
             alert('Usuario Actualizado Correctamente');
             this.getUsers();
+            
           });
         }
       }
@@ -130,11 +133,16 @@ export class AdmUsersComponent implements OnInit {
       alert('Favor de completar todos los campos');
     }
     
-    
-    
 
-    
+  }
 
+  alertResident(){
+    var name="Urgente";
+    var description="Se ha cambiado el residente encargado de proyecto";
+    this.projectService.addAlert(this.id3,name,description)
+    .subscribe(res=>{
+      console.log(res);
+    });
   }
 
   name2: string = "";
@@ -156,7 +164,24 @@ export class AdmUsersComponent implements OnInit {
     console.log(_id);
     this.id3=_id;
   }
+  
+  key: string;
+  userTypeBoolean: boolean = false;
+  userType: string;
+  getUserType() {
+    this.key = "UserType";
+    this.userType = this.sess.getFromSession(this.key);
+    if (this.userType == "1") {
+      this.userTypeBoolean = true;
+    }
+    else if(this.userType=="2" || this.userType=="3"){
 
+      this.router.navigate(['control']);
+
+    }
+
+    
+  }
 
 
 }

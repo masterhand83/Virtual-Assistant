@@ -9,7 +9,7 @@
                                 <thead>
                                     <tr>
                                         <th>Proyecto</th>
-                                        <th>Residente</th>
+                                        <th *ngIf="checku">Residente</th>
                                         <th>Mensajes</th>
                                         <th>Acciones</th>
                                     </tr>
@@ -17,10 +17,10 @@
                                 <tbody>
                                     <tr *ngFor="let project of this.projectsService.project2">
                                         <td>{{project.name}}</td>
-                                        <td>
+                                        <td *ngIf="checku">
                                             {{project.resident}}
                                         </td>
-                                        <td>0</td>
+                                        <td>{{project.messages.length}}</td>
                                         <td><button class="btn btn-lg btn-dark" type="submit" data-toggle="modal"
                                                 data-target="#mensajes"><i class="fas fa-arrow-alt-circle-right fa-1x"></i></button></td>
                                     </tr>

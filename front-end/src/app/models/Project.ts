@@ -11,5 +11,6 @@ export interface Project{
     "furnitureDate": Date,
     "alertsActivated":Boolean,
     "activities":Object[],
+    "alerts":Object[]
 
 }

@@ -19,8 +19,10 @@ export class ControlComponent implements OnInit {
 
 
   key:string;
+  key2:string;
   userTypeBoolean:boolean=false;
   userType:string;
+  name:string
   getUserType(){
     this.key="UserType";
     this.userType=this.sess.getFromSession(this.key);
@@ -31,7 +33,10 @@ export class ControlComponent implements OnInit {
       this.userTypeBoolean=false;
     }
     
+    this.key2="Name";
+    this.name=this.sess.getFromSession(this.key2);
   }
+  
 
 
 }

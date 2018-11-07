@@ -84,34 +84,49 @@ export class GanttComponent implements OnInit {
 
         var addComment=$('#addComment');
         function addComments(){
-          var id=document.querySelector('#information').value;
+
+          if(document.querySelector('#comment').value!=""){
+            var id=document.querySelector('#information').value;
           
 
-          var comment=document.querySelector('#comment').value;
+            var comment=document.querySelector('#comment').value;
+            
+            var authorName= '${authorName}';
+
+            var url = "http://localhost:3000/api/activities/comment";
+
+            var data = {};
+            data.authorName = authorName;
+            data.comment  = comment;
+            var json = JSON.stringify(data);
+
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", url + '/'+id, true);
+            xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
+            
+            xhr.send(json);
+
+            document.querySelector('#comment').value="";
+
+            var id2='${IDProject}';
+            
+            var url2 = "http://localhost:3000/api/projects/alert";
+
+            var data = {};
+            data.name= "Comentario";
+            data.description="Se comento: "+comment+" en la actividad: "  +name+"  ";
+            var json = JSON.stringify(data);
+
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", url2 + '/'+id2, true);
+            xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
           
-          var authorName= '${authorName}';
-
-          var url = "http://localhost:3000/api/activities/comment";
-
-          var data = {};
-          data.authorName = authorName;
-          data.comment  = comment;
-          var json = JSON.stringify(data);
-
-          var xhr = new XMLHttpRequest();
-          xhr.open("POST", url + '/'+id, true);
-          xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
-          xhr.onload = function () {
-            var users = JSON.parse(xhr.responseText);
-            if (xhr.readyState == 4 && xhr.status == "201") {
-              console.table(users);
-            } else {
-              console.error(users);
-            }
+            xhr.send(json);
           }
-          xhr.send(json);
-
-          document.querySelector('#comment').value="";
+          else{
+            alert('Favor de completar todos los campos');
+          }
+          
           
 
 
@@ -150,103 +165,129 @@ export class GanttComponent implements OnInit {
         var editPriority = $('#editPriority');
 
         function editP(){
-          var id=document.querySelector('#information').value;
-          var priorityText=document.querySelector('#priority').value;
           
-          var url = "http://localhost:3000/api/activities/priority";
+          if(document.querySelector('#priority').value!=""){
+            var id=document.querySelector('#information').value;
+            var priorityText=document.querySelector('#priority').value;
+            
+            var url = "http://localhost:3000/api/activities/priority";
 
-          var data = {};
-          data.priority = priorityText;
-          var json = JSON.stringify(data);
+            var data = {};
+            data.priority = priorityText;
+            var json = JSON.stringify(data);
 
-          var xhr = new XMLHttpRequest();
-          xhr.open("PUT", url + '/'+id, true);
-          xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
-          xhr.onload = function () {
-            var users = JSON.parse(xhr.responseText);
-            if (xhr.readyState == 4 && xhr.status == "200") {
-              console.table(users);
-            } else {
-              console.error(users);
+            var xhr = new XMLHttpRequest();
+            xhr.open("PUT", url + '/'+id, true);
+            xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
+            xhr.onload = function () {
+              var users = JSON.parse(xhr.responseText);
+              if (xhr.readyState == 4 && xhr.status == "200") {
+                console.table(users);
+              } else {
+                console.error(users);
+              }
             }
+            xhr.send(json);
+            alert('Prioridad Actualizada Exitosamente');
+          
           }
-          xhr.send(json);
+          else{
+            alert('Favor de completar todos los campos');
+          }
+
           
 
 
         }
         editPriority.on('click',()=>{
           editP();
-          alert('Prioridad Actualizada Exitosamente');
+          
           
         });
 
         var addObjective = $('#addObjective');
 
         function addO(){
-          var id=document.querySelector('#information').value;
-          var objective=document.querySelector('#objective').value;
-          
-          var url = "http://localhost:3000/api/activities/objective";
 
-          var data = {};
-          data.objective= objective;
-          var json = JSON.stringify(data);
+          if(document.querySelector('#objective').value!=""){
+            var id=document.querySelector('#information').value;
+            var objective=document.querySelector('#objective').value;
+            console.log(objective);
+            var url = "http://localhost:3000/api/activities/objective";
 
-          var xhr = new XMLHttpRequest();
-          xhr.open("PUT", url + '/'+id, true);
-          xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
-          xhr.onload = function () {
-            var users = JSON.parse(xhr.responseText);
-            if (xhr.readyState == 4 && xhr.status == "200") {
-              console.table(users);
-            } else {
-              console.error(users);
+            var data = {};
+            data.objective= objective;
+            var json = JSON.stringify(data);
+
+            var xhr = new XMLHttpRequest();
+            xhr.open("PUT", url + '/'+id, true);
+            xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
+            xhr.onload = function () {
+              var users = JSON.parse(xhr.responseText);
+              if (xhr.readyState == 4 && xhr.status == "200") {
+                console.table(users);
+              } else {
+                console.error(users);
+              }
             }
+            xhr.send(json);
+            document.querySelector('#objective').value="";
+            alert('Objetivo añadido al proyecto');
+            getObjandDel();
           }
-          xhr.send(json);
+          else{
+            alert('Favor de completar todos los campos');
+          }
+        
+          
 
 
         }
         addObjective.on('click',()=>{
           addO();
-          document.querySelector('#objective').value="";
-          alert('Objetivo añadido al proyecto');
-          getObjandDel();
+          
         });
 
         var addDeliverable = $('#addDeliverable');
 
         function addD(){
-          var id=document.querySelector('#information').value;
-          var deliverable=document.querySelector('#deliverable').value;
-          
-          var url = "http://localhost:3000/api/activities/deliverable";
 
-          var data = {};
-          data.deliverable= deliverable;
-          var json = JSON.stringify(data);
+          if(document.querySelector('#deliverable').value!=""){
+            var id=document.querySelector('#information').value;
+            var deliverable=document.querySelector('#deliverable').value;
+            
+            var url = "http://localhost:3000/api/activities/deliverable";
 
-          var xhr = new XMLHttpRequest();
-          xhr.open("PUT", url + '/'+id, true);
-          xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
-          xhr.onload = function () {
-            var users = JSON.parse(xhr.responseText);
-            if (xhr.readyState == 4 && xhr.status == "200") {
-              console.table(users);
-            } else {
-              console.error(users);
+            var data = {};
+            data.deliverable= deliverable;
+            var json = JSON.stringify(data);
+
+            var xhr = new XMLHttpRequest();
+            xhr.open("PUT", url + '/'+id, true);
+            xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
+            xhr.onload = function () {
+              var users = JSON.parse(xhr.responseText);
+              if (xhr.readyState == 4 && xhr.status == "200") {
+                console.table(users);
+              } else {
+                console.error(users);
+              }
             }
+            xhr.send(json);
+            document.querySelector('#deliverable').value="";
+            alert('Entregable añadido al proyecto');
+            getObjandDel();
           }
-          xhr.send(json);
+          else{
+            alert('Favor de completar todos los campos');
+          }
+          
 
 
         }
         addDeliverable.on('click',()=>{
           addD();
-          document.querySelector('#deliverable').value="";
-          alert('Entregable añadido al proyecto');
-          getObjandDel();
+          
         });
 
         var name="Hola";
@@ -357,6 +398,86 @@ export class GanttComponent implements OnInit {
           addAlertD();
           alert('Se verifico correcamente');
         });
+<<<<<<< HEAD
+=======
+
+        var addAlertStart = $('#addAlertStart');
+
+        function addAlertS(){
+
+
+          var id='${IDProject}';
+          
+          var url = "http://localhost:3000/api/projects/alert";
+
+          var data = {};
+          data.name= "Actividad Iniciada";
+          data.description="Se inicio la actividad: "  +name+"  ";
+          var json = JSON.stringify(data);
+
+          var xhr = new XMLHttpRequest();
+          xhr.open("POST", url + '/'+id, true);
+          xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
+          xhr.onload = function () {
+            var users = JSON.parse(xhr.responseText);
+            if (xhr.readyState == 4 && xhr.status == "200") {
+              console.table(users);
+            } else {
+              console.error(users);
+            }
+          }
+          xhr.send(json);
+
+
+        }
+        addAlertStart.on('click',()=>{
+          addAlertS();
+          alert('Se ha iniciado la actividad');
+        });
+        
+        var addAlertEnd = $('#addAlertEnd');
+
+        function addAlertE(){
+
+
+          var id='${IDProject}';
+          
+          var url = "http://localhost:3000/api/projects/alert";
+
+          var data = {};
+          data.name= "Actividad Finalizada";
+          data.description="Se finalizo la actividad: "  +name+"  ";
+          var json = JSON.stringify(data);
+
+          var xhr = new XMLHttpRequest();
+          xhr.open("POST", url + '/'+id, true);
+          xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
+          xhr.onload = function () {
+            var users = JSON.parse(xhr.responseText);
+            if (xhr.readyState == 4 && xhr.status == "200") {
+              console.table(users);
+            } else {
+              console.error(users);
+            }
+          }
+          xhr.send(json);
+
+
+        }
+        addAlertEnd.on('click',()=>{
+          addAlertE();
+          alert('Se ha finalizado la actividad');
+        });
+
+       
+        
+        
+  
+        
+ 
+        
+
+>>>>>>> d4a829e6345057da9742233500f3441d57d595ba
       });
     `
       console.log(s.text);

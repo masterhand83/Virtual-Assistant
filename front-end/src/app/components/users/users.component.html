@@ -29,7 +29,7 @@
                           <div class="card-body">
                             <h3>Registrar Usuarios</h3>
                             <p>Ingresa los datos y crea un nuevo usuario. </p>
-                            <form #userForm="ngForm" (ngSubmit)="addUser(userForm)">
+                            <form #userForm="ngForm" (ngSubmit)="addUser(userForm)" (keydown.enter)="$event.preventDefault()">
                               <div class="form-group">
                                 <input type="text" class="form-control form-control-lg" placeholder="Nombre" name="name" #nombre [(ngModel)]="name"   maxlength="100" required #nameref="ngModel" pattern="[A-Za-z ]{0,100}">
                               </div>

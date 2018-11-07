@@ -9,7 +9,7 @@
                                 <thead>
                                     <tr>
                                         <th>Proyecto</th>
-                                        <th>Residente</th>
+                                        <th *ngIf="checku">Residente</th>
                                         <th>Alertas</th>
                                         <th>Acciones</th>
                                     </tr>
@@ -17,12 +17,12 @@
                                 <tbody>
                                     <tr *ngFor="let project of this.projectsService.project">
                                         <td>{{project.name}}</td>
-                                        <td>
+                                        <td *ngIf="checku" >
                                             {{project.resident}}
                                         </td>
-                                        <td>0</td>
-                                        <td><button class="btn btn-lg btn-dark" type="submit" data-toggle="modal"
-                                                data-target="#alertas"><i class="fas fa-arrow-alt-circle-right fa-1x"></i></button></td>
+                                        <td>{{project.alerts.length}}</td>
+                                        <td><button (click)="getAlerts(project._id,project.name)"class="btn btn-lg btn-dark" type="submit" data-toggle="modal"
+                                            data-target="#alertas"><i class="fas fa-arrow-alt-circle-right fa-1x"></i></button></td>
                                     </tr>
                                     
 
@@ -32,7 +32,7 @@
                         <!--Desplegable de las alertas-->
     <div class="modal fade" id="alertas" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
     aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
 
@@ -47,7 +47,7 @@
                             <div class="card text-center" style="background-color: #303136;">
                                 <div class="card-body">
                                     <!--Aqui va el contenido-->
-                                    Nombre de Proyecto
+                                     {{nameProject}}
                                     <br><br>
                                     <div class="container">
                                         <div class="row">
@@ -62,34 +62,14 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody id="alertas">
-                                                        <tr>
-                                                            <td> Alerta 1</td>
-                                                            <td> Descripcion de la alerta 1</td>
+                                                        <tr *ngFor="let alert of this.projectsService.alerts">
+                                                            <td>{{alert.name}}</td>
+                                                            <td>{{alert.description}}</td>
                                                             <td>
-                                                                <a href="/gantt">
-                                                                    <button class="btn btn-lg btn-dark" type="submit">Ver</button>
-                                                                </a>
-                                                               
+                                                                <button (click)="deleteAlert(alert._id)" class="btn btn-lg btn-dark" type="submit"><i class="far fa-trash-alt"></i></button>                                                         
                                                             </td>
                                                         </tr>
-                                                        <tr>
-                                                            <td> Alerta 2</td>
-                                                            <td> Descripcion de la alerta 2</td>
-                                                            <td>
-                                                                <a href="/gantt">
-                                                                    <button class="btn btn-lg btn-dark" type="submit">Ver</button>
-                                                                </a>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td> Alerta 3</td>
-                                                            <td> Descripcion de la alerta 3</td>
-                                                            <td>
-                                                                <a href="/gantt">
-                                                                    <button class="btn btn-lg btn-dark" type="submit">Ver</button>
-                                                                </a>
-                                                            </td>
-                                                        </tr>
+                                                        
 
                                                     </tbody>
                                                 </table>
