@@ -6,9 +6,9 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class ActivitiesService {
-  
-  readonly URL_API = 'http://localhost:3000/api/activities/activity';
-  readonly URL_API2 = 'http://localhost:3000/api/activities/comment';
+  readonly url = 'http://192.168.1.67:3000'
+  readonly URL_API = this.url+'/api/activities/activity';
+  readonly URL_API2 = this.url+'/api/activities/comment';
   
   
   constructor(private http: HttpClient) {

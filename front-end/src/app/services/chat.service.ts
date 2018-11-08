@@ -1,0 +1,37 @@
+import { Injectable } from '@angular/core';
+import * as io from 'socket.io-client';
+import {Observable} from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+@Injectable({
+  providedIn: 'root'
+})
+export class ChatService {
+  private url = 'http://192.168.1.67:3000'
+  private socket;
+  constructor(private http: HttpClient) {
+    this.socket = io(this.url);
+   }
+  public sendMessage(message,project){
+    this.socket.emit('new-message',{msg:message,room:project});
+  }
+  public joinProject(projectID:string){
+    this.socket.emit('join-project',projectID);
+  }
+  public saveMessage(projectID:string, msg:string,author:string){
+    return this.http.post(this.url+'/api/projects/message/'+projectID,{
+      authorName:author,
+      message:msg
+    })
+  }
+  public getSavedMessages(projectID:string){
+    return this.http.get(this.url+'/api/projects/message/'+projectID)
+  }
+  public getMessages = ()=>{
+    return new Observable(observer =>{
+      const {next, error} = observer;
+      this.socket.on('new-message',message =>{
+        observer.next(message);
+      })
+    })
+  }
+}

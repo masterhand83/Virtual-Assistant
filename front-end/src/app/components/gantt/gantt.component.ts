@@ -398,23 +398,17 @@ export class GanttComponent implements OnInit {
           addAlertD();
           alert('Se verifico correcamente');
         });
-<<<<<<< HEAD
-=======
 
         var addAlertStart = $('#addAlertStart');
 
         function addAlertS(){
-
-
           var id='${IDProject}';
           
           var url = "http://localhost:3000/api/projects/alert";
-
           var data = {};
           data.name= "Actividad Iniciada";
           data.description="Se inicio la actividad: "  +name+"  ";
           var json = JSON.stringify(data);
-
           var xhr = new XMLHttpRequest();
           xhr.open("POST", url + '/'+id, true);
           xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
@@ -427,8 +421,6 @@ export class GanttComponent implements OnInit {
             }
           }
           xhr.send(json);
-
-
         }
         addAlertStart.on('click',()=>{
           addAlertS();
@@ -436,19 +428,13 @@ export class GanttComponent implements OnInit {
         });
         
         var addAlertEnd = $('#addAlertEnd');
-
         function addAlertE(){
-
-
           var id='${IDProject}';
-          
           var url = "http://localhost:3000/api/projects/alert";
-
           var data = {};
           data.name= "Actividad Finalizada";
           data.description="Se finalizo la actividad: "  +name+"  ";
           var json = JSON.stringify(data);
-
           var xhr = new XMLHttpRequest();
           xhr.open("POST", url + '/'+id, true);
           xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
@@ -461,23 +447,11 @@ export class GanttComponent implements OnInit {
             }
           }
           xhr.send(json);
-
-
         }
         addAlertEnd.on('click',()=>{
           addAlertE();
           alert('Se ha finalizado la actividad');
         });
-
-       
-        
-        
-  
-        
- 
-        
-
->>>>>>> d4a829e6345057da9742233500f3441d57d595ba
       });
     `
       console.log(s.text);

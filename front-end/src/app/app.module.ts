@@ -17,8 +17,10 @@ import { GanttComponent } from './components/gantt/gantt.component';
 //¿?
 import { FormsModule } from "@angular/forms";
 import { HomeComponent } from './components/home/home.component';
+import { ChatComponent } from "./components/chat/chat.component";
+//lib
 
-
+import { ChatService } from './services/chat.service';
 
 
 @NgModule({
@@ -34,6 +36,7 @@ import { HomeComponent } from './components/home/home.component';
     GanttComponent,
     HomeComponent,
     NavbarComponent,
+    ChatComponent
     
   ],
   imports: [
@@ -41,8 +44,7 @@ import { HomeComponent } from './components/home/home.component';
     HttpClientModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule,
-    
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

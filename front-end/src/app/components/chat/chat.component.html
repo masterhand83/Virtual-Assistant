@@ -1,0 +1,19 @@
+<div class="card text-dark bg-light mb-3 ">
+    <div class="card-header">Chat del proyecto</div>
+  <div class="card-body">
+
+   
+    <div class="card-text">
+      <p  *ngFor="let m of messages">
+        {{m}}
+      </p>
+    </div>
+    <hr>
+    <div class="form-inline">
+      <div class="form-group mb-2">
+          <input class="form-control"  type="text" [(ngModel)]="message" placeholder="Mensaje">
+      </div>
+      <button class="btn btn-outline-info d-lg-inline-block mb-2 mb-md-0 ml-md-3" (click)="sendMessage()">Enviar</button>
+    </div>
+  </div>
+</div>

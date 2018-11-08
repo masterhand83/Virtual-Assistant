@@ -7,9 +7,9 @@ import { Project } from '../models/Project';
   providedIn: 'root'
 })
 export class UsersService {
-  readonly IP = "localhost";
-  readonly URL_API = 'http://localhost:3000/api/users/user';
-  readonly URL_API2 = 'http://localhost:3000/api/users/project';
+  readonly IP = "192.168.1.67";
+  readonly URL_API = 'http://'+this.IP+':3000/api/users/user';
+  readonly URL_API2 = 'http://'+this.IP+':3000/api/users/project';
   
   user: User[];
   user2:User[];
@@ -33,10 +33,10 @@ export class UsersService {
   }
 
   getResidents(){
-    return this.http.get('http://localhost:3000/api/users/residents');
+    return this.http.get('http://'+this.IP+':3000/api/users/residents');
   }
   getDesigners(){
-    return this.http.get('http://localhost:3000/api/users/designers');
+    return this.http.get('http://'+this.IP+':3000/api/users/designers');
   }
 
   deleteUser(_id: string){

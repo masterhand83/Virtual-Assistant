@@ -10,15 +10,16 @@ import { Alert } from '../models/Alert';
   providedIn: 'root'
 })
 export class ProjectsService {
-  readonly IP = "localhost";
-  readonly URL_API = 'http://localhost:3000/api/projects/project';
-  readonly URL_API2= 'http://localhost:3000/api/users/project';
-  readonly URL_API3 = 'http://localhost:3000/api/projects/user';
-  readonly URL_API4 = 'http://localhost:3000/api/projects/resident';
-  readonly URL_API5= 'http://localhost:3000/api/projects/designer';
-  readonly URL_API6= 'http://localhost:3000/api/projects/activity';
-  readonly URL_API7= 'http://localhost:3000/api/projects/alert';
-  readonly URL_API8= 'http://localhost:3000/api/alerts/alert';
+  readonly IP = 'http://192.168.1.67:3000'
+
+  readonly URL_API = this.IP+'/api/projects/project';
+  readonly URL_API2= this.IP+'/api/users/project';
+  readonly URL_API3 = this.IP+'/api/projects/user';
+  readonly URL_API4 = this.IP+'/api/projects/resident';
+  readonly URL_API5= this.IP+'/api/projects/designer';
+  readonly URL_API6= this.IP+'/api/projects/activity';
+  readonly URL_API7= this.IP+'/api/projects/alert';
+  readonly URL_API8= this.IP+'/api/alerts/alert';
 
   project:Project[];
   project2:Project[];

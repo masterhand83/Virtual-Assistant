@@ -28,7 +28,6 @@
                     <br>
                     <br>
                     <br>
-
                     <div class="col-lg-12">
                         <div class="col-lg-12" style="color:#000000">
                             <div class="card text-center" style="background-color: #FFFFFF;">
@@ -37,24 +36,9 @@
                         </div>
                         <br>
                         <br>
-
-
-
-
-
                     </div>
-                    <div id="eventMessage"></div>
-
-
-
-
-
-
-
-                    
+                    <app-chat></app-chat>
                 </div>
-
-
             </div>
         </div>
 
@@ -80,7 +64,7 @@
                                     <!--Aqui va el contenido-->
                                     <div class="container">
                                         <div class="row">
-                                            <div class="col-lg-12" >
+                                            <div class="col-lg-12">
                                                 ACTIVIDAD: <h3 id="activityName"></h3>
                                                 <input type="hidden" name="" id="actID">
                                             </div>
@@ -101,18 +85,17 @@
                                                     <br>
                                                     <br>
                                                     <div class="col-lg-12">
-                                                        
+
                                                         <ul id="objetivos">
-                                                        
-                                                       </ul>
+
+                                                        </ul>
                                                         <br>
                                                         <br>
                                                         <input *ngIf="userTypeBoolean2" type="submit" value="Verificar Objetivos"
-                                                            class="btn btn-outline-light btn-block" id="addAlertObjective"
-                                                            >
+                                                            class="btn btn-outline-light btn-block" id="addAlertObjective">
                                                         <br>
                                                         <br>
-                                                        
+
 
                                                     </div>
 
@@ -130,7 +113,7 @@
                                                     <div class="col-lg-12">
                                                         <form action="gantt.html">
                                                             <ul id="entregables">
-                                                                
+
                                                             </ul>
                                                             <br>
                                                             <br>
@@ -162,7 +145,8 @@
 
                                                             </div>
                                                             <div *ngIf="userTypeBoolean" class="col-lg-12">
-                                                                <input type="submit" value="Guardar Prioridad" class="btn btn-outline-light btn-block" id="editPriority">
+                                                                <input type="submit" value="Guardar Prioridad" class="btn btn-outline-light btn-block"
+                                                                    id="editPriority">
                                                             </div>
 
 
@@ -178,45 +162,50 @@
                                                 <br>
                                                 <div class="col-lg-12">
                                                     <textarea class="form-control" rows="10" id="textComment" readonly>
-                                                    
+
                                                     </textarea>
                                                 </div>
-                                               
+
                                                 <br>
                                                 <div class="row">
                                                     <div class="col-lg-7">
                                                         <input type="text" class="form-control form-control-lg"
-                                                            placeholder="Comentario"  maxlength="100" id="comment" [(ngModel)]="comment"
-                                                            #commentref="ngModel" pattern="[A-Za-z0-9-_.:,;^~+*`¿¡'?\=)(/&%$#°|¬ ]{0,100}">
+                                                            placeholder="Comentario" maxlength="100" id="comment"
+                                                            [(ngModel)]="comment" #commentref="ngModel" pattern="[A-Za-z0-9-_.:,;^~+*`¿¡'?\=)(/&%$#°|¬ ]{0,100}">
                                                     </div>
-                                                    
+
                                                     <div class="col-lg-5">
                                                         <div [hidden]="!commentref.errors?.pattern">
                                                             Formato Invalido.
                                                         </div>
-                                                        <button [hidden]="commentref.errors?.pattern" class="btn btn-lg btn-dark btn-block" id="addComment">Comentar</button>
+                                                        <button [hidden]="commentref.errors?.pattern" class="btn btn-lg btn-dark btn-block"
+                                                            id="addComment">Comentar</button>
                                                     </div>
 
-                                                    
-                                                    
+
+
                                                     <br>
                                                     <br>
                                                     <br>
                                                     <div class="col-lg-12">
-                                                        
-                                                        <input type="hidden"  name="information" id="information" [(ngModel)]="information" >
-                                                        <input type="submit" value="Eliminar Actividad" class="btn btn-outline-light btn-block" id="deleteActivity">
-                                                        
-                                                       
+
+                                                        <input type="hidden" name="information" id="information"
+                                                            [(ngModel)]="information">
+                                                        <input type="submit" value="Eliminar Actividad" class="btn btn-outline-light btn-block"
+                                                            id="deleteActivity">
+
+
                                                     </div>
                                                     <br>
                                                     <br>
 
                                                     <div *ngIf="userTypeBoolean2" class="col-lg-6">
-                                                        <input type="submit" value="Iniciar Actividad" class="btn btn-outline-light btn-block" id="addAlertStart">
+                                                        <input type="submit" value="Iniciar Actividad" class="btn btn-outline-light btn-block"
+                                                            id="addAlertStart">
                                                     </div>
                                                     <div *ngIf="userTypeBoolean2" class="col-lg-6">
-                                                        <input type="submit" value="Finalizar Actividad" class="btn btn-outline-light btn-block" id="addAlertEnd">
+                                                        <input type="submit" value="Finalizar Actividad" class="btn btn-outline-light btn-block"
+                                                            id="addAlertEnd">
                                                     </div>
 
 
@@ -258,12 +247,14 @@
                                     <div class="container">
                                         <div class="row">
                                             <div class="col-lg-6">
-                                                <button (click)="activateProjectAlerts()" class="btn btn-block btn-dark">Activar Alertas</button>
+                                                <button (click)="activateProjectAlerts()" class="btn btn-block btn-dark">Activar
+                                                    Alertas</button>
                                             </div>
                                             <br>
                                             <br>
                                             <div class="col-lg-6">
-                                                <button (click)="desactivateProjectAlerts()" class="btn btn-block btn-dark">Desactivar Alertas</button>
+                                                <button (click)="desactivateProjectAlerts()" class="btn btn-block btn-dark">Desactivar
+                                                    Alertas</button>
                                             </div>
                                             <br>
                                             <br>
@@ -321,22 +312,27 @@
                                             <div class="card-body">
                                                 <h3>Agregar actividad</h3>
                                                 <p>Ingresa los datos y crea una nueva actividad. </p>
-                                                <form #activityForm="ngForm" (ngSubmit)="addActivityToProject(activityForm)" (keydown.enter)="$event.preventDefault()">
+                                                <form #activityForm="ngForm" (ngSubmit)="addActivityToProject(activityForm)"
+                                                    (keydown.enter)="$event.preventDefault()">
                                                     <div class="form-group">
                                                         <input type="text" class="form-control form-control-lg"
-                                                            placeholder="Nombre" name="name" [(ngModel)]="name" maxlength="100" #nameref="ngModel" pattern="[A-Za-z0-9 ]{0,100}">
+                                                            placeholder="Nombre" name="name" [(ngModel)]="name"
+                                                            maxlength="100" #nameref="ngModel" pattern="[A-Za-z0-9 ]{0,100}">
                                                     </div>
                                                     <div class="form-group">
                                                         <input type="text" class="form-control form-control-lg"
-                                                            placeholder="Descripcion" name="description" [(ngModel)]="description" maxlength="100" #descriptionref="ngModel" pattern="[A-Za-z0-9 ]{0,100}">
+                                                            placeholder="Descripcion" name="description" [(ngModel)]="description"
+                                                            maxlength="100" #descriptionref="ngModel" pattern="[A-Za-z0-9 ]{0,100}">
                                                     </div>
                                                     <div class="form-group">
                                                         Fecha de Inicio:
-                                                        <input type="date" class="form-control form-control-lg" name="start" [(ngModel)]="start">
+                                                        <input type="date" class="form-control form-control-lg" name="start"
+                                                            [(ngModel)]="start">
                                                     </div>
                                                     <div class="form-group">
                                                         Fecha de Termino:
-                                                        <input type="date" class="form-control form-control-lg" name="end" [(ngModel)]="end">
+                                                        <input type="date" class="form-control form-control-lg" name="end"
+                                                            [(ngModel)]="end">
                                                     </div>
 
                                                     <div class="form-group">
@@ -350,13 +346,14 @@
 
                                                     <div [hidden]="!nameref.errors?.pattern">
                                                         En el nombre solo puede haber letras y numeros.
-                                                    </div> 
+                                                    </div>
                                                     <div [hidden]="!descriptionref.errors?.pattern">
                                                         En la descripcion solo puede haber letras y numeros.
-                                                    </div> 
+                                                    </div>
 
 
-                                                    <input [hidden]="nameref.errors?.pattern || descriptionref.errors?.pattern" type="submit" value="Agregar Actividad" class="btn btn-outline-light btn-block">
+                                                    <input [hidden]="nameref.errors?.pattern || descriptionref.errors?.pattern"
+                                                        type="submit" value="Agregar Actividad" class="btn btn-outline-light btn-block">
                                                 </form>
                                             </div>
                                         </div>
@@ -390,18 +387,20 @@
                                     <div class="container">
                                         <h3>Objetivo</h3>
                                         <p>Ingresa el nuevo objetivo </p>
-                                        
-                                            <div class="form-group">
-                                                <input type="text" class="form-control form-control-lg" placeholder="Objetivo"  maxlength="100" id="objective" [(ngModel)]="objective"
-                                                #objectiveref="ngModel" pattern="[A-Za-z0-9-_.:,;^~+*`¿¡'?\=)(/&%$#°|¬ ]{0,100}">
-                                            </div>
 
-                                            <div [hidden]="!objectiveref.errors?.pattern">
-                                                Formato Invalido. 
-                                            </div> 
+                                        <div class="form-group">
+                                            <input type="text" class="form-control form-control-lg" placeholder="Objetivo"
+                                                maxlength="100" id="objective" [(ngModel)]="objective" #objectiveref="ngModel"
+                                                pattern="[A-Za-z0-9-_.:,;^~+*`¿¡'?\=)(/&%$#°|¬ ]{0,100}">
+                                        </div>
 
-                                            <input [hidden]="objectiveref.errors?.pattern" type="submit" value="Guardar" class="btn btn-outline-light btn-block" id="addObjective">
-                                        
+                                        <div [hidden]="!objectiveref.errors?.pattern">
+                                            Formato Invalido.
+                                        </div>
+
+                                        <input [hidden]="objectiveref.errors?.pattern" type="submit" value="Guardar"
+                                            class="btn btn-outline-light btn-block" id="addObjective">
+
 
 
                                     </div>
@@ -436,18 +435,20 @@
                                     <div class="container">
                                         <h3>Entregable</h3>
                                         <p>Ingresa el nuevo entregable </p>
-                                        
-                                            <div class="form-group">
-                                                <input type="text" class="form-control form-control-lg" placeholder="Entregable"  maxlength="100" id="deliverable" [(ngModel)]="deliverable"
+
+                                        <div class="form-group">
+                                            <input type="text" class="form-control form-control-lg" placeholder="Entregable"
+                                                maxlength="100" id="deliverable" [(ngModel)]="deliverable"
                                                 #deliverableref="ngModel" pattern="[A-Za-z0-9-_.:,;^~+*`¿¡'?\=)(/&%$#°|¬ ]{0,100}">
-                                            </div>
+                                        </div>
 
-                                            <div [hidden]="!deliverableref.errors?.pattern">
-                                                Formato Invalido. 
-                                            </div> 
+                                        <div [hidden]="!deliverableref.errors?.pattern">
+                                            Formato Invalido.
+                                        </div>
 
-                                            <input [hidden]="deliverableref.errors?.pattern" type="submit" value="Guardar" class="btn btn-outline-light btn-block" id="addDeliverable">
-                                        
+                                        <input [hidden]="deliverableref.errors?.pattern" type="submit" value="Guardar"
+                                            class="btn btn-outline-light btn-block" id="addDeliverable">
+
 
 
                                     </div>
