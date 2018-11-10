@@ -40,7 +40,12 @@
                                 <input type="text" class="form-control form-control-lg" placeholder="Numero de Movil" name="mobile" #mobil [(ngModel)]="mobile"   maxlength="100" required #mobileref="ngModel"  pattern="[0-9]{10,14}$">
                               </div>
                               <div class="form-group">
-                                <input type="password" class="form-control form-control-lg" placeholder="Contraseña" name="password" #pass [(ngModel)]="password"   maxlength="100" required #passwordref="ngModel" pattern="[A-Za-z0-9-_.:,;^~+*`¿¡'?\=)(/&%$#°|¬]{8,30}"> 
+                                <input #pass type="password" class="form-control form-control-lg" placeholder="Contraseña" required
+                                (keyup)="checkPasses()" [(ngModel)]="password" name="password"  #passwordref="ngModel" pattern="[A-Za-z0-9-_.:,;^~+*`¿¡'?\=)(/&%$#°|¬]{8,30}"> 
+                              </div>
+                              <div class="form-group">
+                                <input type="password" class="form-control form-control-lg" placeholder="Confirmar Contraseña" required
+                                (keyup)="checkPasses()" [(ngModel)]="recontra" name="recontra" #repasswordref="ngModel" pattern="[A-Za-z0-9-_.:,;^~+*`¿¡'?\=)(/&%$#°|¬]{8,30}">
                               </div>
 
                               <div class="form-group">
@@ -63,8 +68,11 @@
                               <div [hidden]="!passwordref.errors?.pattern">
                                   La contraseña debe de tener minimo 8 y maximo 30 caracteres, sin espacios.
                               </div>
+                              <div [hidden]="!repasswordref.errors?.pattern">
+                                La confirmacion de la contraseña debe de tener minimo 8 y maximo 30 caracteres, sin espacios.
+                              </div>
 
-                              <input [hidden]="emailref.errors?.pattern || mobileref.errors?.pattern || nameref.errors?.pattern || passwordref.errors?.pattern" type="submit" class="btn btn-outline-light btn-block" value="Registrar Usuario">
+                              <input [hidden]="emailref.errors?.pattern || mobileref.errors?.pattern || nameref.errors?.pattern || passwordref.errors?.pattern" type="submit" class="btn btn-outline-light btn-block" value="Registrar Usuario" [disabled]="boton">
                               <input type="button" class="btn btn-outline-light btn-block" (click)="resetForm(userForm)" value="Limpiar">
 
                             </form>

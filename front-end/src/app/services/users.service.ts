@@ -7,7 +7,7 @@ import { Project } from '../models/Project';
   providedIn: 'root'
 })
 export class UsersService {
-  readonly IP = "192.168.1.67";
+  readonly IP = "localhost";
   readonly URL_API = 'http://'+this.IP+':3000/api/users/user';
   readonly URL_API2 = 'http://'+this.IP+':3000/api/users/project';
   

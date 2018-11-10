@@ -9,7 +9,7 @@
                                 <thead>
                                     <tr>
                                         <th>Proyecto</th>
-                                        <th *ngIf="checku">Residente</th>
+                                        <th>Residente</th>
                                         <th>Mensajes</th>
                                         <th>Acciones</th>
                                     </tr>
@@ -17,11 +17,11 @@
                                 <tbody>
                                     <tr *ngFor="let project of this.projectsService.project2">
                                         <td>{{project.name}}</td>
-                                        <td *ngIf="checku">
+                                        <td>
                                             {{project.resident}}
                                         </td>
                                         <td>{{project.messages.length}}</td>
-                                        <td><button class="btn btn-lg btn-dark" type="submit" data-toggle="modal"
+                                        <td><button (click)="get10messages(project._id,project.name)" class="btn btn-lg btn-dark" type="submit" data-toggle="modal"
                                                 data-target="#mensajes"><i class="fas fa-arrow-alt-circle-right fa-1x"></i></button></td>
                                     </tr>
                                     
@@ -45,19 +45,12 @@
                         <div class="col-lg-12">
                             <div class="card text-center" style="background-color: #303136;">
                                 <div class="card-body">
-                                    Nombre del Proyecto
+                                    {{Project}}
                                     <br><br><br>
                                     <!--Aqui va el contenido-->
                                     <div class="container">
-                                        <ul class="list-unstyled">
-                                            <li>Residente 1: Mensaje 1</li>
-                                            <li>Residente 1: Mensaje 2</li>
-                                            <li>Residente 1: Mensaje 3</li>
-                                            <li>Residente 1: Mensaje 4</li>
-                                            <li>Residente 1: Mensaje 5</li>
-                                            <li>Residente 1: Mensaje 6</li>
-                                            <li>Residente 1: Mensaje 7</li>
-                                            <li>Residente 1: Mensaje 8</li>
+                                        <ul *ngFor="let message of this.projectsService.messages" class="list-unstyled">
+                                            {{message.authorName}} : {{message.message}}
                                         </ul>
                                     </div>
                                 </div>

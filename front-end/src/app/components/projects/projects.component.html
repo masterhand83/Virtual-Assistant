@@ -29,7 +29,7 @@
                                 <thead>
                                     <tr>
                                         <th>Nombre</th>
-                                        <th *ngIf="userTypeBoolean">Residente encargado</th>
+                                        <th>Residente encargado</th>
                                         <th>Progreso</th>
                                         <th>Acciones</th>
                                     </tr>
@@ -37,7 +37,7 @@
                                 <tbody id="myTable">
                                     <tr *ngFor="let project of this.projectsService.project">
                                         <td>{{project.name}}</td>
-                                        <td *ngIf="userTypeBoolean">
+                                        <td>
                                             {{project.resident}}
                                         </td>
                                         <td>

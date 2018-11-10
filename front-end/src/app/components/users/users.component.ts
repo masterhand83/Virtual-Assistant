@@ -77,6 +77,22 @@ export class UsersComponent implements OnInit {
    
     
   }
+  email2: string = '';
+  contra: string = '';
+  recontra: string = '';
+  boton: boolean = true;
+
+  checkPasses() {
+    console.log('CHECKPASSES()')
+    console.log(this.password,"==?",this.recontra);
+    if(this.password !== this.recontra){
+      console.log('incorrecto');
+      this.boton = true;
+    }else{
+      console.log('correcto',this.password,"==",this.recontra)
+      this.boton = false;
+    }
+  }
 
 
 }

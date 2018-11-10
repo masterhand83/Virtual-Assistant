@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ProjectsService } from '../../services/projects.service';
-import { Project } from '../../models/Project';
+import {ProjectsService} from '../../services/projects.service';
+import {Project} from '../../models/Project';
 import { SessionService } from '../../services/session.service';
+import { Message } from '../../models/Message';
 
 
 @Component({
@@ -19,7 +20,7 @@ export class MessagesComponent implements OnInit {
 
   }
 
-
+  
   getProjects() {
 
 
@@ -36,6 +37,16 @@ export class MessagesComponent implements OnInit {
           this.projectsService.project2 = res as Project[];
         })
     }
+  }
+  Project:string;
+  get10messages(_id:string,project:string){
+    this.projectsService.get10Messages(_id)
+    .subscribe(res=>{
+      this.projectsService.messages=res as Message[];
+     
+    });
+    this.Project=project;
+
   }
 
   key: string;

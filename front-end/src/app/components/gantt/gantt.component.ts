@@ -114,7 +114,7 @@ export class GanttComponent implements OnInit {
 
             var data = {};
             data.name= "Comentario";
-            data.description="Se comento: "+comment+" en la actividad: "  +name+"  ";
+            data.description="Se comento: '"+comment+"' en la actividad: "  +name+"  ";
             var json = JSON.stringify(data);
 
             var xhr = new XMLHttpRequest();

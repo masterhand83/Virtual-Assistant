@@ -12,18 +12,18 @@ import { SessionService } from '../../services/session.service';
   providers: [UsersService]
 })
 export class LoginComponent implements OnInit {
-  email: string = '';
+  /*email: string = '';
   contra: string = '';
   recontra: string = '';
-  boton: boolean = true;
+  boton: boolean = true; */
   constructor(private userManager: UsersService, private router: Router, private sess: SessionService) { }
   ngOnInit() {
     if (localStorage.getItem('UserID') != null) {
       this.router.navigate(['control']);
     }
-    this.checkPasses();
+    
   }
-  //---------------------------------
+  /*-
   checkPasses() {
     console.log('CHECKPASSES()')
     console.log(this.contra,"==?",this.recontra);
@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
       this.boton = false;
     }
   }
-  //------------------
+  */
   login(form: NgForm) {
     console.log(form.value);
     this.userManager.loginUser(form.value.email, form.value.contra)
@@ -52,7 +52,8 @@ export class LoginComponent implements OnInit {
           
           this.router.navigate(['control']);
         } else {
-          console.log('USUARIO NO EXISTENTE');
+          alert('USUARIO NO EXISTENTE');
+          form.reset();
         }
       });
 

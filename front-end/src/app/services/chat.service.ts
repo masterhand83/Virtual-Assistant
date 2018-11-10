@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class ChatService {
-  private url = 'http://192.168.1.67:3000'
+  private url = 'http://localhost:3000'
   private socket;
   constructor(private http: HttpClient) {
     this.socket = io(this.url);

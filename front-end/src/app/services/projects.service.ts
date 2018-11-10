@@ -6,11 +6,13 @@ import {User} from '../models/User';
 import { NgForm } from '../../../node_modules/@angular/forms';
 import { TouchSequence } from '../../../node_modules/@types/selenium-webdriver';
 import { Alert } from '../models/Alert';
+import {Message}from '../models/Message';
+import { formArrayNameProvider } from '../../../node_modules/@angular/forms/src/directives/reactive_directives/form_group_name';
 @Injectable({
   providedIn: 'root'
 })
 export class ProjectsService {
-  readonly IP = 'http://192.168.1.67:3000'
+  readonly IP = 'http://localhost:3000'
 
   readonly URL_API = this.IP+'/api/projects/project';
   readonly URL_API2= this.IP+'/api/users/project';
@@ -20,10 +22,12 @@ export class ProjectsService {
   readonly URL_API6= this.IP+'/api/projects/activity';
   readonly URL_API7= this.IP+'/api/projects/alert';
   readonly URL_API8= this.IP+'/api/alerts/alert';
+  readonly URL_API9= this.IP+'/api/projects/10messages';
 
   project:Project[];
   project2:Project[];
   usersincharge:User[];
+  messages:Message[];
 
   alerts:Alert[];
   
@@ -134,6 +138,10 @@ export class ProjectsService {
       name:name,
       description:description
     });
+  }
+
+  get10Messages(_id:string){
+    return this.http.get(this.URL_API9 +`/${_id}`);
   }
 
   

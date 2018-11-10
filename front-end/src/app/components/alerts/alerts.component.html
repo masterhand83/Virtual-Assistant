@@ -9,7 +9,7 @@
                                 <thead>
                                     <tr>
                                         <th>Proyecto</th>
-                                        <th *ngIf="checku">Residente</th>
+                                        <th>Residente</th>
                                         <th>Alertas</th>
                                         <th>Acciones</th>
                                     </tr>
@@ -17,7 +17,7 @@
                                 <tbody>
                                     <tr *ngFor="let project of this.projectsService.project">
                                         <td>{{project.name}}</td>
-                                        <td *ngIf="checku" >
+                                        <td >
                                             {{project.resident}}
                                         </td>
                                         <td>{{project.alerts.length}}</td>
