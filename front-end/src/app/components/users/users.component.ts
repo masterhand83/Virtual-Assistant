@@ -5,6 +5,7 @@ import {User} from '../../models/User';
 import { getDefaultService } from '../../../../node_modules/@types/selenium-webdriver/chrome';
 import { Router } from '@angular/router';
 import { SessionService } from '../../services/session.service';
+import {CryptoService} from '../../services/crypto.service';
 import { TouchSequence } from '../../../../node_modules/@types/selenium-webdriver';
 declare var M: any;
 @Component({
@@ -15,7 +16,7 @@ declare var M: any;
 })
 export class UsersComponent implements OnInit {
 
-  constructor(private userService: UsersService,private sess:SessionService, private router:Router) { }
+  constructor(private userService: UsersService,private sess:SessionService, private router:Router, private crypto:CryptoService) { }
   name:string;
   email:string;
   mobile:string;
@@ -26,6 +27,9 @@ export class UsersComponent implements OnInit {
   ngOnInit() {
     
     this.getUserType();
+    
+
+
     
   }
 
@@ -94,5 +98,7 @@ export class UsersComponent implements OnInit {
     }
   }
 
+
+  
 
 }

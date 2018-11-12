@@ -91,10 +91,10 @@
                                     <p>Ingresa los datos y asigna un nuevo proyecto. </p>
                                     <form #projectForm="ngForm" (ngSubmit)="createProject(projectForm)" (keydown.enter)="$event.preventDefault()">
                                         <div class="form-group">
-                                            <input type="text" class="form-control form-control-lg" placeholder="Nombre del Proyecto" name="name" [(ngModel)]="name"   maxlength="100" #nameref="ngModel" pattern="[A-Za-z0-9 ]{0,100}">
+                                            <input type="text" class="form-control form-control-lg" placeholder="Nombre del Proyecto" name="name" [(ngModel)]="name"   maxlength="100" #nameref="ngModel" pattern="[A-Za-z0-9|°¬!'#$%&/()=?\¡¿´¨+*~`^,;.:-_@áéíóúÁÉÍÓÚ ]{0,100}">
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" class="form-control form-control-lg" placeholder="Descripcion" name="description" [(ngModel)]="description"   maxlength="100"  #descriptionref="ngModel" pattern="[A-Za-z0-9 ]{0,100}">
+                                            <input type="text" class="form-control form-control-lg" placeholder="Descripcion" name="description" [(ngModel)]="description"   maxlength="100"  #descriptionref="ngModel" pattern="[A-Za-z0-9|°¬!'#$%&/()=?\¡¿´¨+*~`^,;.:-_@áéíóúÁÉÍÓÚ ]{0,100}">
                                         </div>
                                         <div class="col-lg-12">
 
@@ -137,10 +137,10 @@
                                         </div>
 
                                         <div [hidden]="!nameref.errors?.pattern">
-                                            En el nombre solo puede haber letras y numeros.
+                                            Formato Invalido en el nombre.
                                         </div> 
                                         <div [hidden]="!descriptionref.errors?.pattern">
-                                            En la descripcion solo puede haber letras y numeros.
+                                            Formato Invalido en la descripcion.
                                         </div> 
 
 
@@ -184,7 +184,7 @@
                                                     </div>
                                                     <div class="col-lg-8">
                                                         <div class="form-group">
-                                                            <input type="text" class="form-control form-control-lg" placeholder="Nombre del proyecto" name="name"[(ngModel)]="name2"  maxlength="100" #name2ref="ngModel" pattern="[A-Za-z0-9 ]{0,100}" >
+                                                            <input type="text" class="form-control form-control-lg" placeholder="Nombre del proyecto" name="name"[(ngModel)]="name2"  maxlength="100" #name2ref="ngModel" pattern="[A-Za-z0-9|°¬!'#$%&/()=?\¡¿´¨+*~`^,;.:-_@áéíóúÁÉÍÓÚ ]{0,100}" >
                                                         </div>
                                                     </div>
                                                     <br>
@@ -193,7 +193,7 @@
                                                     </div>
                                                     <div class="col-lg-8">
                                                         <div class="form-group">
-                                                            <input type="text" class="form-control form-control-lg" placeholder="Descripcion del proyecto" name="description" [(ngModel)]="description2" maxlength="100" #description2ref="ngModel" pattern="[A-Za-z0-9 ]{0,100}">
+                                                            <input type="text" class="form-control form-control-lg" placeholder="Descripcion del proyecto" name="description" [(ngModel)]="description2" maxlength="100" #description2ref="ngModel" pattern="[A-Za-z0-9|°¬!'#$%&/()=?\¡¿´¨+*~`^,;.:-_@áéíóúÁÉÍÓÚ ]{0,100}">
                                                         </div>
                                                     </div>
                                                     <br>
@@ -202,7 +202,7 @@
                                                     </div>
                                                     <div class="col-lg-8">
                                                         <div class="form-group">
-                                                            <input type="text" class="form-control form-control-lg" placeholder="Nombre de tienda" name="storeName" [(ngModel)]="storeName2"  maxlength="100" #storeName2ref="ngModel" pattern="[A-Za-z0-9 ]{0,100}">
+                                                            <input type="text" class="form-control form-control-lg" placeholder="Nombre de tienda" name="storeName" [(ngModel)]="storeName2"  maxlength="100" #storeName2ref="ngModel" pattern="[A-Za-z0-9|°¬!'#$%&/()=?\¡¿´¨+*~`^,;.:-_@áéíóúÁÉÍÓÚ ]{0,100}">
                                                         </div>
                                                     </div>
                                                     <br>
@@ -235,7 +235,7 @@
                                                     </div>
                                                     <div class="col-lg-8">
                                                         <div class="form-group">
-                                                            <input type="text" class="form-control form-control-lg" placeholder="Ubicacion" name="location" [(ngModel)]="location2"  maxlength="100" #location2ref="ngModel" pattern="[A-Za-z0-9 ]{0,100}">
+                                                            <input type="text" class="form-control form-control-lg" placeholder="Ubicacion" name="location" [(ngModel)]="location2"  maxlength="100" #location2ref="ngModel" pattern="[A-Za-z0-9|°¬!'#$%&/()=?\¡¿´¨+*~`^,;.:-_@áéíóú ]{0,100}">
                                                         </div>
                                                     </div>
 
@@ -298,20 +298,20 @@
                                                     <br>
                                                     <div class="col-lg-12">
                                                             <div [hidden]="!name2ref.errors?.pattern">
-                                                                    En el nombre del proyecto solo puede haber letras y numeros.
+                                                                Formato Invalido en el nombre del proyecto.
                                                             </div>      
                                                             <div [hidden]="!description2ref.errors?.pattern">
-                                                                En la descripcion solo puede haber letras y numeros.
+                                                                Formato Invalido en la descripcion.
                                                               </div> 
                                                               <div [hidden]="!storeName2ref.errors?.pattern">
-                                                                En el nombre de la tienda solo puede haber letras y numeros.
+                                                                Formato Invalido en el nombre de la tienda-
                                                             </div>   
                                                             <div [hidden]="!location2ref.errors?.pattern">
-                                                                En la ubicacion  solo puede haber letras y numeros.
+                                                                Formato Invalido en la ubicacion.
                                                             </div> 
                                                               
                                                             <div [hidden]="!storeNumber2ref.errors?.pattern ">
-                                                                En el numero de tienda pueden haber numeros.
+                                                                En el numero de tienda solo pueden haber numeros.
                                                             </div> 
                                                             <div [hidden]= "!m22ref.errors?.pattern">
                                                                 En el  metraje solo pueden haber numeros.

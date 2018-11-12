@@ -31,7 +31,7 @@
                             <p>Ingresa los datos y crea un nuevo usuario. </p>
                             <form #userForm="ngForm" (ngSubmit)="addUser(userForm)" (keydown.enter)="$event.preventDefault()">
                               <div class="form-group">
-                                <input type="text" class="form-control form-control-lg" placeholder="Nombre" name="name" #nombre [(ngModel)]="name"   maxlength="100" required #nameref="ngModel" pattern="[A-Za-z ]{0,100}">
+                                <input type="text" class="form-control form-control-lg" placeholder="Nombre" name="name" #nombre [(ngModel)]="name"   maxlength="100" required #nameref="ngModel" pattern="[A-Za-záéíóúÁÉÍÓÚ ]{0,100}">
                               </div>
                               <div class="form-group">
                                 <input type="email" class="form-control form-control-lg" placeholder="Correo Electronico" name="email" #mail [(ngModel)]="email"   maxlength="100" required #emailref="ngModel"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
@@ -41,11 +41,11 @@
                               </div>
                               <div class="form-group">
                                 <input #pass type="password" class="form-control form-control-lg" placeholder="Contraseña" required
-                                (keyup)="checkPasses()" [(ngModel)]="password" name="password"  #passwordref="ngModel" pattern="[A-Za-z0-9-_.:,;^~+*`¿¡'?\=)(/&%$#°|¬]{8,30}"> 
+                                (keyup)="checkPasses()" [(ngModel)]="password" name="password"  #passwordref="ngModel" pattern="[A-Za-z0-9|°¬!'#$%&/()=?\¡¿´¨+*~`^,;.:-_@áéíóúÁÉÍÓÚ]{8,30}"> 
                               </div>
                               <div class="form-group">
                                 <input type="password" class="form-control form-control-lg" placeholder="Confirmar Contraseña" required
-                                (keyup)="checkPasses()" [(ngModel)]="recontra" name="recontra" #repasswordref="ngModel" pattern="[A-Za-z0-9-_.:,;^~+*`¿¡'?\=)(/&%$#°|¬]{8,30}">
+                                (keyup)="checkPasses()" [(ngModel)]="recontra" name="recontra" #repasswordref="ngModel" pattern="[A-Za-z0-9|°¬!'#$%&/()=?\¡¿´¨+*~`^,;.:-_@áéíóúÁÉÍÓÚ]{8,30}">
                               </div>
 
                               <div class="form-group">

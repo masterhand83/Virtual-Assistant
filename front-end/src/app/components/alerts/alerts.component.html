@@ -56,14 +56,16 @@
                                                 <table class="table table-bordered table-striped">
                                                     <thead>
                                                         <tr>
-                                                            <th>Actividad</th>
-                                                            <th>Hito</th>
+                                                            <th>Nombre</th>
+                                                            <th>description</th>
+                                                            <th>Fecha</th>
                                                             <th>Acciones</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody id="alertas">
                                                         <tr *ngFor="let alert of this.projectsService.alerts">
                                                             <td>{{alert.name}}</td>
+                                                            <td>{{alert.date}}</td>
                                                             <td>{{alert.description}}</td>
                                                             <td>
                                                                 <button (click)="deleteAlert(alert._id)" class="btn btn-lg btn-dark" type="submit"><i class="far fa-trash-alt"></i></button>                                                         

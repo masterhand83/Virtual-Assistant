@@ -9,8 +9,11 @@ import { SessionService } from '../../services/session.service';
 })
 export class ControlComponent implements OnInit {
 
-  constructor(private router:Router,private sess:SessionService) { }
 
+
+  constructor(private router:Router,private sess:SessionService) { }
+  latitude:19.569206;
+  longitude: -99.129024;
   ngOnInit() {
     this.getUserType();
   }

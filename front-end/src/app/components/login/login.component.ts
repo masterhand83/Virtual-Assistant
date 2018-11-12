@@ -4,6 +4,7 @@ import { NgForm } from '@angular/forms';
 import { UsersService } from '../../services/users.service';
 import { Router } from '@angular/router';
 import { SessionService } from '../../services/session.service';
+import { CryptoService } from '../../services/crypto.service';
 
 @Component({
   selector: 'app-login',
@@ -16,11 +17,12 @@ export class LoginComponent implements OnInit {
   contra: string = '';
   recontra: string = '';
   boton: boolean = true; */
-  constructor(private userManager: UsersService, private router: Router, private sess: SessionService) { }
+  constructor(private userManager: UsersService, private router: Router, private sess: SessionService,
+  private crypto:CryptoService) { 
+
+  }
   ngOnInit() {
-    if (localStorage.getItem('UserID') != null) {
-      this.router.navigate(['control']);
-    }
+    
     
   }
   /*-
@@ -41,14 +43,22 @@ export class LoginComponent implements OnInit {
   }
   */
   login(form: NgForm) {
+
+        
     console.log(form.value);
     this.userManager.loginUser(form.value.email, form.value.contra)
       .subscribe(res => {
         let power: any = [];
         power = res;
+
+        var String:String;
+        var userData;
+        String=this.crypto.cryptoDecrypt(res[0]);
+        
+       
+
         if (power.length > 0) {
-          
-          this.sess.createSession(res[0]);
+          this.sess.createSession(String);
           
           this.router.navigate(['control']);
         } else {
