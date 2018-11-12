@@ -65,7 +65,14 @@
                                     <div class="container">
                                         <div class="row">
                                             <div class="col-lg-12">
-                                                ACTIVIDAD: <h3 id="activityName"></h3>
+                                                 
+                                                <div class="row">
+                                                    
+                                                    <div class="col-lg-12">
+                                                            <input class="form-control form-control-lg" type="text" id="activityName" readonly> 
+                                                    </div>
+                                                </div>
+                                                
                                                 <input type="hidden" name="" id="actID">
                                             </div>
                                             <br>
@@ -74,7 +81,7 @@
                                             <div class="col-lg-6">
                                                 <div class="row">
                                                     <div class="col-lg-8">
-                                                        Objetivos [ {{this.selectedAct}} ]
+                                                        Objetivos:
                                                     </div>
                                                     <div *ngIf="userTypeBoolean" class="col-lg-4">
                                                         <button class="btn btn-lg btn-dark" type="submit" data-toggle="modal"
@@ -100,7 +107,7 @@
                                                     </div>
 
                                                     <div class="col-lg-8">
-                                                        Entregables
+                                                        Entregables:
                                                     </div>
                                                     <div *ngIf="userTypeBoolean" class="col-lg-4">
                                                         <button class="btn btn-lg btn-dark" type="submit" data-toggle="modal"
@@ -152,6 +159,7 @@
 
 
                                                         </div>
+                                                        
 
                                                     </div>
 
@@ -171,7 +179,7 @@
                                                     <div class="col-lg-7">
                                                         <input type="text" class="form-control form-control-lg"
                                                             placeholder="Comentario" maxlength="100" id="comment"
-                                                            [(ngModel)]="comment" #commentref="ngModel" pattern="[A-Za-z0-9-_.:,;^~+*`¿¡'?\=)(/&%$#°|¬ ]{0,100}">
+                                                            [(ngModel)]="comment" #commentref="ngModel" pattern="[A-Za-z0-9|°¬!'#$%&/()=?\¡¿´¨+*~`^,;.:-_@áéíóúÁÉÍÓÚ ]{0,100}">
                                                     </div>
 
                                                     <div class="col-lg-5">
@@ -213,6 +221,61 @@
                                                 </div>
 
 
+                                            </div>
+                                            
+
+                                            <div class="col-lg-12">
+                                                    <div class="row">
+                                                        <div class="col-lg-2">
+                                                            Inicio:
+                                                        </div>
+                                                        <div class="col-lg-3">
+                                                            <div class="form-group">
+                                                                <input type="text" class="form-control form-control-lg" id="inicio" readonly>
+                                                            </div>                                                                 
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            <div class="form-group">
+                                                                <input type="date" class="form-control form-control-lg" id="start">
+                                                            </div>
+                                                            
+                                                        </div>
+                                                        <div class="col-lg-3">
+                                                            <div class="form-group">
+                                                                <button class="btn btn-outline-light btn-block" id="startdate">
+                                                                    Actualizar
+                                                                </button>
+                                                            </div>
+                                                            
+                                                        </div>
+                                                    </div>
+                                            </div>
+
+                                            <div class="col-lg-12">
+                                                    <div class="row">
+                                                        <div class="col-lg-2">
+                                                            Final:
+                                                        </div>
+                                                        <div class="col-lg-3">
+                                                            <div class="form-group">
+                                                                <input type="text" class="form-control form-control-lg" id="final" readonly>
+                                                            </div>                                                                 
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            <div class="form-group">
+                                                                <input type="date" class="form-control form-control-lg" id="end">
+                                                            </div>
+                                                            
+                                                        </div>
+                                                        <div class="col-lg-3">
+                                                            <div class="form-group">
+                                                                <button class="btn btn-outline-light btn-block" id="enddate">
+                                                                    Actualizar
+                                                                </button>
+                                                            </div>
+                                                            
+                                                        </div>
+                                                    </div>
                                             </div>
 
                                         </div>
@@ -317,12 +380,12 @@
                                                     <div class="form-group">
                                                         <input type="text" class="form-control form-control-lg"
                                                             placeholder="Nombre" name="name" [(ngModel)]="name"
-                                                            maxlength="100" #nameref="ngModel" pattern="[A-Za-z0-9 ]{0,100}">
+                                                            maxlength="100" #nameref="ngModel" pattern="[A-Za-z0-9|°¬!'#$%&/()=?\¡¿´¨+*~`^,;.:-_@áéíóúÁÉÍÓÚ ]{0,100}">
                                                     </div>
                                                     <div class="form-group">
                                                         <input type="text" class="form-control form-control-lg"
                                                             placeholder="Descripcion" name="description" [(ngModel)]="description"
-                                                            maxlength="100" #descriptionref="ngModel" pattern="[A-Za-z0-9 ]{0,100}">
+                                                            maxlength="100" #descriptionref="ngModel" pattern="[A-Za-z0-9|°¬!'#$%&/()=?\¡¿´¨+*~`^,;.:-_@áéíóúÁÉÍÓÚ ]{0,100}">
                                                     </div>
                                                     <div class="form-group">
                                                         Fecha de Inicio:
@@ -345,10 +408,10 @@
                                                     </div>
 
                                                     <div [hidden]="!nameref.errors?.pattern">
-                                                        En el nombre solo puede haber letras y numeros.
+                                                        Formato Invalido en el nombre.
                                                     </div>
                                                     <div [hidden]="!descriptionref.errors?.pattern">
-                                                        En la descripcion solo puede haber letras y numeros.
+                                                        Formato Invalido en la descripcion.
                                                     </div>
 
 
@@ -391,11 +454,11 @@
                                         <div class="form-group">
                                             <input type="text" class="form-control form-control-lg" placeholder="Objetivo"
                                                 maxlength="100" id="objective" [(ngModel)]="objective" #objectiveref="ngModel"
-                                                pattern="[A-Za-z0-9-_.:,;^~+*`¿¡'?\=)(/&%$#°|¬ ]{0,100}">
+                                                pattern="[A-Za-z0-9|°¬!'#$%&/()=?\¡¿´¨+*~`^,;.:-_@áéíóúÁÉÍÓÚ ]{0,100}">
                                         </div>
 
                                         <div [hidden]="!objectiveref.errors?.pattern">
-                                            Formato Invalido.
+                                            Formato Invalido en el objetivo.
                                         </div>
 
                                         <input [hidden]="objectiveref.errors?.pattern" type="submit" value="Guardar"
@@ -439,11 +502,11 @@
                                         <div class="form-group">
                                             <input type="text" class="form-control form-control-lg" placeholder="Entregable"
                                                 maxlength="100" id="deliverable" [(ngModel)]="deliverable"
-                                                #deliverableref="ngModel" pattern="[A-Za-z0-9-_.:,;^~+*`¿¡'?\=)(/&%$#°|¬ ]{0,100}">
+                                                #deliverableref="ngModel" pattern="[A-Za-z0-9|°¬!'#$%&/()=?\¡¿´¨+*~`^,;.:-_@áéíóúÁÉÍÓÚ ]{0,100}">
                                         </div>
 
                                         <div [hidden]="!deliverableref.errors?.pattern">
-                                            Formato Invalido.
+                                            Formato Invalido en el entregable.
                                         </div>
 
                                         <input [hidden]="deliverableref.errors?.pattern" type="submit" value="Guardar"

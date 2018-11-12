@@ -289,8 +289,16 @@ export class GanttComponent implements OnInit {
           addD();
           
         });
-
-        var name="Hola";
+        var idactivity="";
+        var name="";
+        var started;
+        var finished;
+        var objectivesVerified;
+        var deliverablesVerified;
+        var objectives;
+        var deliverables;
+        var start;
+        var end;
         function getObjandDel(){
           var id=document.querySelector('#information').value;
           
@@ -317,12 +325,32 @@ export class GanttComponent implements OnInit {
               });
               panel2.innerHTML = html2;
 
-              
+              idactivity=activity._id;
               name=activity.name;
-              
+              started=activity.started;
+              finished=activity.finished;
+              objectivesVerified=activity.objectivesVerified;
+              deliverablesVerified=activity.deliverablesVerified;
+              objectives=activity.objective.length;
+              deliverables=activity.deliverable.length;
+              start=activity.start;
+              end=activity.end;
+
+              console.log(id);
+              console.log(name);
+              console.log(started);
+              console.log(finished);
+              console.log(objectivesVerified);
+              console.log(deliverablesVerified);
+              console.log(objectives);
+              console.log(deliverables);
+              console.log(start);
+              console.log(end);
 
               document.querySelector('#priority').value=activity.priority;
-
+              document.querySelector('#inicio').value=start;
+              document.querySelector('#final').value=end;
+              document.querySelector('#activityName').value=name;
             } else {
               console.error(activity);
             }
@@ -335,123 +363,293 @@ export class GanttComponent implements OnInit {
 
         function addAlertO(){
 
-
-          var id='${IDProject}';
+          if(objectivesVerified==false && objectives!=0){
+            var id='${IDProject}';
           
-          var url = "http://localhost:3000/api/projects/alert";
+            var url = "http://localhost:3000/api/projects/alert";
+  
+            var data = {};
+            data.name= "Objetivos Verificados";
+            data.description="Se han verificado los objetivos en la actividad: "  +name+"  ";
+            var json = JSON.stringify(data);
+  
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", url + '/'+id, true);
+            xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
+           
+            xhr.send(json);
 
-          var data = {};
-          data.name= "Objetivos Verificados";
-          data.description="Se han verificado los objetivos en la actividad: "  +name+"  ";
-          var json = JSON.stringify(data);
+            
+          
+            var url2 = "http://localhost:3000/api/activities/verifyObjectives";
 
-          var xhr = new XMLHttpRequest();
-          xhr.open("POST", url + '/'+id, true);
-          xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
-          xhr.onload = function () {
-            var users = JSON.parse(xhr.responseText);
-            if (xhr.readyState == 4 && xhr.status == "200") {
-              console.table(users);
-            } else {
-              console.error(users);
+            var xhr = new XMLHttpRequest();
+            xhr.open("PUT", url2 + '/'+idactivity, true);
+            xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
+            xhr.onload = function () {
+              var users2 = JSON.parse(xhr.responseText);
+              if (xhr.readyState == 4 && xhr.status == "200") {
+                console.table(users2);
+              } else {
+                console.error(users2);
+              }
             }
-          }
-          xhr.send(json);
+            xhr.send(null);
+            alert('Se verifico correctamente');
+            location.reload();
 
+
+  
+          }
+          else if(objectives==0){
+            alert('No hay objetivos para verificar');
+          }
+          else{
+            alert('Ya se han verificado');
+          }
+
+         
 
         }
         addAlertObjective.on('click',()=>{
           addAlertO();
-          alert('Se verifico correcamente');
+          
         });
 
         var addAlertDeliverable = $('#addAlertDeliverable');
 
         function addAlertD(){
 
+          if(deliverablesVerified==false  && deliverables!=0){
+            var id='${IDProject}';
+            
+            var url = "http://localhost:3000/api/projects/alert";
 
-          var id='${IDProject}';
-          
-          var url = "http://localhost:3000/api/projects/alert";
+            var data = {};
+            data.name= "Entregables Verificados";
+            data.description="Se han verificado los entregables en la actividad: "  +name+"  ";
+            var json = JSON.stringify(data);
 
-          var data = {};
-          data.name= "Entregables Verificados";
-          data.description="Se han verificado los entregables en la actividad: "  +name+"  ";
-          var json = JSON.stringify(data);
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", url + '/'+id, true);
+            xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
+           
+            xhr.send(json);
 
-          var xhr = new XMLHttpRequest();
-          xhr.open("POST", url + '/'+id, true);
-          xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
-          xhr.onload = function () {
-            var users = JSON.parse(xhr.responseText);
-            if (xhr.readyState == 4 && xhr.status == "200") {
-              console.table(users);
-            } else {
-              console.error(users);
+            var url2 = "http://localhost:3000/api/activities/verifyDeliverables";
+
+            var xhr = new XMLHttpRequest();
+            xhr.open("PUT", url2 + '/'+idactivity, true);
+            xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
+            xhr.onload = function () {
+              var users2 = JSON.parse(xhr.responseText);
+              if (xhr.readyState == 4 && xhr.status == "200") {
+                console.table(users2);
+              } else {
+                console.error(users2);
+              }
             }
+            xhr.send(null);
+            alert('Se verifico correctamente');
+            location.reload();
           }
-          xhr.send(json);
+          else if(deliverables==0){
+            alert('No hay entregables para verificar');
+          }
+          else{
+            alert('Ya se han verificado');
+          }
+          
 
 
         }
         addAlertDeliverable.on('click',()=>{
           addAlertD();
-          alert('Se verifico correcamente');
+          
         });
 
         var addAlertStart = $('#addAlertStart');
 
         function addAlertS(){
-          var id='${IDProject}';
+
+          if(started==false){
+            var id='${IDProject}';
           
-          var url = "http://localhost:3000/api/projects/alert";
-          var data = {};
-          data.name= "Actividad Iniciada";
-          data.description="Se inicio la actividad: "  +name+"  ";
-          var json = JSON.stringify(data);
-          var xhr = new XMLHttpRequest();
-          xhr.open("POST", url + '/'+id, true);
-          xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
-          xhr.onload = function () {
-            var users = JSON.parse(xhr.responseText);
-            if (xhr.readyState == 4 && xhr.status == "200") {
-              console.table(users);
-            } else {
-              console.error(users);
+            var url = "http://localhost:3000/api/projects/alert";
+            var data = {};
+            data.name= "Actividad Iniciada";
+            data.description="Se inicio la actividad: "  +name+"  ";
+            var json = JSON.stringify(data);
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", url + '/'+id, true);
+            xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
+            xhr.onload = function () {
+              var users = JSON.parse(xhr.responseText);
+              if (xhr.readyState == 4 && xhr.status == "200") {
+                console.table(users);
+              } else {
+                console.error(users);
+              }
             }
-          }
-          xhr.send(json);
+            xhr.send(json);
+
+              var url2 = "http://localhost:3000/api/activities/start";
+
+              var xhr = new XMLHttpRequest();
+              xhr.open("PUT", url2 + '/'+idactivity, true);
+              xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
+              xhr.onload = function () {
+                var users2 = JSON.parse(xhr.responseText);
+                if (xhr.readyState == 4 && xhr.status == "200") {
+                  console.table(users2);
+                } else {
+                  console.error(users2);
+                }
+              }
+              xhr.send(null);
+              alert('Se ha iniciado la actividad');
+            }
+            else{
+              alert('Ya se inicio la actividad');
+            }
+          
         }
         addAlertStart.on('click',()=>{
           addAlertS();
-          alert('Se ha iniciado la actividad');
+          
         });
         
         var addAlertEnd = $('#addAlertEnd');
         function addAlertE(){
-          var id='${IDProject}';
-          var url = "http://localhost:3000/api/projects/alert";
-          var data = {};
-          data.name= "Actividad Finalizada";
-          data.description="Se finalizo la actividad: "  +name+"  ";
-          var json = JSON.stringify(data);
-          var xhr = new XMLHttpRequest();
-          xhr.open("POST", url + '/'+id, true);
-          xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
-          xhr.onload = function () {
-            var users = JSON.parse(xhr.responseText);
-            if (xhr.readyState == 4 && xhr.status == "200") {
-              console.table(users);
-            } else {
-              console.error(users);
+
+          if(started==true && finished==false){
+            var id='${IDProject}';
+            var url = "http://localhost:3000/api/projects/alert";
+            var data = {};
+            data.name= "Actividad Finalizada";
+            data.description="Se finalizo la actividad: "  +name+"  ";
+            var json = JSON.stringify(data);
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", url + '/'+id, true);
+            xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
+            xhr.onload = function () {
+              var users = JSON.parse(xhr.responseText);
+              if (xhr.readyState == 4 && xhr.status == "200") {
+                console.table(users);
+              } else {
+                console.error(users);
+              }
             }
+            xhr.send(json);
+  
+            var url2 = "http://localhost:3000/api/activities/finish";
+            var xhr = new XMLHttpRequest();
+            xhr.open("PUT", url2 + '/'+idactivity, true);
+            xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
+            xhr.onload = function () {
+            var users2 = JSON.parse(xhr.responseText);
+            if (xhr.readyState == 4 && xhr.status == "200") {
+                console.table(users2);
+            } 
+            else {
+              console.error(users2);
+              }
+            }
+            xhr.send(null);
+            alert('Se ha finalizado la actividad');
           }
-          xhr.send(json);
+          else if(started==false){
+            alert('Aun no has iniciado la actividad');
+          }
+          else if(finished==true){
+            alert('Ya se finalizo la actividad');
+          }
+         
+
+          
         }
         addAlertEnd.on('click',()=>{
           addAlertE();
-          alert('Se ha finalizado la actividad');
+          
         });
+
+        var startdate = $('#startdate');
+
+        function StartD(){
+
+          
+            
+            
+            var url = "http://localhost:3000/api/activities/startdate";
+
+            var data = {};
+            data.start=document.querySelector('#start').value;
+            var json = JSON.stringify(data);
+
+            var xhr = new XMLHttpRequest();
+            xhr.open("PUT", url + '/'+idactivity, true);
+            xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
+            xhr.onload = function () {
+              var users = JSON.parse(xhr.responseText);
+              if (xhr.readyState == 4 && xhr.status == "200") {
+                console.table(users);
+              } else {
+                console.error(users);
+              }
+            }
+            xhr.send(json);
+            alert('Fecha de inicio actualizada');
+            location.reload();
+            
+          
+          
+
+
+        }
+        startdate.on('click',()=>{
+          StartD();
+          
+        });
+
+        var enddate = $('#enddate');
+
+        function EndD(){
+
+          
+            
+            
+            var url = "http://localhost:3000/api/activities/enddate";
+
+            var data = {};
+            data.end=document.querySelector('#end').value;
+            var json = JSON.stringify(data);
+
+            var xhr = new XMLHttpRequest();
+            xhr.open("PUT", url + '/'+idactivity, true);
+            xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
+            xhr.onload = function () {
+              var users = JSON.parse(xhr.responseText);
+              if (xhr.readyState == 4 && xhr.status == "200") {
+                console.table(users);
+              } else {
+                console.error(users);
+              }
+            }
+            xhr.send(json);
+            alert('Fecha final actualizada');
+            location.reload();
+            
+          
+          
+
+
+        }
+        enddate.on('click',()=>{
+          EndD();
+          
+        });
+
+        
       });
     `
       console.log(s.text);
