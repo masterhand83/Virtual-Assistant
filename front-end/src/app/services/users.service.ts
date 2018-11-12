@@ -22,24 +22,15 @@ export class UsersService {
   }
   loginUser(email:string,contra:string){
 
-    
-    var email2;
-    email2=this.crypto.cryptoEncrypt(email);
-    email2.toString();
-    
-    var contra2;
-    contra2=this.crypto.cryptoEncrypt(contra);
-    contra2.toString();
-    
-    var userData;
-    
-    userData={
-      email:email2,
-      password:contra2
-      
-    };
+    var userData2={
+      email:email,
+      password:contra
+    }
 
-    console.log(userData);
+    var String=this.crypto.cryptoEncrypt(userData2);
+    String.toString();
+
+    var userData={userData:String};
 
     return this.http.post('http://'+this.IP+':3000/api/users/login',userData);
   }
@@ -71,12 +62,20 @@ export class UsersService {
   }
   putUser(_id:string , email:string ,mobile:number,password:string){
 
-    return this.http.put(this.URL_API + `/${_id}`,{
+    var userData2={
       _id:_id,
       email:email,
       mobile:mobile,
       password:password
-    });
+    }
+
+    var String=this.crypto.cryptoEncrypt(userData2);
+    String.toString();
+
+    var userData={userData:String};
+
+
+    return this.http.put(this.URL_API + `/${_id}`,userData);
   }
   getUserProjects(_id:string){
     return this.http.get(this.URL_API2+`/${_id}`);

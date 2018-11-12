@@ -27,7 +27,7 @@ export class UsersComponent implements OnInit {
   ngOnInit() {
     
     this.getUserType();
-    this.Encrypt();
+    
 
 
     
@@ -99,15 +99,6 @@ export class UsersComponent implements OnInit {
   }
 
 
-  Encrypt(){
-    var encrypt;
-    encrypt=this.crypto.cryptoEncrypt('Hola');
-    console.log('Encriptado:'+encrypt);
-
-    var decrypt;
-    decrypt=this.crypto.cryptoDecrypt('U2FsdGVkX19em8irnTuwwDjA2ua63GfNUZGSBtUHwL4=');
-    console.log('Desencriptado:'+decrypt);
-
-  }
+  
 
 }

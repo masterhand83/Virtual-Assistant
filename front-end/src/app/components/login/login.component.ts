@@ -51,8 +51,14 @@ export class LoginComponent implements OnInit {
         let power: any = [];
         power = res;
 
+        var String:String;
+        var userData;
+        String=this.crypto.cryptoDecrypt(res[0]);
+        
+       
+
         if (power.length > 0) {
-          this.sess.createSession(res[0]);
+          this.sess.createSession(String);
           
           this.router.navigate(['control']);
         } else {
