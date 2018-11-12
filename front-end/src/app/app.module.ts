@@ -22,6 +22,8 @@ import { ChatComponent } from "./components/chat/chat.component";
 
 import { ChatService } from './services/chat.service';
 
+//Maps
+import {AgmCoreModule} from '@agm/core';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,10 @@ import { ChatService } from './services/chat.service';
     HttpClientModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyAujVbRi-7jyqu3-K_RIfR8iwLWeqQlbDY'
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

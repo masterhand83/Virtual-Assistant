@@ -24,7 +24,10 @@
                         <div *ngIf="!userTypeBoolean" class="col-lg-12">
                             <app-alerts></app-alerts>
                         </div>
-                    
+                        
+                        <div class="col-lg-12">
+                            <agm-map [latitude]="latitude" [longitude]="longitude"></agm-map>
+                        </div>
                    
 
                 </div>
