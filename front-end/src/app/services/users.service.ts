@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from "../models/User";
 import { Project } from '../models/Project';
+import {CryptoService} from '../services/crypto.service';
+
 
 @Injectable({
   providedIn: 'root'
@@ -15,17 +17,42 @@ export class UsersService {
   user2:User[];
   projects:Project[];
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private crypto:CryptoService) {
       
   }
   loginUser(email:string,contra:string){
-    return this.http.post('http://'+this.IP+':3000/api/users/login',{
-      email: email,
-      password: contra
-    });
+
+    
+    var email2;
+    email2=this.crypto.cryptoEncrypt(email);
+    email2.toString();
+    
+    var contra2;
+    contra2=this.crypto.cryptoEncrypt(contra);
+    contra2.toString();
+    
+    var userData;
+    
+    userData={
+      email:email2,
+      password:contra2
+      
+    };
+
+    console.log(userData);
+
+    return this.http.post('http://'+this.IP+':3000/api/users/login',userData);
   }
+  
   postUser(User: User){
-    return this.http.post(this.URL_API,User);
+    var String:String;
+    var userData;
+    String=this.crypto.cryptoEncrypt(User);
+    String.toString();
+    userData={userData: String};
+    
+    return this.http.post(this.URL_API,userData);
+    
   }
 
   getUser(){
@@ -54,5 +81,8 @@ export class UsersService {
   getUserProjects(_id:string){
     return this.http.get(this.URL_API2+`/${_id}`);
   }
+
+  
+
 
 }
