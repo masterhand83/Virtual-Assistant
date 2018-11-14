@@ -47,6 +47,7 @@ export class UsersService {
   }
 
   getUser(){
+    
     return this.http.get(this.URL_API);
   }
 

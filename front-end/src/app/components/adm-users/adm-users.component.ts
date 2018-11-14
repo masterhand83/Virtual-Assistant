@@ -7,9 +7,9 @@ import { HttpClient } from '@angular/common/http';
 import { SessionService } from '../../services/session.service';
 import { Router } from '@angular/router';
 
-
 import { ActivatedRoute } from '../../../../node_modules/@angular/router';
 import { Project } from '../../models/Project';
+import { CryptoService } from '../../services/crypto.service';
 
 declare var M: any;
 
@@ -23,7 +23,7 @@ declare var M: any;
 export class AdmUsersComponent implements OnInit {
 
   constructor(private userService: UsersService, private sess: SessionService, private _route: ActivatedRoute, 
-  private projectService:ProjectsService, private router:Router) {
+  private projectService:ProjectsService, private router:Router, private crypto:CryptoService) {
 
   }
 
@@ -43,12 +43,27 @@ export class AdmUsersComponent implements OnInit {
 
   }
 
+  
   getUsers() {
     if (this.idUser == 2) {
       this.checku = true;
       this.userService.getResidents()
         .subscribe(res => {
-          this.userService.user = res as User[];
+
+          
+          let power: any = [];
+          power = res;
+
+          var user:User;
+          var users:User[]=[];
+          for (let i = 0; i < power.length; i++) {
+            user=this.crypto.cryptoDecrypt(res[i]);   
+            users.push(user);
+          }
+
+          
+          this.userService.user = users as User[];
+               
 
         });
     }
@@ -56,7 +71,19 @@ export class AdmUsersComponent implements OnInit {
       this.checku = false;
       this.userService.getDesigners()
         .subscribe(res => {
-          this.userService.user = res as User[];
+
+          let power: any = [];
+          power = res;
+
+          var user:User;
+          var users:User[]=[];
+          for (let i = 0; i < power.length; i++) {
+            user=this.crypto.cryptoDecrypt(res[i]);   
+            users.push(user);
+          }
+
+
+          this.userService.user = users as User[];
 
         });
     }

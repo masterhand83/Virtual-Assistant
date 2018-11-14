@@ -19,7 +19,7 @@ import { FormsModule } from "@angular/forms";
 import { HomeComponent } from './components/home/home.component';
 import { ChatComponent } from "./components/chat/chat.component";
 //lib
-
+import { CookieService } from "ngx-cookie-service";
 import { ChatService } from './services/chat.service';
 
 //Maps
@@ -51,7 +51,7 @@ import {AgmCoreModule} from '@agm/core';
       apiKey: 'AIzaSyAujVbRi-7jyqu3-K_RIfR8iwLWeqQlbDY'
     })
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -45,20 +45,19 @@ export class LoginComponent implements OnInit {
   login(form: NgForm) {
 
         
-    console.log(form.value);
+    //console.log(form.value);
     this.userManager.loginUser(form.value.email, form.value.contra)
       .subscribe(res => {
         let power: any = [];
         power = res;
-
-        var String:String;
+        var estring:string;
         var userData;
-        String=this.crypto.cryptoDecrypt(res[0]);
+        estring=this.crypto.cryptoDecrypt(res[0]);
         
        
 
         if (power.length > 0) {
-          this.sess.createSession(String);
+          this.sess.createSession(estring);
           
           this.router.navigate(['control']);
         } else {
