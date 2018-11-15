@@ -46,10 +46,10 @@ export class SessionService {
   }
   deleteSession(){
     this.cookieService.deleteAll('/','localhost');
-    localStorage.removeItem('UserID');
+    /*localStorage.removeItem('UserID');
     localStorage.removeItem('UserType');
     localStorage.removeItem('Name');
-    localStorage.removeItem('ActualProject');
+    localStorage.removeItem('ActualProject');*/
     this.router.navigate(['']);
   }
   getFromSession(key:string){
