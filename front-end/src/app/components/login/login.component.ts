@@ -60,6 +60,7 @@ export class LoginComponent implements OnInit {
           this.sess.createSession(estring);
           
           this.router.navigate(['control']);
+          console.log('creado:')
         } else {
           alert('USUARIO NO EXISTENTE');
           form.reset();

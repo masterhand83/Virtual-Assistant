@@ -20,9 +20,10 @@ export class CryptoService {
   }
 
   cryptoDecrypt(decrypt:any){
-    console.debug('decriptado',decrypt);
+    
     var cryptedData=decrypt;
     var bytes = CryptoJS.AES.decrypt(cryptedData.toString(), 'secret key 117');
+    console.log('json',bytes.toString(CryptoJS.enc.Utf8))
     var decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
     return decryptedData;
   }
