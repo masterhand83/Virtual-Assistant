@@ -17,32 +17,50 @@ export class UsersService {
   user2:User[];
   projects:Project[];
 
+  expreg = /^[^<>(){};,]*$/;
+
   constructor(private http: HttpClient, private crypto:CryptoService) {
       
   }
   loginUser(email:string,contra:string){
+    if(this.expreg.test(email) && this.expreg.test(contra)){
+      var userData2={
+        email:email,
+        password:contra
+      }
 
-    var userData2={
-      email:email,
-      password:contra
+      var String=this.crypto.cryptoEncrypt(userData2);
+      String.toString();
+
+      var userData={userData:String};
+
+      return this.http.post('http://'+this.IP+':3000/api/users/login',userData);
     }
-
-    var String=this.crypto.cryptoEncrypt(userData2);
-    String.toString();
-
-    var userData={userData:String};
-
-    return this.http.post('http://'+this.IP+':3000/api/users/login',userData);
+    else{
+      alert('Se han bloqueado algunos caracteres por cuestiones de seguridad.');
+    }
   }
   
   postUser(User: User){
-    var String:String;
-    var userData;
-    String=this.crypto.cryptoEncrypt(User);
-    String.toString();
-    userData={userData: String};
+
+    if(this.expreg.test(User.name) && this.expreg.test(User.email) &&
+    this.expreg.test(User.password)){
+      
+          var String:String;
+          var userData;
+          String=this.crypto.cryptoEncrypt(User);
+          String.toString();
+          userData={userData: String};
+          
+          return this.http.post(this.URL_API,userData);
+        
     
-    return this.http.post(this.URL_API,userData);
+    }
+    else{
+      alert('Se han bloqueado algunos caracteres por cuestiones de seguridad.');
+    }
+
+   
     
   }
 
@@ -63,6 +81,8 @@ export class UsersService {
   }
   putUser(_id:string , email:string ,mobile:number,password:string){
 
+    if(this.expreg.test(email) && this.expreg.test(password)){
+
     var userData2={
       _id:_id,
       email:email,
@@ -77,6 +97,10 @@ export class UsersService {
 
 
     return this.http.put(this.URL_API + `/${_id}`,userData);
+    }
+    else{
+      alert('Se han bloqueado algunos caracteres por cuestiones de seguridad.');
+    }
   }
   getUserProjects(_id:string){
     return this.http.get(this.URL_API2+`/${_id}`);

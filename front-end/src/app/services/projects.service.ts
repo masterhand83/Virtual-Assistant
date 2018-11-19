@@ -30,6 +30,8 @@ export class ProjectsService {
   messages:Message[];
 
   alerts:Alert[];
+
+  expreg = /^[^<>(){};,]*$/;
   
   constructor(private http: HttpClient) {
     
@@ -37,13 +39,21 @@ export class ProjectsService {
 
   createProject(name:string,description:string,idUser1:string,idUser2:string,idUser3:string){
 
-    return this.http.post(this.URL_API,{
-      name:name,
-      description:description,
-      idUser1:idUser1,
-      idUser2:idUser2,
-      idUser3:idUser3
-    });
+    if(this.expreg.test(name) && this.expreg.test(description)){
+      return this.http.post(this.URL_API,{
+        name:name,
+        description:description,
+        idUser1:idUser1,
+        idUser2:idUser2,
+        idUser3:idUser3
+      });
+    }
+    else{
+      alert('Se han bloqueado algunos caracteres por cuestiones de seguridad.');
+    }
+
+
+   
 
   }
 
@@ -60,21 +70,30 @@ export class ProjectsService {
 
   putInformation(_id:string, name:string, description:string,storeName: string,
   storeNumber: number,m2: number,location: string,localReception: Date,furnitureDate: Date,openingDate:Date){
-    return this.http.put(this.URL_API + `/${_id}`,{
-      _id:_id,
-      name:name,
-      description:description,
-      storeName:storeName,
-      storeNumber:storeNumber,
-      m2:m2,
-      location:location,
-      localReception:localReception,
-      furnitureDate:furnitureDate,
-      openingDate:openingDate,
-      }
-      
 
-    );
+    if(this.expreg.test(name) && this.expreg.test(description) &&
+    this.expreg.test(storeName) && this.expreg.test(location) ){
+      return this.http.put(this.URL_API + `/${_id}`,{
+        _id:_id,
+        name:name,
+        description:description,
+        storeName:storeName,
+        storeNumber:storeNumber,
+        m2:m2,
+        location:location,
+        localReception:localReception,
+        furnitureDate:furnitureDate,
+        openingDate:openingDate,
+        }
+       
+      );
+    }
+    else{
+      alert('Se han bloqueado algunos caracteres por cuestiones de seguridad.');
+    }
+
+
+    
     
   }
 
@@ -104,14 +123,21 @@ export class ProjectsService {
 
   addActivityToProject(_id:string,name:string,description:string,start:Date,end:Date,
   priority:Number){
-    return this.http.put(this.URL_API6 + `/${_id}`,{
-      name: name,
-      description:description,
-      start:start,
-      end: end,
-      priority: priority
-     
-    });
+
+    if(this.expreg.test(name) && this.expreg.test(description) ){
+      return this.http.put(this.URL_API6 + `/${_id}`,{
+        name: name,
+        description:description,
+        start:start,
+        end: end,
+        priority: priority
+       
+      });
+    }
+    else{
+      alert('Se han bloqueado algunos caracteres por cuestiones de seguridad.');
+    }
+    
   }
 
   activateProjectAlerts(_id:string,activated:boolean){

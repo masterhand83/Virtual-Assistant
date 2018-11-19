@@ -19,17 +19,17 @@ export class SessionService {
     //localStorage.setItem('UserID',res._id);
     //localStorage.setItem('UserType',res.userType);
     //localStorage.setItem('Name',res.name)
-    console.log('SESION CREADA PARA',res);
+    //console.log('SESION CREADA PARA',res);
   }
   createProjectSession(projectid:string){
     let pro = this.helmet.cryptoEncrypt(projectid);
     this.cookieService.set('ActualProject',pro,1,'/',this.IP);
-    localStorage.setItem('ActualProject',projectid);
+    //localStorage.setItem('ActualProject',projectid);
     console.log('SESION CREADA PARA PROYECTO ',projectid);
   }
   deleteProjectSession(){
     this.cookieService.delete('ActualProject','/',this.IP);
-    localStorage.removeItem('ActualProject');
+    //localStorage.removeItem('ActualProject');
   }
   
   validateSession(){

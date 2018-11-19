@@ -41,6 +41,7 @@ export class GanttComponent implements OnInit {
       IDProject=this.getIdProject();
       let s = this._Renderer2.createElement('script');
       s.text = `
+      var expreg = /^[^<>(){};,]*$/;
       var ganttDatas = ${result}
       $(function () {
         $("#ganttChart").ganttView({
@@ -86,42 +87,50 @@ export class GanttComponent implements OnInit {
         function addComments(){
 
           if(document.querySelector('#comment').value!=""){
+            
             var id=document.querySelector('#information').value;
           
 
             var comment=document.querySelector('#comment').value;
+
+            if(this.expreg.test(comment)){
+              var authorName= '${authorName}';
+
+              var url = "http://localhost:3000/api/activities/comment";
+
+              var data = {};
+              data.authorName = authorName;
+              data.comment  = comment;
+              var json = JSON.stringify(data);
+
+              var xhr = new XMLHttpRequest();
+              xhr.open("POST", url + '/'+id, true);
+              xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
+              
+              xhr.send(json);
+
+              document.querySelector('#comment').value="";
+
+              var id2='${IDProject}';
+              
+              var url2 = "http://localhost:3000/api/projects/alert";
+
+              var data = {};
+              data.name= "Comentario";
+              data.description="Se comento: '"+comment+"' en la actividad: "  +name+"  ";
+              var json = JSON.stringify(data);
+
+              var xhr = new XMLHttpRequest();
+              xhr.open("POST", url2 + '/'+id2, true);
+              xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
             
-            var authorName= '${authorName}';
-
-            var url = "http://localhost:3000/api/activities/comment";
-
-            var data = {};
-            data.authorName = authorName;
-            data.comment  = comment;
-            var json = JSON.stringify(data);
-
-            var xhr = new XMLHttpRequest();
-            xhr.open("POST", url + '/'+id, true);
-            xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
+              xhr.send(json);
+            }
+            else{
+              alert('Se han bloqueado algunos caracteres por cuestiones de seguridad.');
+            }
             
-            xhr.send(json);
-
-            document.querySelector('#comment').value="";
-
-            var id2='${IDProject}';
             
-            var url2 = "http://localhost:3000/api/projects/alert";
-
-            var data = {};
-            data.name= "Comentario";
-            data.description="Se comento: '"+comment+"' en la actividad: "  +name+"  ";
-            var json = JSON.stringify(data);
-
-            var xhr = new XMLHttpRequest();
-            xhr.open("POST", url2 + '/'+id2, true);
-            xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
-          
-            xhr.send(json);
           }
           else{
             alert('Favor de completar todos los campos');
@@ -213,27 +222,33 @@ export class GanttComponent implements OnInit {
             var id=document.querySelector('#information').value;
             var objective=document.querySelector('#objective').value;
             console.log(objective);
-            var url = "http://localhost:3000/api/activities/objective";
+            if(this.expreg.test(objective)){
+              var url = "http://localhost:3000/api/activities/objective";
 
-            var data = {};
-            data.objective= objective;
-            var json = JSON.stringify(data);
-
-            var xhr = new XMLHttpRequest();
-            xhr.open("PUT", url + '/'+id, true);
-            xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
-            xhr.onload = function () {
-              var users = JSON.parse(xhr.responseText);
-              if (xhr.readyState == 4 && xhr.status == "200") {
-                console.table(users);
-              } else {
-                console.error(users);
+              var data = {};
+              data.objective= objective;
+              var json = JSON.stringify(data);
+  
+              var xhr = new XMLHttpRequest();
+              xhr.open("PUT", url + '/'+id, true);
+              xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
+              xhr.onload = function () {
+                var users = JSON.parse(xhr.responseText);
+                if (xhr.readyState == 4 && xhr.status == "200") {
+                  console.table(users);
+                } else {
+                  console.error(users);
+                }
               }
+              xhr.send(json);
+              document.querySelector('#objective').value="";
+              alert('Objetivo añadido al proyecto');
+              getObjandDel();
             }
-            xhr.send(json);
-            document.querySelector('#objective').value="";
-            alert('Objetivo añadido al proyecto');
-            getObjandDel();
+            else{
+              alert('Se han bloqueado algunos caracteres por cuestiones de seguridad.');
+            }
+           
           }
           else{
             alert('Favor de completar todos los campos');
@@ -255,28 +270,33 @@ export class GanttComponent implements OnInit {
           if(document.querySelector('#deliverable').value!=""){
             var id=document.querySelector('#information').value;
             var deliverable=document.querySelector('#deliverable').value;
-            
-            var url = "http://localhost:3000/api/activities/deliverable";
+            if(this.expreg.test(deliverable)){
+              var url = "http://localhost:3000/api/activities/deliverable";
 
-            var data = {};
-            data.deliverable= deliverable;
-            var json = JSON.stringify(data);
-
-            var xhr = new XMLHttpRequest();
-            xhr.open("PUT", url + '/'+id, true);
-            xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
-            xhr.onload = function () {
-              var users = JSON.parse(xhr.responseText);
-              if (xhr.readyState == 4 && xhr.status == "200") {
-                console.table(users);
-              } else {
-                console.error(users);
+              var data = {};
+              data.deliverable= deliverable;
+              var json = JSON.stringify(data);
+  
+              var xhr = new XMLHttpRequest();
+              xhr.open("PUT", url + '/'+id, true);
+              xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
+              xhr.onload = function () {
+                var users = JSON.parse(xhr.responseText);
+                if (xhr.readyState == 4 && xhr.status == "200") {
+                  console.table(users);
+                } else {
+                  console.error(users);
+                }
               }
+              xhr.send(json);
+              document.querySelector('#deliverable').value="";
+              alert('Entregable añadido al proyecto');
+              getObjandDel();
             }
-            xhr.send(json);
-            document.querySelector('#deliverable').value="";
-            alert('Entregable añadido al proyecto');
-            getObjandDel();
+            else{
+              alert('Se han bloqueado algunos caracteres por cuestiones de seguridad.');
+            }
+            
           }
           else{
             alert('Favor de completar todos los campos');
@@ -579,7 +599,7 @@ export class GanttComponent implements OnInit {
 
           
             
-            
+          if(document.querySelector('#start').value!=""){  
             var url = "http://localhost:3000/api/activities/startdate";
 
             var data = {};
@@ -600,7 +620,10 @@ export class GanttComponent implements OnInit {
             xhr.send(json);
             alert('Fecha de inicio actualizada');
             location.reload();
-            
+          } 
+          else{
+            alert('Favor de completar todos los datos');
+          } 
           
           
 
@@ -615,9 +638,7 @@ export class GanttComponent implements OnInit {
 
         function EndD(){
 
-          
-            
-            
+          if(document.querySelector('#end').value!=""){
             var url = "http://localhost:3000/api/activities/enddate";
 
             var data = {};
@@ -638,6 +659,14 @@ export class GanttComponent implements OnInit {
             xhr.send(json);
             alert('Fecha final actualizada');
             location.reload();
+
+          }
+          else{
+            alert('Favor de completar todos los datos');
+          }
+            
+            
+            
             
           
           

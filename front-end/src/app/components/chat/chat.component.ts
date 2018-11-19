@@ -1,5 +1,6 @@
 import { Component, OnInit,Input } from '@angular/core';
 import { ChatService } from 'src/app/services/chat.service';
+import { SessionService } from '../../services/session.service';
 import { Router, NavigationStart } from '@angular/router';
 
 @Component({
@@ -12,12 +13,12 @@ export class ChatComponent implements OnInit {
   message: string;
   messages: string[] = [];
   constructor(
-    private chatService: ChatService) { 
+    private chatService: ChatService, private sess:SessionService) { 
 
   }
 
   ngOnInit() {
-    this.chatService.joinProject(localStorage.getItem('ActualProject'));
+    this.chatService.joinProject(this.sess.getFromSession('ActualProject'));
     this.getsavedMessages();
     this.chatService.getMessages()
     .subscribe((message:string)=>{
@@ -27,18 +28,23 @@ export class ChatComponent implements OnInit {
   }
   sendMessage(){
     this.chatService.saveMessage(
-    localStorage.getItem('ActualProject'),
-    localStorage.getItem('Name')+': '+this.message,
-    localStorage.getItem('Name')
+    
+    this.sess.getFromSession('ActualProject'),
+    this.message,
+    this.sess.getFromSession('Name')
+    
+
+    
+   
     ).subscribe(res =>{
       console.log('REGISTRADO')
-      this.chatService.sendMessage(localStorage.getItem('Name')+': '+this.message,localStorage.getItem('ActualProject'));
+      this.chatService.sendMessage(this.sess.getFromSession('Name')+': '+this.message,this.sess.getFromSession('ActualProject'));
       this.message = '';
     })
     
   }
   getsavedMessages(){
-    this.chatService.getSavedMessages(localStorage.getItem('ActualProject')).subscribe((res:any[]) =>{
+    this.chatService.getSavedMessages(this.sess.getFromSession('ActualProject'),).subscribe((res:any[]) =>{
       for (const msg of res) {
         this.messages.push(`${msg.message}`);
       }

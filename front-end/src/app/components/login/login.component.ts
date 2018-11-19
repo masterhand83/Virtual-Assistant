@@ -48,15 +48,15 @@ export class LoginComponent implements OnInit {
     //console.log(form.value);
     this.userManager.loginUser(form.value.email, form.value.contra)
       .subscribe(res => {
+        
         let power: any = [];
         power = res;
-        var estring:string;
-        var userData;
-        estring=this.crypto.cryptoDecrypt(res[0]);
         
-       
 
         if (power.length > 0) {
+          var estring:string;
+          var userData;
+          estring=this.crypto.cryptoDecrypt(res[0]);
           this.sess.createSession(estring);
           
           this.router.navigate(['control']);

@@ -8,6 +8,8 @@ import { HttpClient } from '@angular/common/http';
 export class ChatService {
   private url = 'http://localhost:3000'
   private socket;
+  expreg = /^[^<>(){};,]*$/;
+
   constructor(private http: HttpClient) {
     this.socket = io(this.url);
    }
@@ -18,10 +20,16 @@ export class ChatService {
     this.socket.emit('join-project',projectID);
   }
   public saveMessage(projectID:string, msg:string,author:string){
-    return this.http.post(this.url+'/api/projects/message/'+projectID,{
-      authorName:author,
-      message:msg
-    })
+    if(this.expreg.test(msg)){
+      return this.http.post(this.url+'/api/projects/message/'+projectID,{
+        authorName:author,
+        message:msg
+      })
+    }
+    else{
+      alert('Se han bloqueado algunos caracteres por cuestiones de seguridad.');
+    }
+   
   }
   public getSavedMessages(projectID:string){
     return this.http.get(this.url+'/api/projects/message/'+projectID)

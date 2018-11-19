@@ -53,6 +53,7 @@ export class AlertsComponent implements OnInit {
     this.projectsService.deleteAlert(_id)
     .subscribe(res=>{
       alert('Alerta Eliminada');
+      window.location.reload();
     });
     this.getProjects();
   }

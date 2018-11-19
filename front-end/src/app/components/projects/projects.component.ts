@@ -6,6 +6,7 @@ import {User} from '../../models/User';
 import {Project} from '../../models/Project';
 
 import { NgForm } from '../../../../node_modules/@angular/forms';
+import { CryptoService } from '../../services/crypto.service';
 
 
 @Component({
@@ -16,7 +17,8 @@ import { NgForm } from '../../../../node_modules/@angular/forms';
 })
 export class ProjectsComponent implements OnInit {
 
-  constructor(private sess:SessionService,private userService: UsersService,private projectsService:ProjectsService) { }
+  constructor(private sess:SessionService,private userService: UsersService,private projectsService:ProjectsService
+  ,private crypto:CryptoService) { }
 
   ngOnInit() {
     this.getResidents();
@@ -57,7 +59,18 @@ export class ProjectsComponent implements OnInit {
   getResidents(){
     this.userService.getResidents()
       .subscribe(res=>{
-      this.userService.user=res as User[];
+        let power: any = [];
+        power = res;
+
+        var user:User;
+        var users:User[]=[];
+        for (let i = 0; i < power.length; i++) {
+          user=this.crypto.cryptoDecrypt(res[i]);   
+          users.push(user);
+        }
+
+
+        this.userService.user = users as User[];
         
     });
   }
@@ -66,7 +79,18 @@ export class ProjectsComponent implements OnInit {
   getDesigners(){
     this.userService.getDesigners()
       .subscribe(res=>{
-      this.userService.user2=res as User[];
+        let power: any = [];
+        power = res;
+
+        var user:User;
+        var users:User[]=[];
+        for (let i = 0; i < power.length; i++) {
+          user=this.crypto.cryptoDecrypt(res[i]);   
+          users.push(user);
+        }
+
+
+        this.userService.user2 = users as User[];
         
     });
   }
