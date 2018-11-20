@@ -19,7 +19,9 @@ export class ProjectsComponent implements OnInit {
 
   constructor(private sess:SessionService,private userService: UsersService,private projectsService:ProjectsService
   ,private crypto:CryptoService) { }
-
+  lat:number=19.453008;
+  lng:number= -99.174825;
+ 
   ngOnInit() {
     this.getResidents();
     this.getDesigners();

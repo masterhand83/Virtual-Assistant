@@ -48,7 +48,7 @@ import {AgmCoreModule} from '@agm/core';
     HttpClientModule,
     FormsModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyAujVbRi-7jyqu3-K_RIfR8iwLWeqQlbDY'
+      apiKey: '' //AIzaSyAujVbRi-7jyqu3-K_RIfR8iwLWeqQlbDY
     })
   ],
   providers: [CookieService],
