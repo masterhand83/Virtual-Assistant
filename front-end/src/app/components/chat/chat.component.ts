@@ -32,21 +32,20 @@ export class ChatComponent implements OnInit {
     this.sess.getFromSession('ActualProject'),
     this.message,
     this.sess.getFromSession('Name')
-    
-
-    
-   
     ).subscribe(res =>{
-      console.log('REGISTRADO')
-      this.chatService.sendMessage(this.sess.getFromSession('Name')+': '+this.message,this.sess.getFromSession('ActualProject'));
+      let name = this.sess.getFromSession('Name');
+      let message = this.message;
+      
+      console.log('REGISTRADO//',name,':',message)
+      this.chatService.sendMessage(`${name}:${message}`,this.sess.getFromSession('ActualProject'));
       this.message = '';
     })
     
   }
   getsavedMessages(){
-    this.chatService.getSavedMessages(this.sess.getFromSession('ActualProject'),).subscribe((res:any[]) =>{
+    this.chatService.getSavedMessages(this.sess.getFromSession('ActualProject')).subscribe((res:any[]) =>{
       for (const msg of res) {
-        this.messages.push(`${msg.message}`);
+        this.messages.push(`${msg.authorName}:${msg.message}`);
       }
     })
   }
