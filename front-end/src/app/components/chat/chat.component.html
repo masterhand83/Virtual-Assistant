@@ -13,7 +13,7 @@
       <div class="form-group mb-2">
           <input class="form-control"  type="text" [(ngModel)]="message" placeholder="Mensaje">
       </div>
-      <button class="btn btn-outline-info d-lg-inline-block mb-2 mb-md-0 ml-md-3" (click)="sendMessage()">Enviar</button>
+      <button *ngIf="message" class="btn btn-outline-info d-lg-inline-block mb-2 mb-md-0 ml-md-3" (click)="sendMessage()">Enviar</button>
     </div>
   </div>
 </div>
