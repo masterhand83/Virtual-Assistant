@@ -2,6 +2,7 @@ import { Component, OnInit,Input } from '@angular/core';
 import { ChatService } from 'src/app/services/chat.service';
 import { SessionService } from '../../services/session.service';
 import { Router, NavigationStart } from '@angular/router';
+import { isNullOrUndefined } from 'util';
 
 @Component({
   selector: 'app-chat',
@@ -30,12 +31,14 @@ export class ChatComponent implements OnInit {
     this.chatService.saveMessage(
     
     this.sess.getFromSession('ActualProject'),
-    this.message,
+    isNullOrUndefined(this.message)? '...mensaje vacio...':this.message,
     this.sess.getFromSession('Name')
     ).subscribe(res =>{
       let name = this.sess.getFromSession('Name');
       let message = this.message;
-      
+      if (message == '' || isNullOrUndefined(message)) {
+        message = '...mensaje vacio...'
+      }
       console.log('REGISTRADO//',name,':',message)
       this.chatService.sendMessage(`${name}:${message}`,this.sess.getFromSession('ActualProject'));
       this.message = '';
