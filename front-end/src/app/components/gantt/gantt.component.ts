@@ -528,6 +528,7 @@ export class GanttComponent implements OnInit {
               }
               xhr.send(null);
               alert('Se ha iniciado la actividad');
+              window.location.reload()
             }
             else{
               alert('Ya se inicio la actividad');
@@ -577,6 +578,7 @@ export class GanttComponent implements OnInit {
             }
             xhr.send(null);
             alert('Se ha finalizado la actividad');
+            window.location.reload()
           }
           else if(started==false){
             alert('Aun no has iniciado la actividad');
