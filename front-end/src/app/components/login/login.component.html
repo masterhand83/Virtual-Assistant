@@ -40,7 +40,8 @@
                     
 
                     <input [hidden]="emailref.errors?.pattern || passwordref.errors?.pattern " type="submit" value="Iniciar Sesion" class="btn btn-outline-light btn-block"   >
-                    
+                    <button type="button" class="btn btn-outline-light btn-block" data-toggle="modal"
+                     data-target="#aviso">Aviso de Privacidad</button>
                   </form>
                 </div>
               </div>
@@ -52,3 +53,82 @@
     </div>
   </div>
 </header>
+
+
+
+<div class="modal fade" id="aviso" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+              <div class="container">
+                  <div class="row">
+                      <div class="col-lg-12">
+                          <div class="card text-center" style="background-color: #303136;">
+                              <div class="card-body">
+                                  <!--Aqui va el contenido-->
+                                  <div class="container">
+                                      <h3>Aviso de Privacidad</h3>
+                                      <div class="table-responsive">
+                                        <table class="table table-bordered table-striped">
+                                          <tr>
+                                            <th>¿Quienes somos?</th>
+                                            <th>Ángeles Lomelí Felipe Alberto, mejor conocido como MultiSoftware Innovation, con
+                                                domicilio en calle Mar Mediterráneo 227, colonia Popotla, ciudad CDMX, municipio
+                                                o delegación cuauhtemoc, c.p. 11400, en la entidad de CDMX, país México, es el responsable del uso y
+                                                protección de sus datos personales, y al respecto le informamos lo siguiente:
+                                            </th> 
+                                          </tr>
+                                          <tr>
+                                              <th>¿Para qué fines utilizaremos
+                                                  sus datos personales?</th>
+                                              <th>Los datos personales que recabamos de usted, los utilizaremos para las siguientes
+                                                  finalidades que son necesarias para el servicio que solicita:
+                                                  <ul>
+                                                      <li>Los datos generales de cada usuario son requeridos para el registro del
+                                                          mismo, así como para el correcto funcionamiento de Virtual-Assistant. Es decir
+                                                          que en caso del correo electrónico, el programa lo requiere para mandar
+                                                          mensajes de alerta al mismo./li>
+                                                      <li>En caso del número telefónico y el nombre de usuario, se ocuparán para la
+                                                          consulta del gerente.</li>
+                                                      <li>El proceso de negocio de la empresa así como el registro del desarrollo de los
+                                                          proyectos se ocuparán para la eficiencia de Virtual-Assistant hacia
+                                                          GrupoPunto.</li>
+                                                      <li>La información general de cada proyecto será utilizada cómo portada del
+                                                          mismo y para el registro y consulta posteriores de GrupoPunto.</li>
+                                                    </ul>
+                                              </th> 
+                                            </tr>
+                                            <tr>
+                                                <th>¿Dónde puedo consultar el
+                                                    aviso de privacidad integral?</th>
+                                                <th>Para conocer mayor información sobre los términos y condiciones en que serán
+                                                    tratados sus datos personales, como los terceros con quienes compartimos su
+                                                    información personal y la forma en que podrá ejercer sus derechos ARCO, puede
+                                                    consultar el aviso de privacidad integral en:
+                                                    El aviso de privacidad estará disponible en Virtuall-Assistant y será entragado en
+                                                    forma física al director de GrupoPunto.
+                                                </th> 
+                                              </tr>
+                                        </table>
+                                      </div>
+
+                                      
+
+
+
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
