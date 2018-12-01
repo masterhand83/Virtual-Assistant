@@ -26,9 +26,9 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 
-<body autocomplete="off">
+<body ondrop=" return false" onpaste="return false" autocomplete="off">
     <app-root></app-root>
-    <!--script type="text/javascript">
+    <script type="text/javascript">
 
            if(!window.console) window.console = {};
             var methods = ["log", "debug", "warn", "info", "dir", "dirxml", "trace", "profile"];
@@ -42,7 +42,7 @@
                 console[verb] =function(){return 'Sorry, for security reasons...';};
             });
 
-    </script-->
+    </script>
 
 
 
