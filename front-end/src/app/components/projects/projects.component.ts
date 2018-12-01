@@ -103,7 +103,7 @@ export class ProjectsComponent implements OnInit {
     form.value.idUser3!=undefined){
       this.projectsService.createProject(form.value.name,form.value.description,this.UserID,form.value.idUser2,form.value.idUser3)
       .subscribe(res=>{
-        console.log(res);  
+        //console.log(res);  
         alert('Proyecto Asignado Correctamente');
         form.reset();
         this.getProjects();
@@ -140,7 +140,7 @@ export class ProjectsComponent implements OnInit {
   getUsersInCharge(_id:string){
     this.projectsService.getUsersInCharge(_id)
     .subscribe(res=>{
-      console.log(res);
+      //console.log(res);
       this.projectsService.usersincharge=res as User[];
     })
   }

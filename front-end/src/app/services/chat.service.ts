@@ -2,17 +2,18 @@ import { Injectable } from '@angular/core';
 import * as io from 'socket.io-client';
 import {Observable} from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { consts } from "./constants.data";
 @Injectable({
   providedIn: 'root'
 })
 export class ChatService {
-  private url = 'http://localhost:3000'
+  private url = `http://${consts.IP}:3000`
   private socket;
   expreg = /^[^<>(){};,]*$/;
 
   constructor(private http: HttpClient) {
     this.socket = io(this.url);
-   }
+  }
   public sendMessage(message,project){
     this.socket.emit('new-message',{msg:message,room:project});
   }

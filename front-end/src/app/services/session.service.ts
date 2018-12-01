@@ -2,11 +2,12 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { CryptoService } from "./crypto.service";
+import { consts } from "./constants.data";
 @Injectable({
   providedIn: 'root'
 })
 export class SessionService {
-  IP:string = 'localhost';
+  IP:string = consts.IP;
   constructor(private router: Router, private cookieService: CookieService,private helmet: CryptoService) { }
   createSession(res:any){
     let id = this.helmet.cryptoEncrypt(res._id);
@@ -45,7 +46,7 @@ export class SessionService {
     }
   }
   deleteSession(){
-    this.cookieService.deleteAll('/','localhost');
+    this.cookieService.deleteAll('/',this.IP);
     /*localStorage.removeItem('UserID');
     localStorage.removeItem('UserType');
     localStorage.removeItem('Name');
