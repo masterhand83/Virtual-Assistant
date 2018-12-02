@@ -3,13 +3,13 @@ import { HttpClient } from '@angular/common/http';
 import { User } from "../models/User";
 import { Project } from '../models/Project';
 import {CryptoService} from '../services/crypto.service';
-
+import { consts } from "./constants.data";
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsersService {
-  readonly IP = "localhost";
+  readonly IP = consts.IP;
   readonly URL_API = 'http://'+this.IP+':3000/api/users/user';
   readonly URL_API2 = 'http://'+this.IP+':3000/api/users/project';
   
@@ -19,9 +19,7 @@ export class UsersService {
 
   expreg = /^[^<>(){};,]*$/;
 
-  constructor(private http: HttpClient, private crypto:CryptoService) {
-      
-  }
+  constructor(private http: HttpClient, private crypto:CryptoService) {}
   loginUser(email:string,contra:string){
     if(this.expreg.test(email) && this.expreg.test(contra)){
       var userData2={

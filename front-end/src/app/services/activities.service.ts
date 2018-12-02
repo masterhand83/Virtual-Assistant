@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
+import { consts } from "./constants.data";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ActivitiesService {
-  readonly url = 'http://localhost:3000'
+  readonly url = consts.IP;
   readonly URL_API = this.url+'/api/activities/activity';
   readonly URL_API2 = this.url+'/api/activities/comment';
   

@@ -39,7 +39,7 @@ export class ChatComponent implements OnInit {
       if (message == '' || isNullOrUndefined(message)) {
         message = '...mensaje vacio...'
       }
-      console.log('REGISTRADO//',name,':',message)
+      console.debug('REGISTRADO//',name,':',message)
       this.chatService.sendMessage(`${name}:${message}`,this.sess.getFromSession('ActualProject'));
       this.message = '';
     })

@@ -31,8 +31,8 @@ export class GanttComponent implements OnInit {
     this.getUserType();
     this.getIdProject();
     this.getActivitiesProject(res=>{
-      console.log('ñlkjafñlkjasfñlkjaslñj')
-      console.log(res)
+      /*console.log('ñlkjafñlkjasfñlkjaslñj')
+      console.log(res)*/
       let result: string = '[';
       result = this.arrayToString(res, 'gantt');
       let authorName:string="";

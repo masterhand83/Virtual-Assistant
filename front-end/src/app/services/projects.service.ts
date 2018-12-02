@@ -8,11 +8,12 @@ import { TouchSequence } from '../../../node_modules/@types/selenium-webdriver';
 import { Alert } from '../models/Alert';
 import {Message}from '../models/Message';
 import { formArrayNameProvider } from '../../../node_modules/@angular/forms/src/directives/reactive_directives/form_group_name';
+import { consts } from "./constants.data";
 @Injectable({
   providedIn: 'root'
 })
 export class ProjectsService {
-  readonly IP = 'http://localhost:3000'
+  readonly IP = `http://${consts.IP}:3000`
 
   readonly URL_API = this.IP+'/api/projects/project';
   readonly URL_API2= this.IP+'/api/users/project';
