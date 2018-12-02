@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 import { ActivatedRoute } from '../../../../node_modules/@angular/router';
 import { Project } from '../../models/Project';
 import { CryptoService } from '../../services/crypto.service';
+import {SendmessageService} from '../../services/sendmessage.service';
 
 declare var M: any;
 
@@ -23,7 +24,8 @@ declare var M: any;
 export class AdmUsersComponent implements OnInit {
 
   constructor(private userService: UsersService, private sess: SessionService, private _route: ActivatedRoute, 
-  private projectService:ProjectsService, private router:Router, private crypto:CryptoService) {
+  private projectService:ProjectsService, private router:Router, private crypto:CryptoService
+  ,private sendMessage:SendmessageService) {
 
   }
 
@@ -104,7 +106,7 @@ export class AdmUsersComponent implements OnInit {
     }
 
   }
-
+  
   updateUser(form: NgForm) {
 
     if(form.value.email!="" && form.value.mobile!="" && form.value.password!="" &&
@@ -160,13 +162,20 @@ export class AdmUsersComponent implements OnInit {
       alert('Favor de completar todos los campos');
     }
     
+    
 
   }
+  message:string;
 
   alertResident(){
     var name="Urgente";
     var description="Se ha cambiado el residente encargado de proyecto";
     this.projectService.addAlert(this.id3,name,description)
+    .subscribe(res=>{
+      console.log(res);
+    });
+    this.message=name+': '+description;
+    this.sendMessage.sendMessage(this.message)
     .subscribe(res=>{
       console.log(res);
     });
