@@ -58,9 +58,8 @@ export class LoginComponent implements OnInit {
           var userData;
           estring=this.crypto.cryptoDecrypt(res[0]);
           this.sess.createSession(estring);
-          
           this.router.navigate(['control']);
-          console.log('creado:')
+        
         } else {
           alert('USUARIO NO EXISTENTE');
           form.reset();

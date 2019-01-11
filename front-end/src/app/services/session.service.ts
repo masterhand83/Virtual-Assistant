@@ -13,10 +13,9 @@ export class SessionService {
     let id = this.helmet.cryptoEncrypt(res._id);
     let usrType = this.helmet.cryptoEncrypt(res.userType);
     let name = this.helmet.cryptoEncrypt(res.name);
-    this.cookieService.set('UserID',id,1,'/',this.IP);
-    this.cookieService.set('UserType',usrType,1,'/',this.IP);
-    this.cookieService.set('Name',name,1,'/',this.IP);
-    console.debug('COOKIE CREADA,',this.cookieService.getAll());
+    this.cookieService.set('UserID',id);
+    this.cookieService.set('UserType',usrType);
+    this.cookieService.set('Name',name);
     //localStorage.setItem('UserID',res._id);
     //localStorage.setItem('UserType',res.userType);
     //localStorage.setItem('Name',res.name)
@@ -24,12 +23,12 @@ export class SessionService {
   }
   createProjectSession(projectid:string){
     let pro = this.helmet.cryptoEncrypt(projectid);
-    this.cookieService.set('ActualProject',pro,1,'/',this.IP);
+    this.cookieService.set('ActualProject',pro);
     //localStorage.setItem('ActualProject',projectid);
     console.log('SESION CREADA PARA PROYECTO ',projectid);
   }
   deleteProjectSession(){
-    this.cookieService.delete('ActualProject','/',this.IP);
+    this.cookieService.delete('ActualProject');
     //localStorage.removeItem('ActualProject');
   }
   
@@ -46,7 +45,7 @@ export class SessionService {
     }
   }
   deleteSession(){
-    this.cookieService.deleteAll('/',this.IP);
+    this.cookieService.deleteAll();
     /*localStorage.removeItem('UserID');
     localStorage.removeItem('UserType');
     localStorage.removeItem('Name');
